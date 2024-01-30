@@ -10,6 +10,9 @@ import AstronautJSON from '../assets/animations/loadingV2.json'
       <el-row :gutter="20" type="flex">
         <el-col :xs="24" :sm="24" :md="24" :lg="16">
           <router-link to="/" class="mc">
+            <div class="introduce">
+              1
+            </div>
           </router-link>
         </el-col>
         <el-col :xs="24" :sm="24" :md="24" :lg="8">
@@ -25,6 +28,7 @@ import AstronautJSON from '../assets/animations/loadingV2.json'
               <Vue3Lottie :animationData="AstronautJSON" :height="60" :width="60" :speed="1" :autoPlay="true"
                 :loop="true" />
               <h3>画饼中...</h3>
+              <div class="introduce"></div>
             </div>
           </router-link>
         </el-col>
@@ -73,13 +77,19 @@ main {
       // }
 
 
+
       .mc {
         background: url(../assets/images/home-bg.png) no-repeat center/cover;
-
       }
 
       .trc {
         background: url(../assets/images/TRCStudioLobby.png) no-repeat center/cover;
+      }
+
+      .introduce {
+        width: 100%;
+        height: 5rem;
+        background-color: #fff;
       }
 
       .pie {
