@@ -11,13 +11,15 @@ import AstronautJSON from '../assets/animations/loadingV2.json'
         <el-col :xs="24" :sm="24" :md="24" :lg="16">
           <router-link to="/" class="mc">
             <div class="introduce">
-              1
+              红色创意内服
             </div>
           </router-link>
         </el-col>
         <el-col :xs="24" :sm="24" :md="24" :lg="8">
           <router-link to="/" class="trc">
-
+            <div class="introduce">
+              红色创意服务器
+            </div>
           </router-link>
         </el-col>
       </el-row>
@@ -28,7 +30,6 @@ import AstronautJSON from '../assets/animations/loadingV2.json'
               <Vue3Lottie :animationData="AstronautJSON" :height="60" :width="60" :speed="1" :autoPlay="true"
                 :loop="true" />
               <h3>画饼中...</h3>
-              <div class="introduce"></div>
             </div>
           </router-link>
         </el-col>
@@ -67,15 +68,26 @@ main {
 
       .el-col a {
         display: block;
+        position: relative;
         height: 23.75rem;
         border-radius: .9375rem;
         background-color: #fff;
+        overflow: hidden;
       }
 
-      // .el-col a:hover {
+      .el-col a:hover .introduce {
+        bottom: 0;
+      }
 
-      // }
-
+      .introduce {
+        position: absolute;
+        bottom: -6.25rem;
+        width: 100%;
+        height: 6.25rem;
+        background-color: #fff;
+        text-align: center;
+        transition: all .3s;
+      }
 
 
       .mc {
@@ -84,12 +96,6 @@ main {
 
       .trc {
         background: url(../assets/images/TRCStudioLobby.png) no-repeat center/cover;
-      }
-
-      .introduce {
-        width: 100%;
-        height: 5rem;
-        background-color: #fff;
       }
 
       .pie {
