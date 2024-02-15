@@ -7,5 +7,6 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
-  }
+  },
+  ignorePatterns: ['.github/workflows/main.yml'],
 }
