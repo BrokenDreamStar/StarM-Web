@@ -9,7 +9,6 @@ const year = ref(data.getFullYear())
   <footer>
     <p>Copyright ©2021-{{ year }} StarM Team</p>
     <p>Copyright ©2015-{{ year }} 红色创意</p>
-    <p><a href="https://beian.miit.gov.cn" target="_blank">辽ICP备2022003032号</a></p>
   </footer>
 </template>
 
