@@ -35,6 +35,5 @@ jobs:
             username: ${{ secrets.REMOTE_USER }}
             password: ${{ secrets.REMOTE_PASSWORD }}
             port: 22
-            path: ${{ secrets.REMOTE_PATH }}
-            source: "dist/"
-            # target: ${{  }}
+            source: "./dist/"
+            target: ${{ secrets.REMOTE_PATH }}
