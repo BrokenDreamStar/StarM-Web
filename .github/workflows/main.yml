@@ -31,9 +31,9 @@ jobs:
         - name: copy dist file with scp
           uses: appleboy/scp-action@v0.0.1
           with: 
-            host: ${{ secrets.REMOTE_HOST }}
-            username: ${{ secrets.REMOTE_USER }}
-            password: ${{ secrets.REMOTE_PASSWORD }}
+            host: 8.217.176.183
+            username: "root"
+            password: "Goldennianhua6"
             port: 22
             source: "./dist/"
-            target: ${{ secrets.REMOTE_PATH }}
+            target: "/www/wwwroot/starm.team"
