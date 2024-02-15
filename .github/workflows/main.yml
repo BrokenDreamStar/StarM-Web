@@ -31,9 +31,9 @@ jobs:
         - name: copy dist file with scp
           uses: appleboy/scp-action@v0.0.1
           with: 
-            host: 8.217.176.183
+            host: "starm.team"
             username: root
-            password: 'Goldennianhua6'
+            password: "Goldennianhua6"
             port: 22
-            source: './dist/'
-            target: '/www/wwwroot/starm.team'
+            source: "./dist/"
+            target: "/www/wwwroot/starm.team"
