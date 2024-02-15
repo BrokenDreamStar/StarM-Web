@@ -31,7 +31,7 @@ jobs:
         - name: copy dist file with scp
           uses: appleboy/scp-action@v0.0.1
           with: 
-            host: '8.217.176.183'
+            host: 8.217.176.183
             username: root
             password: 'Goldennianhua6'
             port: 22
