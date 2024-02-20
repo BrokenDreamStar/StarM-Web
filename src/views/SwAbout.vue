@@ -10,7 +10,10 @@ import SwNav from '../components/SwNav.vue';
     <div class="about">
       <div class="about-container">
         <div class="about-container-title">
-          <span>编程语言</span>
+          <div>
+            <img src="../assets/icon/cmd.svg" alt="">
+            <span>编程语言</span>
+          </div>
         </div>
       </div>
     </div>
@@ -34,23 +37,40 @@ import SwNav from '../components/SwNav.vue';
     background-color: #fff;
     color: #fff;
     border-radius: .5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0rem .625rem 3.125rem;
   }
 
   .about-container-title {
     position: absolute;
-    top: -0.9375rem;
+    top: -1.25rem;
     left: 1.25rem;
     width: fit-content;
     min-width: 3.125rem;
-    height: 1.875rem;
-    border-radius: .5rem;
+    height: 2.5rem;
     background-color: #00B3FF;
+    border-radius: .5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0.3125rem 0.5rem;
 
-    span {
-      line-height: 1.875rem;
-      text-align: center;
+    div {
       margin: 0 .625rem 0 .625rem;
+
+      span {
+        line-height: 2.5rem;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      img {
+        position: relative;
+        top: -1px;
+        width: 2rem;
+        height: 2rem;
+        vertical-align: middle;
+        margin-right: .1875rem;
+      }
     }
+
   }
+
 }
 </style>
