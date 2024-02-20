@@ -1,39 +1,20 @@
 <script setup>
 import SwNav from '../components/SwNav.vue';
+// import { ref } from 'vue'
 </script>
 
 <template>
   <SwNav></SwNav>
-  <!-- <div class="top-box"></div>
+  <div class="top-box"></div>
   <main>
-    <el-row>
-      <el-col :span="24">
-        <h2 class="title">关于本站</h2>
-      </el-col>
-      <el-col :span="24">
-        <h3 class="title">本站使用技术</h3>
-      </el-col>
-      <el-row class="row-bg" justify="space-between">
-        <el-col :span="8">
-          <div>
-            <img src="../assets/icon/HTML_logo.svg" alt="">
-            <i>HTML5</i>
-          </div>
-        </el-col>
-        <el-col :span="8">
-          <div>
-            <img src="../assets/icon/CSS_logo.svg" alt="">
-            <i>CSS3</i>
-          </div>
-        </el-col>
-        <el-col :span="8">
-          <div><img src="../assets/icon/JS_logo.svg" alt="">
-            <i>JavaScript</i>
-          </div>
-        </el-col>
-      </el-row>
-    </el-row>
-  </main> -->
+    <div class="about">
+      <div class="about-container">
+        <div class="about-container-title">
+          <span>编程语言</span>
+        </div>
+      </div>
+    </div>
+  </main>
 </template>
 
 <style lang="less" scoped>
@@ -41,7 +22,35 @@ import SwNav from '../components/SwNav.vue';
   height: 50px;
 }
 
-.title {
-  text-align: center;
+.about {
+  width: 70vw;
+  margin: 0 auto;
+
+  .about-container {
+    position: relative;
+    width: 100%;
+    height: 6.25rem;
+    margin-top: 2.5rem;
+    background-color: #fff;
+    color: #fff;
+    border-radius: .5rem;
+  }
+
+  .about-container-title {
+    position: absolute;
+    top: -0.9375rem;
+    left: 1.25rem;
+    width: fit-content;
+    min-width: 3.125rem;
+    height: 1.875rem;
+    border-radius: .5rem;
+    background-color: #00B3FF;
+
+    span {
+      line-height: 1.875rem;
+      text-align: center;
+      margin: 0 .625rem 0 .625rem;
+    }
+  }
 }
 </style>

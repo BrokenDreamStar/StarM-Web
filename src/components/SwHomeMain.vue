@@ -1,7 +1,14 @@
 <script setup>
+import { ref } from 'vue';
 import { RouterLink } from 'vue-router'
 import { Vue3Lottie } from 'vue3-lottie'
 import AstronautJSON from '../assets/animations/loadingV2.json'
+
+const card = ref([
+  { id: 1, title: "画饼中" },
+  { id: 2, title: "画饼中" },
+  { id: 3, title: "画饼中" }
+])
 </script>
 
 <template>
@@ -24,30 +31,12 @@ import AstronautJSON from '../assets/animations/loadingV2.json'
         </el-col>
       </el-row>
       <el-row :gutter="20" type="flex">
-        <el-col :xs="24" :sm="12" :md="8" :lg="8">
+        <el-col v-for="item in card" :key="item.id" :xs="24" :sm="12" :md="8" :lg="8">
           <router-link to="/" class="pie">
             <div>
               <Vue3Lottie :animationData="AstronautJSON" :height="60" :width="60" :speed="1" :autoPlay="true"
                 :loop="true" />
-              <h3>画饼中...</h3>
-            </div>
-          </router-link>
-        </el-col>
-        <el-col :xs="24" :sm="12" :md="8" :lg="8">
-          <router-link to="/" class="pie">
-            <div>
-              <Vue3Lottie :animationData="AstronautJSON" :height="60" :width="60" :speed="1" :autoPlay="true"
-                :loop="true" />
-              <h3>画饼中...</h3>
-            </div>
-          </router-link>
-        </el-col>
-        <el-col :xs="24" :sm="12" :md="8" :lg="8">
-          <router-link to="/" class="pie">
-            <div>
-              <Vue3Lottie :animationData="AstronautJSON" :height="60" :width="60" :speed="1" :autoPlay="true"
-                :loop="true" />
-              <h3>画饼中...</h3>
+              <h3>{{ item.title }}</h3>
             </div>
           </router-link>
         </el-col>
