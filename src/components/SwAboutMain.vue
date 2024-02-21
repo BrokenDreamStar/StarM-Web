@@ -7,23 +7,26 @@ const imgUrl = url => {
 }
 
 const aboutCard = ref([
-  { url: imgUrl("HTML.svg"), title: "HTML5", description: "超文本标记语言" },
-  { url: imgUrl("CSS.svg"), title: "CSS3", description: "层叠样式表" },
-  { url: imgUrl("JS.svg"), title: "JS", description: "编程语言" },
-  { url: imgUrl("Vue.svg"), title: "Vue3", description: "Web框架" },
-  { url: imgUrl("Vite.svg"), title: "Vite", description: "Web构建工具" },
-  { url: imgUrl("element-plus.png"), title: "Element Plus", description: "UI框架" },
-  { url: imgUrl("VSCode.svg"), title: "VSCode", description: "IDE" },
-  { url: imgUrl("nginx.svg"), title: "Nginx", description: "Web服务器" },
-  { url: imgUrl("docker.svg"), title: "docker", description: "容器引擎" },
-  { url: imgUrl("node.svg"), title: "Node", description: "运行环境" },
-  { url: imgUrl("npm.svg"), title: "npm", description: "包管理器" },
-  { url: imgUrl("pnpm.svg"), title: "pnpm", description: "包管理器" },
-  { url: imgUrl("less.svg"), title: "less", description: "CSS预处理器" },
-  { url: imgUrl("lottie.png"), title: "Lottie", description: "动效" },
-  { url: imgUrl("GoogleFont.svg"), title: "GoogleFont", description: "字体" },
-  { url: imgUrl("github.svg"), title: "Github", description: "代码托管及部署" },
-  // {  url: imgUrl(""), title: "", description: "" },
+  { url: imgUrl("HTML.svg"), href: "https://developer.mozilla.org/zh-CN/docs/Web/HTML", title: "HTML5", description: "超文本标记语言" },
+  { url: imgUrl("CSS.svg"), href: "https://developer.mozilla.org/zh-CN/docs/Web/CSS", title: "CSS3", description: "层叠样式表" },
+  { url: imgUrl("JS.svg"), href: "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript", title: "JavaScript", description: "编程语言" },
+  { url: imgUrl("Vue.svg"), href: "https://cn.vuejs.org/", title: "Vue3", description: "Web框架" },
+  { url: imgUrl("Vue.svg"), href: "https://router.vuejs.org/zh/", title: "VueRouter", description: "Vue路由" },
+  { url: imgUrl("Vite.svg"), href: "https://cn.vitejs.dev/", title: "Vite", description: "Web构建工具" },
+  { url: imgUrl("element-plus.png"), href: "https://element-plus.org/zh-CN/", title: "Element Plus", description: "UI框架" },
+  { url: imgUrl("less.svg"), href: "https://less.bootcss.com/", title: "less", description: "CSS预处理器" },
+  { url: imgUrl("lottie.png"), href: "https://lottiefiles.com/", title: "Lottie", description: "动效" },
+  { url: imgUrl("useanimations.svg"), href: "https://useanimations.com/", title: "useAnimations", description: "图标动画" },
+  { url: imgUrl("iconfont.svg"), href: "https://www.iconfont.cn/", title: "iconfont", description: "图标" },
+  { url: imgUrl("GoogleFont.svg"), href: "https://www.googlefonts.cn/", title: "GoogleFont", description: "字体" },
+  { url: imgUrl("VSCode.svg"), href: "https://code.visualstudio.com/", title: "VSCode", description: "IDE" },
+  { url: imgUrl("nginx.svg"), href: "https://www.nginx.com/", title: "Nginx", description: "Web服务器" },
+  { url: imgUrl("docker.svg"), href: "https://www.docker.com/", title: "docker", description: "容器引擎" },
+  { url: imgUrl("node.svg"), href: "https://nodejs.org/", title: "Node", description: "运行环境" },
+  { url: imgUrl("npm.svg"), href: "https://www.npmjs.com/", title: "npm", description: "包管理器" },
+  { url: imgUrl("pnpm.svg"), href: "https://pnpm.io/", title: "pnpm", description: "包管理器" },
+  { url: imgUrl("github.svg"), href: "https://github.com/", title: "Github", description: "代码托管及部署" },
+  { url: imgUrl("gemini.svg"), href: "https://ai.google.dev/", title: "Gemini Pro", description: "Google Ai" },
 ])
 
 </script>
@@ -40,8 +43,8 @@ const aboutCard = ref([
           </div>
         </div>
         <el-row :gutter="20" class="about-card-container">
-          <el-col v-for="item in aboutCard" :key="item.id" :xs="12" :sm="12" :md="6" :lg="4" :xl="4">
-            <a class="about-card">
+          <el-col v-for="item in aboutCard" :key="item.id" :xs="12" :sm="12" :md="8" :lg="6" :xl="4">
+            <a :href="item.href" target="_blank" class="about-card">
               <div class="about-card-img">
                 <img :src="item.url" alt="">
               </div>
@@ -63,7 +66,7 @@ const aboutCard = ref([
 }
 
 .about {
-  width: 70vw;
+  width: 65vw;
   margin: 0 auto;
 
   .about-container {
@@ -119,17 +122,16 @@ const aboutCard = ref([
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: .625rem 0 .625rem 0;
+        margin: .9375rem 0;
 
         .about-card {
           display: flex;
           justify-content: flex-start;
           align-items: center;
-          width: 10.625rem;
+          min-width: 11.25rem;
           height: 3.125rem;
           background-color: #fff;
           border-radius: .5rem;
-          box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
           cursor: pointer;
 
           .about-card-img {
@@ -154,18 +156,25 @@ const aboutCard = ref([
             justify-content: center;
 
             .about-card-title {
-              font-size: clamp(1rem, 1vw, 1.125rem);
+              font-size: 1.0625rem;
               font-weight: 600;
             }
 
             .about-card-description {
-              font-size: clamp(.4375rem, 1vw, .9375rem);
-              color: #909399;
+              font-size: .9375rem;
+              color: rgb(127, 129, 132);
             }
           }
         }
       }
     }
+  }
+}
+
+// 响应式布局设置
+@media (max-width: 768px) {
+  .about {
+    width: 80vw;
   }
 }
 </style>
