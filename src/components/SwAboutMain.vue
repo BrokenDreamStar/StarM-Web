@@ -18,7 +18,7 @@ const aboutCard = ref([
   { url: imgUrl("lottie.png"), href: "https://lottiefiles.com/", title: "Lottie", description: "动效" },
   { url: imgUrl("useanimations.svg"), href: "https://useanimations.com/", title: "useAnimations", description: "图标动画" },
   { url: imgUrl("iconfont.svg"), href: "https://www.iconfont.cn/", title: "iconfont", description: "图标" },
-  { url: imgUrl("GoogleFont.svg"), href: "https://www.googlefonts.cn/", title: "GoogleFont", description: "字体" },
+  { url: imgUrl("GoogleFont.svg"), href: "https://www.googlefonts.cn/", title: "GoogleFontAPI", description: "字体" },
   { url: imgUrl("VSCode.svg"), href: "https://code.visualstudio.com/", title: "VSCode", description: "IDE" },
   { url: imgUrl("nginx.svg"), href: "https://www.nginx.com/", title: "Nginx", description: "Web服务器" },
   { url: imgUrl("docker.svg"), href: "https://www.docker.com/", title: "docker", description: "容器引擎" },
@@ -174,7 +174,7 @@ const aboutCard = ref([
 // 响应式布局设置
 @media (max-width: 768px) {
   .about {
-    width: 80vw;
+    width: 90vw;
   }
 }
 </style>
