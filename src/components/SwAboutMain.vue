@@ -7,6 +7,7 @@ const imgUrl = url => {
 }
 
 const aboutCard = ref([
+  { url: imgUrl("VSCode.svg"), href: "https://code.visualstudio.com/", title: "VSCode", description: "IDE" },
   { url: imgUrl("HTML.svg"), href: "https://developer.mozilla.org/zh-CN/docs/Web/HTML", title: "HTML5", description: "超文本标记语言" },
   { url: imgUrl("CSS.svg"), href: "https://developer.mozilla.org/zh-CN/docs/Web/CSS", title: "CSS3", description: "层叠样式表" },
   { url: imgUrl("JS.svg"), href: "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript", title: "JavaScript", description: "编程语言" },
@@ -14,14 +15,14 @@ const aboutCard = ref([
   { url: imgUrl("Vue.svg"), href: "https://router.vuejs.org/zh/", title: "VueRouter", description: "Vue路由" },
   { url: imgUrl("Vite.svg"), href: "https://cn.vitejs.dev/", title: "Vite", description: "Web构建工具" },
   { url: imgUrl("element-plus.png"), href: "https://element-plus.org/zh-CN/", title: "Element Plus", description: "UI框架" },
+  { url: imgUrl("eslint.svg"), href: "https://eslint.org/", title: "ESLint", description: "JS代码规范" },
   { url: imgUrl("less.svg"), href: "https://less.bootcss.com/", title: "less", description: "CSS预处理器" },
   { url: imgUrl("lottie.png"), href: "https://lottiefiles.com/", title: "Lottie", description: "动效" },
   { url: imgUrl("useanimations.svg"), href: "https://useanimations.com/", title: "useAnimations", description: "图标动画" },
   { url: imgUrl("iconfont.svg"), href: "https://www.iconfont.cn/", title: "iconfont", description: "图标" },
   { url: imgUrl("GoogleFont.svg"), href: "https://www.googlefonts.cn/", title: "GoogleFontAPI", description: "字体" },
-  { url: imgUrl("VSCode.svg"), href: "https://code.visualstudio.com/", title: "VSCode", description: "IDE" },
   { url: imgUrl("nginx.svg"), href: "https://www.nginx.com/", title: "Nginx", description: "Web服务器" },
-  { url: imgUrl("docker.svg"), href: "https://www.docker.com/", title: "docker", description: "容器引擎" },
+  // { url: imgUrl("docker.svg"), href: "https://www.docker.com/", title: "docker", description: "容器引擎" },
   { url: imgUrl("node.svg"), href: "https://nodejs.org/", title: "Node", description: "运行环境" },
   { url: imgUrl("npm.svg"), href: "https://www.npmjs.com/", title: "npm", description: "包管理器" },
   { url: imgUrl("pnpm.svg"), href: "https://pnpm.io/", title: "pnpm", description: "包管理器" },
@@ -174,7 +175,7 @@ const aboutCard = ref([
 // 响应式布局设置
 @media (max-width: 768px) {
   .about {
-    width: 90vw;
+    width: 100vw;
   }
 }
 </style>
