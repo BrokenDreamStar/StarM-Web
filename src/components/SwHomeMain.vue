@@ -7,14 +7,14 @@ import AstronautJSON from '../assets/animations/loadingV2.json'
 const card = ref([
   { id: 1, title: "画饼中" },
   { id: 2, title: "画饼中" },
-  { id: 3, title: "画饼中" }
+  { id: 3, title: "画饼中" },
 ])
 </script>
 
 <template>
   <main>
     <div class="home-main">
-      <el-row :gutter="20" type="flex">
+      <el-row :gutter="20">
         <el-col :xs="24" :sm="24" :md="24" :lg="16">
           <router-link to="/" class="mc">
             <div class="introduce">
@@ -30,7 +30,7 @@ const card = ref([
           </router-link>
         </el-col>
       </el-row>
-      <el-row :gutter="20" type="flex">
+      <el-row :gutter="20">
         <el-col v-for="item in card" :key="item.id" :xs="24" :sm="12" :md="8" :lg="8">
           <router-link to="/" class="pie">
             <div>
