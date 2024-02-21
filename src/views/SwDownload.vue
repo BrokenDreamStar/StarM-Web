@@ -1,9 +1,9 @@
 <script setup>
-import SmNav from '../components/SwNav.vue'
+import SwNav from '../components/SwNav.vue'
 </script>
 
 <template>
-  <SmNav></SmNav>
+  <SwNav></SwNav>
 </template>
 
 <style></style>
