@@ -22,11 +22,12 @@ const aboutCard = ref([
   { url: imgUrl("iconfont.svg"), href: "https://www.iconfont.cn/", title: "iconfont", description: "图标" },
   { url: imgUrl("GoogleFont.svg"), href: "https://www.googlefonts.cn/", title: "GoogleFontAPI", description: "字体" },
   { url: imgUrl("nginx.svg"), href: "https://www.nginx.com/", title: "Nginx", description: "Web服务器" },
-  // { url: imgUrl("docker.svg"), href: "https://www.docker.com/", title: "docker", description: "容器引擎" },
+  { url: imgUrl("docker.svg"), href: "https://www.docker.com/", title: "docker", description: "容器引擎" },
   { url: imgUrl("node.svg"), href: "https://nodejs.org/", title: "Node", description: "运行环境" },
   { url: imgUrl("npm.svg"), href: "https://www.npmjs.com/", title: "npm", description: "包管理器" },
   { url: imgUrl("pnpm.svg"), href: "https://pnpm.io/", title: "pnpm", description: "包管理器" },
   { url: imgUrl("github.svg"), href: "https://github.com/", title: "Github", description: "代码托管及部署" },
+  { url: imgUrl("Git.svg"), href: "https://git-scm.com/", title: "Git", description: "代码管理" },
   { url: imgUrl("gemini.svg"), href: "https://ai.google.dev/", title: "Gemini Pro", description: "Google Ai" },
 ])
 
