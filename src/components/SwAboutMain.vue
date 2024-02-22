@@ -37,6 +37,28 @@ const aboutCard = ref([
   <div class="top-box"></div>
   <main>
     <div class="about">
+      <!-- 关于StarM Team -->
+      <div class="about-container">
+        <div class="about-container-title">
+          <div>
+            <img src="../assets/icon/about.svg" alt="">
+            <span>关于StarM Team</span>
+          </div>
+        </div>
+        <el-row class="about-card-container about-starm">
+          <el-col :span="8" class="img">
+            <img src="../assets/logo/logo.svg" alt="">
+          </el-col>
+          <el-col :span="16" class="text">
+            <p>StarM Team只是我一时兴起建立的一个名义上的个人工作室 成立于2021年7月18日</p>
+            <p>其名称也只是BrokenDream_Star (碎梦星尘Star) 这个名字的缩写</p>
+            <p>S 碎的拼音首字母 M 梦的拼音首字母 Star 星</p>
+            <del>说是Team 但其实只有我一个人</del>
+          </el-col>
+        </el-row>
+
+      </div>
+      <!-- 本站使用技术及工具 -->
       <div class="about-container">
         <div class="about-container-title">
           <div>
@@ -45,7 +67,8 @@ const aboutCard = ref([
           </div>
         </div>
         <el-row :gutter="20" class="about-card-container">
-          <el-col v-for="item in aboutCard" :key="item.id" :xs="12" :sm="12" :md="8" :lg="6" :xl="4">
+          <el-col v-for="item in aboutCard" :key="item.id" :xs="12" :sm="12" :md="8" :lg="6" :xl="4"
+            class="about-card-col">
             <a :href="item.href" target="_blank" class="about-card">
               <div class="about-card-img">
                 <img :src="item.url" alt="">
@@ -58,6 +81,7 @@ const aboutCard = ref([
           </el-col>
         </el-row>
       </div>
+
     </div>
   </main>
 </template>
@@ -78,7 +102,6 @@ const aboutCard = ref([
     position: relative;
     width: 100%;
     height: fit-content;
-    min-height: 15rem;
     margin-top: 2.5rem;
     background-color: #fff;
     border-radius: .5rem;
@@ -94,6 +117,8 @@ const aboutCard = ref([
       background-color: #00B3FF;
       border-radius: .5rem;
       box-shadow: rgba(0, 0, 0, 0.1) 0 0.3125rem 0.5rem;
+      -webkit-user-select: none;
+      user-select: none;
 
       div {
         margin: 0 .625rem 0 .625rem;
@@ -116,11 +141,29 @@ const aboutCard = ref([
       }
     }
 
+    .about-starm {
+      .img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 70%;
+        }
+      }
+
+      .text {
+        text-align: left;
+        font-size: clamp(.9rem 1vw 1.1rem);
+      }
+
+    }
+
     .about-card-container {
       width: 100%;
       margin: 1.5625rem 0 1.5625rem 0;
 
-      .el-col {
+      .about-card-col {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -132,8 +175,8 @@ const aboutCard = ref([
           align-items: center;
           min-width: 11.25rem;
           height: 3.125rem;
-          background-color: #fff;
-          border-radius: .5rem;
+          // background-color: #fff;
+          // border-radius: .5rem;
           cursor: pointer;
 
           .about-card-img {
@@ -177,6 +220,14 @@ const aboutCard = ref([
 @media (max-width: 768px) {
   .about {
     width: 100vw;
+
+    // .about-container {
+    //   .about-starm {
+    //     .text {
+    //       font-size: .9rem;
+    //     }
+    //   }
+    // }
   }
 }
 </style>

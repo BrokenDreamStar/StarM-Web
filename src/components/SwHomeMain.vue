@@ -16,18 +16,20 @@ const card = ref([
     <div class="home-main">
       <el-row :gutter="20">
         <el-col :xs="24" :sm="24" :md="24" :lg="16">
-          <router-link to="/" class="mc">
+          <a href="https://starm.top/" class="mc" target="_blank">
             <div class="introduce">
               红色创意内服
+              <p>还没想好怎么写</p>
             </div>
-          </router-link>
+          </a>
         </el-col>
         <el-col :xs="24" :sm="24" :md="24" :lg="8">
-          <router-link to="/" class="trc">
+          <a href="https://www.trc.studio/" class="trc" target="_blank">
             <div class="introduce">
               红色创意服务器
+              <p>还没想好怎么写</p>
             </div>
-          </router-link>
+          </a>
         </el-col>
       </el-row>
       <el-row :gutter="20">

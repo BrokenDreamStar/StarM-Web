@@ -1,5 +1,5 @@
 <script setup>
-import SwNav from '../components/SwNav.vue';
+import SwNav from '../components/SwNav.vue'
 import SwHomeHeader from '../components/SwHomeHeader.vue'
 import SwHomeMain from '../components/SwHomeMain.vue'
 import SwFooter from '../components/SwFooter.vue'
