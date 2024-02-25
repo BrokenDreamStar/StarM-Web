@@ -154,7 +154,6 @@ const aboutCard = ref([
 
       .text {
         text-align: left;
-        font-size: clamp(.9rem 1vw 1.1rem);
       }
 
     }
@@ -221,13 +220,25 @@ const aboutCard = ref([
   .about {
     width: 100vw;
 
-    // .about-container {
-    //   .about-starm {
-    //     .text {
-    //       font-size: .9rem;
-    //     }
-    //   }
-    // }
+    .about-container {
+      .about-starm {
+        .text {
+          font-size: .75rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .about {
+    .about-container {
+      .about-starm {
+        .text {
+          font-size: .875rem;
+        }
+      }
+    }
   }
 }
 </style>

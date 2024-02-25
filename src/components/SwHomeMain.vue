@@ -5,36 +5,28 @@ import { Vue3Lottie } from 'vue3-lottie'
 import AstronautJSON from '../assets/animations/loadingV2.json'
 
 const card = ref([
-  { id: 1, title: "画饼中" },
-  { id: 2, title: "画饼中" },
-  { id: 3, title: "画饼中" },
+  { title: "红色创意内服", xs: 24, sm: 24, md: 24, lg: 16 },
+  { title: "红色创意服务器", xs: 24, sm: 24, md: 24, lg: 8 },
+  { title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
+  { title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
+  { title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
 ])
+
+
 </script>
 
 <template>
   <main>
     <div class="home-main">
       <el-row :gutter="20">
-        <el-col :xs="24" :sm="24" :md="24" :lg="16">
-          <a href="https://starm.top/" class="mc" target="_blank">
+        <el-col v-for="item in card" :key="item.id" :xs="item.xs" :sm="item.sm" :md="item.md" :lg="item.lg">
+          <a href="https://starm.top/" target="_blank" v-if="item.title !== '画饼中'"
+            :style="{ backgroundImage: `url($())` }">
             <div class="introduce">
-              红色创意内服
-              <p>还没想好怎么写</p>
+              {{ item.title }}
             </div>
           </a>
-        </el-col>
-        <el-col :xs="24" :sm="24" :md="24" :lg="8">
-          <a href="https://www.trc.studio/" class="trc" target="_blank">
-            <div class="introduce">
-              红色创意服务器
-              <p>还没想好怎么写</p>
-            </div>
-          </a>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col v-for="item in card" :key="item.id" :xs="24" :sm="12" :md="8" :lg="8">
-          <router-link to="/" class="pie">
+          <router-link to="/" v-else class="pie">
             <div>
               <Vue3Lottie :animationData="AstronautJSON" :height="60" :width="60" :speed="1" :autoPlay="true"
                 :loop="true" />
@@ -48,62 +40,82 @@ const card = ref([
 </template>
 
 <style lang="less" scoped>
-main {
+.home-main {
+  width: 80vw;
+  margin: 0 auto;
 
-  .home-main {
-    width: 80%;
-    margin: 0 auto;
+  .el-row {
+    margin-bottom: 1.25rem;
 
-    .el-row {
-      margin-bottom: 1.25rem;
+    .el-col a {
+      display: block;
+      position: relative;
+      height: 23.75rem;
+      border-radius: .9375rem;
+      background-color: #fff;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
 
-      .el-col a {
-        display: block;
-        position: relative;
-        height: 23.75rem;
-        border-radius: .9375rem;
-        background-color: #fff;
-        overflow: hidden;
-      }
+    .el-col a:hover .introduce {
+      bottom: 0;
+    }
 
-      .el-col a:hover .introduce {
-        bottom: 0;
-      }
+    .introduce {
+      position: absolute;
+      bottom: -6.25rem;
+      width: 100%;
+      height: 6.25rem;
+      background-color: #fff;
+      text-align: center;
+      transition: all .3s;
+    }
 
-      .introduce {
+
+    .mc {
+      background: url(../assets/images/home-bg.png) no-repeat center/cover;
+    }
+
+    .trc {
+      background: url(../assets/images/TRCStudioLobby.png) no-repeat center/cover;
+    }
+
+    .pie {
+      position: relative;
+
+      div {
         position: absolute;
-        bottom: -6.25rem;
-        width: 100%;
-        height: 6.25rem;
-        background-color: #fff;
-        text-align: center;
-        transition: all .3s;
-      }
+        left: 50%;
+        top: 48%;
+        transform: translate(-50%, -50%);
 
-
-      .mc {
-        background: url(../assets/images/home-bg.png) no-repeat center/cover;
-      }
-
-      .trc {
-        background: url(../assets/images/TRCStudioLobby.png) no-repeat center/cover;
-      }
-
-      .pie {
-        position: relative;
-
-        div {
-          position: absolute;
-          left: 50%;
-          top: 48%;
-          transform: translate(-50%, -50%);
-
-          h3 {
-            margin-top: 100px;
-          }
+        h3 {
+          margin-top: 100px;
         }
       }
     }
   }
 }
+
+// @media (max-width:992px) {
+//   .home-main {
+//     .el-row {
+//       .el-col a {
+//         margin-bottom: 10px;
+//       }
+//     }
+//   }
+// }
+
+// @media (max-width:1200px) {
+//   .home-main {
+//     .el-row {
+//       margin-bottom: 0;
+
+//       .el-col a {
+//         margin-bottom: 20px;
+//       }
+//     }
+//   }
+// }
 </style>
