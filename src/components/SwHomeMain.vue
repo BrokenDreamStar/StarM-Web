@@ -4,15 +4,17 @@ import { RouterLink } from 'vue-router'
 import { Vue3Lottie } from 'vue3-lottie'
 import AstronautJSON from '../assets/animations/loadingV2.json'
 
+const imgUrl = url => {
+  return new URL(`../assets/images/${url}.jpg`, import.meta.url)
+}
+
 const card = ref([
-  { title: "红色创意内服", xs: 24, sm: 24, md: 24, lg: 16 },
-  { title: "红色创意服务器", xs: 24, sm: 24, md: 24, lg: 8 },
-  { title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
-  { title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
-  { title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
+  { url: "TRCStudioInterior", title: "红色创意内服", xs: 24, sm: 24, md: 24, lg: 16 },
+  { url: "TRCStudioLobby", title: "红色创意服务器", xs: 24, sm: 24, md: 24, lg: 8 },
+  { url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
+  { url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
+  { url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
 ])
-
-
 </script>
 
 <template>
@@ -21,7 +23,7 @@ const card = ref([
       <el-row :gutter="20">
         <el-col v-for="item in card" :key="item.id" :xs="item.xs" :sm="item.sm" :md="item.md" :lg="item.lg">
           <a href="https://starm.top/" target="_blank" v-if="item.title !== '画饼中'"
-            :style="{ backgroundImage: `url($())` }">
+            :style="{ backgroundImage: `url(${imgUrl(item.url)})` }">
             <div class="introduce">
               {{ item.title }}
             </div>
@@ -55,6 +57,7 @@ const card = ref([
       background-color: #fff;
       overflow: hidden;
       margin-bottom: 20px;
+      background: no-repeat center/cover;
     }
 
     .el-col a:hover .introduce {
@@ -69,15 +72,6 @@ const card = ref([
       background-color: #fff;
       text-align: center;
       transition: all .3s;
-    }
-
-
-    .mc {
-      background: url(../assets/images/home-bg.png) no-repeat center/cover;
-    }
-
-    .trc {
-      background: url(../assets/images/TRCStudioLobby.png) no-repeat center/cover;
     }
 
     .pie {
