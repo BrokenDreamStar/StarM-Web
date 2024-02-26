@@ -54,10 +54,9 @@ const card = ref([
       position: relative;
       height: 23.75rem;
       border-radius: .9375rem;
-      background-color: #fff;
       overflow: hidden;
       margin-bottom: 20px;
-      background: no-repeat center/cover;
+      background: #fff no-repeat center/cover;
     }
 
     .el-col a:hover .introduce {
@@ -69,7 +68,8 @@ const card = ref([
       bottom: -6.25rem;
       width: 100%;
       height: 6.25rem;
-      background-color: #fff;
+      background-color: rgba(255, 255, 255, .6);
+      backdrop-filter: blur(.625rem);
       text-align: center;
       transition: all .3s;
     }
@@ -91,23 +91,21 @@ const card = ref([
   }
 }
 
-// @media (max-width:992px) {
-//   .home-main {
-//     .el-row {
-//       .el-col a {
-//         margin-bottom: 10px;
-//       }
-//     }
-//   }
-// }
+@media (max-width:992px) {
+  .home-main {
+    .el-row {
+      .el-col a {
+        min-height: 13.75rem;
+      }
+    }
+  }
+}
 
 // @media (max-width:1200px) {
 //   .home-main {
 //     .el-row {
-//       margin-bottom: 0;
-
 //       .el-col a {
-//         margin-bottom: 20px;
+//         max-height: 10rem ;
 //       }
 //     }
 //   }
