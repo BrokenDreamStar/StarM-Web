@@ -4,16 +4,16 @@ import { RouterLink } from 'vue-router'
 import { Vue3Lottie } from 'vue3-lottie'
 import AstronautJSON from '../assets/animations/loadingV2.json'
 
-const imgUrl = (url, imgName, format) => {
-  return new URL(url + imgName + format, import.meta.url)
+const imgUrl = (url) => {
+  return new URL(`../assets/images/${url}`, import.meta.url)
 }
 
 const card = ref([
-  { pageUrl: "/downloads", imgName: "TRCStudioInterior", title: "红色创意内服", xs: 24, sm: 24, md: 24, lg: 16 },
-  { pageUrl: "/trc", imgName: "TRCStudioLobby", title: "红色创意服务器", xs: 24, sm: 24, md: 24, lg: 8 },
-  { pageUrl: "/", imgName: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
-  { pageUrl: "/", imgName: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
-  { pageUrl: "/", imgName: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
+  { pageUrl: "/downloads", url: "TRCStudioInterior.jpg", title: "红色创意内服", xs: 24, sm: 24, md: 24, lg: 16 },
+  { pageUrl: "/trc", url: "TRCStudioLobby.jpg", title: "红色创意服务器", xs: 24, sm: 24, md: 24, lg: 8 },
+  { pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
+  { pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
+  { pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
 ])
 </script>
 
@@ -23,7 +23,7 @@ const card = ref([
       <el-row :gutter="20">
         <el-col v-for="item in card" :key="item.id" :xs="item.xs" :sm="item.sm" :md="item.md" :lg="item.lg">
           <router-link :to="item.pageUrl" v-if="item.title !== '画饼中'"
-            :style="{ backgroundImage: `url(${imgUrl('../assets/images/', item.imgName, '.jpg')})` }">
+            :style="{ backgroundImage: `url(${imgUrl(item.url)})` }">
             <div class="introduce">
               {{ item.title }}
             </div>
