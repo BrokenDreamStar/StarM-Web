@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const imgUrl = url => {
   return new URL(`../assets/icon/minecraft/${url}`, import.meta.url)
@@ -7,20 +8,20 @@ const imgUrl = url => {
 
 const downloadsList = ref([
   { pageUrl: "downloads/mc/1.7", url: "peony_top.png", version: "1.7", title: "改变世界的更新" },
-  { pageUrl: "2", url: "guardian.png", version: "1.8", title: "缤纷更新" },
-  { pageUrl: "", url: "spectral_arrow.png", version: "1.9", title: "战斗更新" },
-  { pageUrl: "", url: "polarbear.png", version: "1.10", title: "霜炙更新" },
-  { pageUrl: "", url: "map.png", version: "1.11", title: "探险更新" },
-  { pageUrl: "", url: "white_glazed_terracotta.png", version: "1.12", title: "多彩世界更新" },
-  { pageUrl: "", url: "trident.png", version: "1.13", title: "水域更新" },
-  { pageUrl: "", url: "crossbow_arrow.png", version: "1.14", title: "村庄与掠夺" },
-  { pageUrl: "", url: "bee.png", version: "1.15", title: "嗡嗡蜂群" },
-  { pageUrl: "", url: "netherite_ingot.png", version: "1.16", title: "下界更新" },
-  { pageUrl: "", url: "amethyst_cluster.png", version: "1.17", title: "洞穴与山崖(第一部分)" },
-  { pageUrl: "", url: "cave.png", version: "1.18", title: "洞穴与山崖(第二部分)" },
-  { pageUrl: "", url: "sculk_sensor.png", version: "1.19", title: "荒野更新" },
-  { pageUrl: "", url: "camel.png", version: "1.20", title: "足迹与故事" },
-  { pageUrl: "", url: "minecraft.png", version: "1.21", title: "敬请期待" }
+  { pageUrl: "404", url: "guardian.png", version: "1.8", title: "缤纷更新" },
+  { pageUrl: "404", url: "spectral_arrow.png", version: "1.9", title: "战斗更新" },
+  { pageUrl: "404", url: "polarbear.png", version: "1.10", title: "霜炙更新" },
+  { pageUrl: "404", url: "map.png", version: "1.11", title: "探险更新" },
+  { pageUrl: "404", url: "white_glazed_terracotta.png", version: "1.12", title: "多彩世界更新" },
+  { pageUrl: "404", url: "trident.png", version: "1.13", title: "水域更新" },
+  { pageUrl: "404", url: "crossbow_arrow.png", version: "1.14", title: "村庄与掠夺" },
+  { pageUrl: "404", url: "bee.png", version: "1.15", title: "嗡嗡蜂群" },
+  { pageUrl: "404", url: "netherite_ingot.png", version: "1.16", title: "下界更新" },
+  { pageUrl: "404", url: "amethyst_cluster.png", version: "1.17", title: "洞穴与山崖(第一部分)" },
+  { pageUrl: "404", url: "cave.png", version: "1.18", title: "洞穴与山崖(第二部分)" },
+  { pageUrl: "404", url: "sculk_sensor.png", version: "1.19", title: "荒野更新" },
+  { pageUrl: "404", url: "camel.png", version: "1.20", title: "足迹与故事" },
+  { pageUrl: "404", url: "minecraft.png", version: "1.21", title: "敬请期待" }
 ])
 
 

@@ -1,11 +1,9 @@
-<script>
-
+<script setup>
+import SwNav from '../components/SwNav.vue'
 </script>
 
 <template>
-  <div>
-
-  </div>
+  <SwNav></SwNav>
 </template>
 
 <style></style>

@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-// import NotFound from '../views/NotFound/404.vue';
+import NotFound from '../views/NotFound/404.vue';
 import SwHome from '../views/SwHome.vue'
 import SwAbout from '../views/SwAbout.vue'
 import SwDownloads from '../views/SwDownloads.vue'
@@ -10,6 +10,11 @@ import SwMC from '../views/SwMC.vue';
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('../views/NotFound/404.vue')
+    },
     {
       path: '/',
       name: 'home',
