@@ -65,6 +65,9 @@ const mobileMenuSwitchOnOrOff = () => {
                 <a href="https://trc.studio/" target="_blank">红色创意官网</a>
               </li>
               <li>
+                <router-link to="/downloads">资源下载</router-link>
+              </li>
+              <li>
                 <router-link to="/genshin">原神工具</router-link>
               </li>
               <li>
@@ -96,6 +99,9 @@ const mobileMenuSwitchOnOrOff = () => {
           </li>
           <li>
             <a href="https://trc.studio/" target="_blank">红色创意官网</a>
+          </li>
+          <li>
+            <router-link to="/downloads">资源下载</router-link>
           </li>
           <li>
             <router-link to="/genshin">原神工具</router-link>

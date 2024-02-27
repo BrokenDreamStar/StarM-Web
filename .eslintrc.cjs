@@ -8,5 +8,5 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest'
   },
-  ignorePatterns: ['.github/workflows/main.yml'],
+  ignorePatterns: ['.github/workflows/main.yml', 'views/NotDound/404.vue'],
 }

@@ -1,9 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+// import NotFound from '../views/NotFound/404.vue';
 import SwHome from '../views/SwHome.vue'
 import SwAbout from '../views/SwAbout.vue'
-import SwDownload from '../views/SwDownload.vue'
+import SwDownloads from '../views/SwDownloads.vue'
 import SwGenshin from '../views/SwGenshin.vue'
 import SwDt from '../views/SwDt.vue'
+import SwMC from '../views/SwMC.vue';
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -21,7 +23,7 @@ const router = createRouter({
     {
       path: '/downloads',
       name: 'downloads',
-      component: SwDownload
+      component: SwDownloads
     },
     {
       path: '/genshin',
@@ -33,6 +35,11 @@ const router = createRouter({
       name: 'dt',
       component: SwDt
     },
+    {
+      path: '/downloads/mc/1.7',
+      name: '1.7',
+      component: SwMC
+    }
   ]
 })
 
