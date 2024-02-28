@@ -6,9 +6,17 @@ import SwDownloads from '../views/SwDownloads.vue'
 import SwGenshin from '../views/SwGenshin.vue'
 import SwDt from '../views/SwDt.vue'
 import SwMC from '../views/SwMC.vue';
+import JumpTRC from '../views/JumpTRC.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savePosition) {
+    if (savePosition) {
+      return savePosition
+    } else {
+      return { top: 0 }
+    }
+  },
   routes: [
     {
       path: '/:pathMatch(.*)*',
@@ -44,6 +52,11 @@ const router = createRouter({
       path: '/downloads/mc/1.7',
       name: '1.7',
       component: SwMC
+    },
+    {
+      path: '/jumplink',
+      name: 'jumplink',
+      component: JumpTRC
     }
   ]
 })
