@@ -18,22 +18,22 @@ import { RouterLink } from 'vue-router'
 }
 
 .bg {
-  width: 100%;
-  height: 100vh;
-  min-height: 43.75rem;
-  background: url(../assets/images/TRCStudioInterior.jpg) no-repeat center/cover;
-
   @font-face {
     font-family: "MCFont";
     src: url("../assets/font/MCFontMin.ttf");
   }
+
+  width: 100%;
+  height: 100vh;
+  min-height: 43.75rem;
+  background: url(../assets/images/TRCStudioInterior.jpg) no-repeat center/cover;
+  font-family: "MCFont";
 
   .title {
     transform: translateY(5rem);
     color: #ffffff;
     text-align: center;
     text-shadow: .3125rem .3125rem .375rem rgba(0, 0, 0, 0.5);
-    font-family: "MCFont";
     font-size: 4.6875rem;
   }
 
@@ -43,6 +43,7 @@ import { RouterLink } from 'vue-router'
     transform: translateY(600px);
     width: 7.8125rem;
     line-height: 2.5rem;
+    font-weight: 600;
     color: #fff;
     border: 3px solid #fff;
     border-radius: .75rem;
