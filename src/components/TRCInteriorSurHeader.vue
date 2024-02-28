@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router'
   <header>
     <div class="bg">
       <h2 class="title">红色创意内服</h2>
-      <router-link to="/404" class="join">加入我们</router-link>
+      <router-link to="/join" class="join">加入我们</router-link>
     </div>
   </header>
 </template>
