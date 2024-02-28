@@ -6,6 +6,7 @@ import SwDownloads from '../views/SwDownloads.vue'
 import SwGenshin from '../views/SwGenshin.vue'
 import SwDt from '../views/SwDt.vue'
 import SwMC from '../views/SwMC.vue';
+import TRCInteriorSur from '../views/TRCInteriorSur.vue'
 import JumpTRC from '../views/JumpTRC.vue'
 
 const router = createRouter({
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: SwAbout
+    },
+    {
+      path: '/trcinteriorsur',
+      name: 'trcinteriorsur',
+      component: TRCInteriorSur
     },
     {
       path: '/downloads',

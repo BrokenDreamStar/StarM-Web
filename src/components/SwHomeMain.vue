@@ -9,7 +9,7 @@ const imgUrl = (url) => {
 }
 
 const card = ref([
-  { pageUrl: "/downloads", url: "TRCStudioInterior.jpg", title: "红色创意内服", xs: 24, sm: 24, md: 24, lg: 16 },
+  { pageUrl: "/trcinteriorsur", url: "TRCStudioInterior.jpg", title: "红色创意内服", xs: 24, sm: 24, md: 24, lg: 16 },
   { pageUrl: "/jumplink", url: "TRCStudioLobby.jpg", title: "红色创意服务器", xs: 24, sm: 24, md: 24, lg: 8 },
   { pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
   { pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
