@@ -34,9 +34,11 @@ const downloadsList = ref([
       <el-row :gutter="20">
         <el-col v-for="item in downloadsList" :key="item.id" :xs="12" :sm="12" :md="8" :lg="4" :xl="4">
           <router-link :to="item.pageUrl">
-            <img :src="imgUrl(item.url)" alt="">
-            <p class="version">{{ item.version }}</p>
-            <p class="title">{{ item.title }}</p>
+            <div>
+              <img :src="imgUrl(item.url)" alt="">
+              <p class="version">{{ item.version }}</p>
+              <p class="title">{{ item.title }}</p>
+            </div>
           </router-link>
         </el-col>
       </el-row>
@@ -58,29 +60,55 @@ main {
     margin: 0 auto;
     background-color: #fff;
 
-    .el-col {
-      height: 7.5rem;
-      // background-color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .el-row {
 
-      a {
-        width: 100%;
-        display: block;
-        text-align: center;
+      .el-col {
+        height: 7.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        img {
-          width: 24px;
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 7.5rem;
+          width: 100%;
+          text-align: center;
+
+          div {
+            img {
+              width: 24px;
+            }
+
+            .version {
+              font-size: 1.125rem;
+              font-weight: 700;
+            }
+
+            .title {
+              font-size: .875rem;
+            }
+          }
         }
 
-        .version {
-          font-size: 1.125rem;
-          font-weight: 700;
+        a:hover {
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
+      }
+    }
+  }
+}
 
-        .title {
-          font-size: .875rem;
+// 响应式布局设置
+@media (max-width: 992px) {
+  main {
+    .downloads {
+      .el-row {
+        .el-col {
+          a:hover {
+            box-shadow: none;
+          }
         }
       }
     }

@@ -43,7 +43,7 @@ const card = ref([
 
 <style lang="less" scoped>
 .home-main {
-  width: 80vw;
+  width: 76vw;
   margin: 0 auto;
 
   .el-row {
@@ -57,6 +57,7 @@ const card = ref([
       overflow: hidden;
       margin-bottom: 20px;
       background: #fff no-repeat center/cover;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 
     .el-col a:hover .introduce {
