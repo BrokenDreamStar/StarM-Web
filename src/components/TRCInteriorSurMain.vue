@@ -1,29 +1,58 @@
 <script setup>
+import { ref } from 'vue'
+
+
+const imgUrl = (url) => {
+  return new URL(`../assets/icon/${url}`, import.meta.url)
+}
+const featureList = ref([
+  { url: "cpu.svg", title: "高性能服务器", text: "搭载intel core i9-9900k(极为落后)", xs: 24, sm: 24, md: 8, lg: 8 },
+  { url: "heart.svg", title: "温馨社区", text: "与其他玩家讨论游戏动漫编程生活学习等话题", xs: 24, sm: 24, md: 8, lg: 8 },
+  { url: "bird.svg", title: "全是鸽子", text: "玩家xxx上次上线的时间是365天前", xs: 24, sm: 24, md: 8, lg: 8 },
+])
+
 
 </script>
 
 <template>
-  <el-carousel :interval="4000" type="card" height="200px">
-    <el-carousel-item v-for="item in 6" :key="item">
-      <h3 text="2xl" justify="center">{{ item }}</h3>
-    </el-carousel-item>
-  </el-carousel>
+  <main>
+    <el-row>
+      <el-col v-for="item in featureList" :key="item.id" :xs="item.xs" :sm="item.sm" :md="item.md" :lg="item.lg">
+        <div>
+          <img :src="imgUrl(item.url)" alt="">
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.text }}</p>
+        </div>
+      </el-col>
+    </el-row>
+  </main>
 </template>
 
-<style scoped>
-.el-carousel__item h3 {
-  color: #475669;
-  opacity: 0.75;
-  line-height: 200px;
-  margin: 0;
-  text-align: center;
-}
+<style lang="less" scoped>
+main {
+  width: 100%;
+  background-color: #fff;
 
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
+  .el-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: fit-content;
+    margin: 0 auto;
 
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
+
+    .el-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: 2.5rem 0 2.5rem 0;
+
+      img {
+        width: 5rem;
+      }
+    }
+  }
 }
 </style>
