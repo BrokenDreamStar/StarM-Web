@@ -106,5 +106,15 @@ import { RouterLink } from 'vue-router'
 }
 
 // 响应式布局设置
-@media (max-width:992px) {}
+@media (max-width:992px) {
+  .bg {
+    .container {
+      .text {
+        h2 {
+          font-size: 3.125rem;
+        }
+      }
+    }
+  }
+}
 </style>
