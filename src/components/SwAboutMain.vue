@@ -22,7 +22,7 @@ const aboutCard = ref([
   { url: "GoogleFont.svg", href: "https://www.googlefonts.cn/", title: "GoogleFontAPI", description: "字体" },
   { url: "nginx.svg", href: "https://www.nginx.com/", title: "Nginx", description: "Web服务器" },
   { url: "docker.svg", href: "https://www.docker.com/", title: "docker", description: "容器引擎" },
-  { url: "node.svg", href: "https://nodejs.org/", title: "Node", description: "运行环境" },
+  { url: "nodejs.svg", href: "https://nodejs.org/", title: "Node", description: "运行环境" },
   { url: "npm.svg", href: "https://www.npmjs.com/", title: "npm", description: "包管理器" },
   { url: "pnpm.svg", href: "https://pnpm.io/", title: "pnpm", description: "包管理器" },
   { url: "github.svg", href: "https://github.com/", title: "Github", description: "代码托管及部署" },
