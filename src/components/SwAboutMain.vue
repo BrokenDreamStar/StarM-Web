@@ -13,7 +13,7 @@ onMounted(async () => {
     const res = await axios('https://starm.team:3000/about')
     aboutCard.value = res.data
   } catch (err) {
-    console.error(err);
+    console.error(err)
   }
 })
 
