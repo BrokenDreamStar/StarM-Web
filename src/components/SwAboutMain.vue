@@ -10,7 +10,7 @@ const aboutCard = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios('http://127.0.0.1:3000/about')
+    const res = await axios('https://starm.team:3000/about')
     aboutCard.value = res.data
   } catch (err) {
     console.error(err);
