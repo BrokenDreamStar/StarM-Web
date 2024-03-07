@@ -10,8 +10,14 @@ const aboutCard = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios('https://starm.team:3000/about')
-    aboutCard.value = res.data
+    const storedData = sessionStorage.getItem('aboutCardData');
+    if (storedData) {
+      aboutCard.value = JSON.parse(storedData);
+    } else {
+      const res = await axios('https://starm.team:3000/about')
+      aboutCard.value = res.data
+      sessionStorage.setItem('aboutCardData', JSON.stringify(res.data));
+    }
   } catch (err) {
     console.error(err)
   }
