@@ -1,34 +1,27 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import axios from 'axios';
 
 const imgUrl = url => {
   return new URL(`../assets/icon/logo/${url}`, import.meta.url)
 }
 
-const aboutCard = ref([
-  { url: "VSCode.svg", href: "https://code.visualstudio.com/", title: "VSCode", description: "IDE" },
-  { url: "HTML.svg", href: "https://developer.mozilla.org/zh-CN/docs/Web/HTML", title: "HTML5", description: "超文本标记语言" },
-  { url: "CSS.svg", href: "https://developer.mozilla.org/zh-CN/docs/Web/CSS", title: "CSS3", description: "层叠样式表" },
-  { url: "JS.svg", href: "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript", title: "JavaScript", description: "编程语言" },
-  { url: "Vue.svg", href: "https://cn.vuejs.org/", title: "Vue3", description: "Web框架" },
-  { url: "Vue.svg", href: "https://router.vuejs.org/zh/", title: "VueRouter", description: "Vue路由" },
-  { url: "Vite.svg", href: "https://cn.vitejs.dev/", title: "Vite", description: "Web构建工具" },
-  { url: "element-plus.png", href: "https://element-plus.org/zh-CN/", title: "Element Plus", description: "UI框架" },
-  { url: "eslint.svg", href: "https://eslint.org/", title: "ESLint", description: "JS代码规范" },
-  { url: "less.svg", href: "https://less.bootcss.com/", title: "less", description: "CSS预处理器" },
-  { url: "lottie.png", href: "https://lottiefiles.com/", title: "Lottie", description: "动效" },
-  { url: "useanimations.svg", href: "https://useanimations.com/", title: "useAnimations", description: "图标动画" },
-  { url: "iconfont.svg", href: "https://www.iconfont.cn/", title: "iconfont", description: "图标" },
-  { url: "GoogleFont.svg", href: "https://www.googlefonts.cn/", title: "GoogleFontAPI", description: "字体" },
-  { url: "nginx.svg", href: "https://www.nginx.com/", title: "Nginx", description: "Web服务器" },
-  { url: "docker.svg", href: "https://www.docker.com/", title: "docker", description: "容器引擎" },
-  { url: "nodejs.svg", href: "https://nodejs.org/", title: "Node", description: "运行环境" },
-  { url: "npm.svg", href: "https://www.npmjs.com/", title: "npm", description: "包管理器" },
-  { url: "mysql.svg", href: "https://www.mysql.com/cn/", title: "MySQL", description: "数据库" },
-  { url: "github.svg", href: "https://github.com/", title: "Github", description: "代码托管及部署" },
-  { url: "Git.svg", href: "https://git-scm.com/", title: "Git", description: "代码管理" },
-  { url: "gemini.svg", href: "https://ai.google.dev/", title: "Gemini Pro", description: "Google Ai" },
-])
+const aboutCard = ref([])
+
+onMounted(async () => {
+  try {
+    const storedData = sessionStorage.getItem('aboutCardData');
+    if (storedData) {
+      aboutCard.value = JSON.parse(storedData);
+    } else {
+      const res = await axios('https://starm.team:3000/about')
+      aboutCard.value = res.data
+      sessionStorage.setItem('aboutCardData', JSON.stringify(res.data));
+    }
+  } catch (err) {
+    console.error(err)
+  }
+})
 
 </script>
 
@@ -68,9 +61,9 @@ const aboutCard = ref([
         <el-row :gutter="20" class="about-card-container">
           <el-col v-for="item in aboutCard" :key="item.id" :xs="12" :sm="12" :md="8" :lg="6" :xl="4"
             class="about-card-col">
-            <a :href="item.href" target="_blank" class="about-card">
+            <a :href="item.hrefUrl" target="_blank" class="about-card">
               <div class="about-card-img">
-                <img :src="imgUrl(item.url)" alt="">
+                <img :src="imgUrl(item.imgName)" alt="">
               </div>
               <div class="about-card-text">
                 <span class="about-card-title">{{ item.title }}</span>
