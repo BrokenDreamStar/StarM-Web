@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const data = new Date()
 const year = ref(data.getFullYear())
@@ -7,20 +8,50 @@ const year = ref(data.getFullYear())
 
 <template>
   <footer>
-    <p>Copyright ©2021-{{ year }} StarM Team</p>
-    <p>Copyright ©2015-{{ year }} 红色创意</p>
+    <div class="footer-container">
+      <div class="links">
+        <a href="https://www.trc.studio/">红色创意官网</a>
+        <router-link to="/about">关于我们</router-link>
+        <router-link to="/404">友情链接</router-link>
+      </div>
+      <div class="copyright">
+        <p>Copyright ©2021-{{ year }} StarM Team</p>
+      </div>
+    </div>
   </footer>
 </template>
 
 <style lang="less" scoped>
 footer {
-  color: #fff;
-  text-align: center;
-  width: 100%;
-  background-color: #909399;
+  .footer-container {
+    width: 100%;
+    height: fit-content;
+    background-color: #303133;
+    @footerPadding: 2rem;
+    @footerFontColor: #dedfe0;
 
-  a {
-    color: #fff;
+    .links {
+      padding: @footerPadding 0 .8125rem 0;
+      text-align: center;
+      font-size: .9375rem;
+
+      a {
+        color: @footerFontColor;
+        line-height: 1;
+        padding: 0 10px;
+        border-right: 1px solid @footerFontColor;
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+
+    .copyright {
+      color: @footerFontColor;
+      text-align: center;
+      padding-bottom: @footerPadding;
+    }
   }
 }
 </style>

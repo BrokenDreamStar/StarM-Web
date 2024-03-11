@@ -1,5 +1,5 @@
 <script setup>
-import SwNav from '../components/SwNav.vue'
+import SwNav from '@/components/SwNav.vue'
 </script>
 
 <template>

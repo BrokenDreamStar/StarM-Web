@@ -1,6 +1,6 @@
 <script setup>
-import SwNav from '../components/SwNav.vue'
-import SwDownloadsMain from '../components/SwDownloadsMain.vue';
+import SwNav from '@/components/SwNav.vue'
+import SwDownloadsMain from '@/components/SwDownloadsMain.vue';
 </script>
 
 <template>

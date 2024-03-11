@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import NotFound from '../views/NotFound/404.vue';
 import SwHome from '../views/SwHome.vue'
 import SwAbout from '../views/SwAbout.vue'
 import SwDownloads from '../views/SwDownloads.vue'
@@ -55,8 +54,8 @@ const router = createRouter({
       component: SwDt
     },
     {
-      path: '/downloads/mc/1.7',
-      name: '1.7',
+      path: '/downloads/mc/:version',
+      name: 'SwMC',
       component: SwMC
     },
     {

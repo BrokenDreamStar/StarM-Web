@@ -4,7 +4,7 @@
 
 <template>
   <div>
-
+    {{ $route.params.version }}
   </div>
 </template>
 

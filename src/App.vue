@@ -6,8 +6,4 @@ import { RouterView } from "vue-router";
   <router-view></router-view>
 </template>
 
-<style>
-/* body {
-  height: 2000px;
-} */
-</style>
+<style></style>
