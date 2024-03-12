@@ -10,7 +10,7 @@ const year = ref(data.getFullYear())
   <footer>
     <div class="footer-container">
       <div class="links">
-        <a href="https://www.trc.studio/">红色创意官网</a>
+        <a href="https://www.trc.studio/" target="_blank">红色创意官网</a>
         <router-link to="/about">关于我们</router-link>
         <router-link to="/404">友情链接</router-link>
       </div>

@@ -2,10 +2,10 @@
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router'
 import { Vue3Lottie } from 'vue3-lottie'
-import AstronautJSON from '../assets/animations/loadingV2.json'
+import AstronautJSON from '@/assets/animations/loadingV2.json'
 
 const imgUrl = (url) => {
-  return new URL(`../assets/images/${url}`, import.meta.url)
+  return new URL(`/src/assets/images/${url}`, import.meta.url)
 }
 
 const card = ref([
@@ -42,50 +42,54 @@ const card = ref([
 </template>
 
 <style lang="less" scoped>
-.home-main {
-  width: 76vw;
-  margin: 0 auto;
+main {
+  margin-top: 2.5rem;
 
-  .el-row {
-    margin-bottom: 1.25rem;
+  .home-main {
+    width: 76vw;
+    margin: 0 auto;
 
-    .el-col a {
-      display: block;
-      position: relative;
-      height: 23.75rem;
-      border-radius: .9375rem;
-      overflow: hidden;
-      margin-bottom: 20px;
-      background: #fff no-repeat center/cover;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
+    .el-row {
+      margin-bottom: 1.25rem;
 
-    .el-col a:hover .introduce {
-      bottom: 0;
-    }
+      .el-col a {
+        display: block;
+        position: relative;
+        height: 23.75rem;
+        border-radius: .9375rem;
+        overflow: hidden;
+        margin-bottom: 20px;
+        background: #fff no-repeat center/cover;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      }
 
-    .introduce {
-      position: absolute;
-      bottom: -6.25rem;
-      width: 100%;
-      height: 6.25rem;
-      background-color: rgba(255, 255, 255, .6);
-      backdrop-filter: blur(.625rem);
-      text-align: center;
-      transition: all .3s;
-    }
+      .el-col a:hover .introduce {
+        bottom: 0;
+      }
 
-    .pie {
-      position: relative;
-
-      div {
+      .introduce {
         position: absolute;
-        left: 50%;
-        top: 48%;
-        transform: translate(-50%, -50%);
+        bottom: -6.25rem;
+        width: 100%;
+        height: 6.25rem;
+        background-color: rgba(255, 255, 255, .6);
+        backdrop-filter: blur(.625rem);
+        text-align: center;
+        transition: all .3s;
+      }
 
-        h3 {
-          margin-top: 100px;
+      .pie {
+        position: relative;
+
+        div {
+          position: absolute;
+          left: 50%;
+          top: 48%;
+          transform: translate(-50%, -50%);
+
+          h3 {
+            margin-top: 100px;
+          }
         }
       }
     }

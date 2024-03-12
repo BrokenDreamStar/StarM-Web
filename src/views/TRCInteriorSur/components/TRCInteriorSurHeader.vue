@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router'
   <header>
     <div class="bg">
       <div class="container">
-        <img src="../assets/logo/TRCStudio_logo.jpg" alt="">
+        <img src="/src/assets/logo/TRCStudio_logo.jpg" alt="">
         <div class="text">
           <h2>红色创意内服</h2>
           <p>生电玩法向服务器</p>
@@ -30,14 +30,14 @@ import { RouterLink } from 'vue-router'
 .bg {
   @font-face {
     font-family: "MCFont";
-    src: url("../assets/font/MCFontMin.ttf");
+    src: url("/src/assets/font/MCFontMin.ttf");
   }
 
   position: relative;
   width: 100%;
   height: 70vh;
   min-height: 37.5rem;
-  background: url(../assets/images/TRCInteriorSur.jpg) no-repeat center/cover;
+  background: url(/src/assets/images/TRCInteriorSur.jpg) no-repeat center/cover;
   white-space: nowrap;
 
   .container {

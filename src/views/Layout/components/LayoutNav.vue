@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Vue3Lottie } from 'vue3-lottie'
-import AstronautJSON from '../assets/animations/menuV2.json'
+import AstronautJSON from '@/assets/animations/menuV2.json'
 
 
 //移动端导航栏及侧边栏组件
@@ -47,7 +47,7 @@ const mobileMenuSwitchOnOrOff = () => {
     <div class="nav">
       <div class="logo">
         <router-link to="/">
-          <img src="../assets/logo/logo.svg" />
+          <img src="/src/assets/logo/logo.svg" />
         </router-link>
       </div>
       <div class="menu hidden-xs-only">
@@ -169,7 +169,7 @@ nav {
           display: inline-block;
           width: 20px;
           height: 1.25ex;
-          background: url(../assets/icon/chevron-down.svg) no-repeat center;
+          background: url(/src/assets/icon/chevron-down.svg) no-repeat center;
           transition: transform .2s;
         }
 
@@ -220,7 +220,7 @@ nav {
         color: #333;
       }
 
-      a.router-link-active {
+      a.router-link-exact-active {
         color: #ff1212;
       }
     }

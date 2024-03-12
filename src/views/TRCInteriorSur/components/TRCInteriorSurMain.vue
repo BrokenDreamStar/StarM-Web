@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const imgUrl = (url) => {
-  return new URL(`../assets/icon/${url}`, import.meta.url)
+  return new URL(`/src/assets/icon/${url}`, import.meta.url)
 }
 const featureList = ref([
   { url: "cpu.svg", title: "高性能服务器", text: "搭载intel core i9-9900k(极为落后)", xs: 24, sm: 24, md: 8, lg: 8 },

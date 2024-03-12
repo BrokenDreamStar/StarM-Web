@@ -53,7 +53,7 @@
     //字体
     @font-face {
       font-family: 'LuckiestGuy';
-      src: url(../assets/font/LuckiestGuy-Regular.ttf);
+      src: url(/src/assets/font/LuckiestGuy-Regular.ttf);
     }
 
     //引入谷歌字体库

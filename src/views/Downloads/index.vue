@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const imgUrl = url => {
-  return new URL(`../assets/icon/minecraft/${url}`, import.meta.url)
+  return new URL(`/src/assets/icon/minecraft/${url}`, import.meta.url)
 }
 
 const downloadsList = ref([
@@ -53,6 +53,7 @@ const downloadsList = ref([
 
 main {
   margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 
   .downloads {
     width: 65vw;

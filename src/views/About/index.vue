@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const imgUrl = url => {
-  return new URL(`../assets/icon/logo/${url}`, import.meta.url)
+  return new URL(`/src/assets/icon/logo/${url}`, import.meta.url)
 }
 
 const aboutCard = ref([
@@ -40,13 +40,13 @@ const aboutCard = ref([
       <div class="about-container">
         <div class="about-container-title">
           <div>
-            <img src="../assets/icon/about.svg" alt="">
+            <img src="/src/assets/icon/about.svg" alt="">
             <span>关于StarM Team</span>
           </div>
         </div>
         <el-row class="about-card-container about-starm">
           <el-col :span="8" class="img">
-            <img src="../assets/logo/logo.svg" alt="">
+            <img src="/src/assets/logo/logo.svg" alt="">
           </el-col>
           <el-col :span="16" class="text">
             <p>StarM Team只是我一时兴起建立的一个名义上的个人工作室 成立于2021年7月18日</p>
@@ -61,7 +61,7 @@ const aboutCard = ref([
       <div class="about-container">
         <div class="about-container-title">
           <div>
-            <img src="../assets/icon/cmd.svg" alt="">
+            <img src="/src/assets/icon/cmd.svg" alt="">
             <span>本站使用技术及工具</span>
           </div>
         </div>
@@ -90,122 +90,126 @@ const aboutCard = ref([
   height: 50px;
 }
 
-.about {
-  width: 65vw;
-  margin: 0 auto;
+main {
+  margin-bottom: 1.875rem;
 
-  .about-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-    height: fit-content;
-    margin-top: 2.5rem;
-    background-color: #fff;
-    border-radius: .5rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0rem .625rem 3.125rem;
+  .about {
+    width: 65vw;
+    margin: 0 auto;
 
-    .about-container-title {
-      position: absolute;
-      top: -1.25rem;
-      left: 1.25rem;
-      width: fit-content;
-      min-width: 3.125rem;
-      height: 2.5rem;
-      background-color: #00B3FF;
-      border-radius: .5rem;
-      box-shadow: rgba(0, 0, 0, 0.1) 0 0.3125rem 0.5rem;
-      -webkit-user-select: none;
-      user-select: none;
-
-      div {
-        margin: 0 .625rem 0 .625rem;
-
-        span {
-          color: #fff;
-          line-height: 2.5rem;
-          text-align: center;
-          font-weight: 600;
-        }
-
-        img {
-          position: relative;
-          top: -1px;
-          width: 2rem;
-          height: 2rem;
-          vertical-align: middle;
-          margin-right: .1875rem;
-        }
-      }
-    }
-
-    .about-starm {
-      .img {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        img {
-          width: 70%;
-        }
-      }
-
-      .text {
-        text-align: left;
-      }
-
-    }
-
-    .about-card-container {
+    .about-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
       width: 100%;
-      margin: 1.5625rem 0 1.5625rem 0;
+      height: fit-content;
+      margin-top: 2.5rem;
+      background-color: #fff;
+      border-radius: .5rem;
+      box-shadow: rgba(0, 0, 0, 0.1) 0rem .625rem 3.125rem;
 
-      .about-card-col {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: .9375rem 0;
+      .about-container-title {
+        position: absolute;
+        top: -1.25rem;
+        left: 1.25rem;
+        width: fit-content;
+        min-width: 3.125rem;
+        height: 2.5rem;
+        background-color: #00B3FF;
+        border-radius: .5rem;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 0.3125rem 0.5rem;
+        -webkit-user-select: none;
+        user-select: none;
 
-        .about-card {
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          min-width: 11.25rem;
-          height: 3.125rem;
-          // background-color: #fff;
-          // border-radius: .5rem;
-          cursor: pointer;
+        div {
+          margin: 0 .625rem 0 .625rem;
 
-          .about-card-img {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 3.125rem;
-            height: 3.125rem;
-            margin-right: .1875rem;
-
-            img {
-              width: 45px;
-              height: 45px;
-            }
+          span {
+            color: #fff;
+            line-height: 2.5rem;
+            text-align: center;
+            font-weight: 600;
           }
 
+          img {
+            position: relative;
+            top: -1px;
+            width: 2rem;
+            height: 2rem;
+            vertical-align: middle;
+            margin-right: .1875rem;
+          }
+        }
+      }
 
-          .about-card-text {
+      .about-starm {
+        .img {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: 70%;
+          }
+        }
+
+        .text {
+          text-align: left;
+        }
+
+      }
+
+      .about-card-container {
+        width: 100%;
+        margin: 1.5625rem 0 1.5625rem 0;
+
+        .about-card-col {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: .9375rem 0;
+
+          .about-card {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
+            justify-content: flex-start;
+            align-items: center;
+            min-width: 11.25rem;
+            height: 3.125rem;
+            // background-color: #fff;
+            // border-radius: .5rem;
+            cursor: pointer;
 
-            .about-card-title {
-              font-size: 1.0625rem;
-              font-weight: 600;
+            .about-card-img {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 3.125rem;
+              height: 3.125rem;
+              margin-right: .1875rem;
+
+              img {
+                width: 45px;
+                height: 45px;
+              }
             }
 
-            .about-card-description {
-              font-size: .9375rem;
-              color: rgb(127, 129, 132);
+
+            .about-card-text {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              justify-content: center;
+
+              .about-card-title {
+                font-size: 1.0625rem;
+                font-weight: 600;
+              }
+
+              .about-card-description {
+                font-size: .9375rem;
+                color: rgb(127, 129, 132);
+              }
             }
           }
         }
