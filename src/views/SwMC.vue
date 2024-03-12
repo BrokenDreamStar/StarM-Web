@@ -13,7 +13,7 @@ onMounted(async () => {
     if (storedData) {
       downloadPageData.value = JSON.parse(storedData)
     } else {
-      const res = await axios(`http://starm.team:3000/${route.params.version}`)
+      const res = await axios(`https://starm.team:3000/${route.params.version}`)
       downloadPageData.value = res.data
       sessionStorage.setItem('downloadPageData', JSON.stringify(res.data))
     }
@@ -28,7 +28,6 @@ onMounted(async () => {
   <SwNav></SwNav>
   <div class="top-box"></div>
   <div>
-    {{ $route.params.version }}
     <ul>
       <li v-for="item in downloadPageData" :key="item.id">{{ item.version }}</li>
     </ul>
