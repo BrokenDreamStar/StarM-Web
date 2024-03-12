@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import SwHome from '@/views/SwHome.vue'
 import SwAbout from '@/views/SwAbout.vue'
 import SwDownloads from '@/views/SwDownloads.vue'
@@ -9,7 +9,7 @@ import TRCInteriorSur from '@/views/TRCInteriorSur.vue'
 import JumpTRC from '@/views/JumpTRC.vue'
 
 const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior(to, from, savePosition) {
     if (savePosition) {
       return savePosition
