@@ -9,7 +9,7 @@ const downloadPageData = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios(`http://starm.team:3000/${route.params.version}`)
+    const res = await axios(`https://starm.team:3000/${route.params.version}`)
     downloadPageData.value = res.data
   } catch (err) {
     console.error(err)
