@@ -9,14 +9,8 @@ const downloadPageData = ref([])
 
 onMounted(async () => {
   try {
-    const storedData = sessionStorage.getItem('downloadPageData')
-    if (storedData) {
-      downloadPageData.value = JSON.parse(storedData)
-    } else {
-      const res = await axios(`https://starm.team:3000/${route.params.version}`)
-      downloadPageData.value = res.data
-      sessionStorage.setItem('downloadPageData', JSON.stringify(res.data))
-    }
+    const res = await axios(`http://starm.team:3000/${route.params.version}`)
+    downloadPageData.value = res.data
   } catch (err) {
     console.error(err)
   }
