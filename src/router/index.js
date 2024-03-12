@@ -33,12 +33,10 @@ const router = createRouter({
         {
           path: "/downloads",
           component: () => import("@/views/Downloads/index.vue"),
-          children: [
-            {
-              path: "/mc/:version",
-              component: () => import("@/views/MC/index.vue"),
-            },
-          ],
+        },
+        {
+          path: "downloads/mc/:version",
+          component: () => import("@/views/MC/index.vue"),
         },
         {
           path: "/trcinteriorsur",
@@ -54,7 +52,7 @@ const router = createRouter({
         },
         {
           path: "/jumplink",
-          component: () => import("@/views/jumpTRC.vue"),
+          component: () => import("@/views/JumpTRC.vue"),
         },
       ],
     },
