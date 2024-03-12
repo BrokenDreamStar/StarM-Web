@@ -1,12 +1,12 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import SwHome from '../views/SwHome.vue'
-import SwAbout from '../views/SwAbout.vue'
-import SwDownloads from '../views/SwDownloads.vue'
-import SwGenshin from '../views/SwGenshin.vue'
-import SwDt from '../views/SwDt.vue'
-import SwMC from '../views/SwMC.vue';
-import TRCInteriorSur from '../views/TRCInteriorSur.vue'
-import JumpTRC from '../views/JumpTRC.vue'
+import SwHome from '@/views/SwHome.vue'
+import SwAbout from '@/views/SwAbout.vue'
+import SwDownloads from '@/views/SwDownloads.vue'
+import SwGenshin from '@/views/SwGenshin.vue'
+import SwDt from '@/views/SwDt.vue'
+import SwMC from '@/views/SwMC.vue';
+import TRCInteriorSur from '@/views/TRCInteriorSur.vue'
+import JumpTRC from '@/views/JumpTRC.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -21,7 +21,7 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: () => import('../views/NotFound/404.vue')
+      component: () => import('@/views/NotFound/404.vue')
     },
     {
       path: '/',
