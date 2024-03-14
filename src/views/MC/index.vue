@@ -2,6 +2,7 @@
 import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
+import MCMods from '@/views/MC/components/MCMods.vue'
 
 //获取当前路由对象
 const route = useRoute()
@@ -24,31 +25,26 @@ onMounted(async () => {
   downloadPageData.value = await fetchData(route.params.version)
 })
 
+
 //使用watch监听route.params.version的变化 如果该值发生变化 重新发起请求并更新downloadPageData的值
 watch(
   () => route.params.version,
   async (newValue, oldValue) => {
-    if (newValue !== oldValue) {
+    if (newValue !== oldValue && route.params.version !== undefined) {
       downloadPageData.value = await fetchData(route.params.version)
     }
   },
   //启用深度监听
   { immediate: false, deep: true }
 )
-
-
 </script>
 
 <template>
   <div class="top-box"></div>
-  <div>
-    <ul>
-      <li v-for="item in downloadPageData" :key="item.id">{{ item.title }}</li>
-    </ul>
-  </div>
+  <MCMods :data="downloadPageData"></MCMods>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .top-box {
   height: 50px;
 }
