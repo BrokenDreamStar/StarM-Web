@@ -220,25 +220,27 @@ main {
 
 // 响应式布局设置
 @media (max-width: 768px) {
-  .about {
-    width: 100vw;
+  main {
+    .about {
+      width: 100vw;
 
-    .about-container {
-      .about-starm {
-        .text {
-          font-size: .75rem;
+      .about-container {
+        .about-starm {
+          .text {
+            font-size: .75rem;
+          }
         }
       }
     }
   }
-}
 
-@media (max-width: 992px) {
-  .about {
-    .about-container {
-      .about-starm {
-        .text {
-          font-size: .875rem;
+  @media (max-width: 992px) {
+    .about {
+      .about-container {
+        .about-starm {
+          .text {
+            font-size: .875rem;
+          }
         }
       }
     }
