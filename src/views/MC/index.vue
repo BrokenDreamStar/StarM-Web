@@ -1,51 +1,65 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import axios from 'axios'
-import MCMods from '@/views/MC/components/MCMods.vue'
-
-//获取当前路由对象
-const route = useRoute()
-//创建响应式数据 存储页面数据
-const downloadPageData = ref([])
-
-//该函数用于发起ajax请求
-const fetchData = async version => {
-  try {
-    const res = await axios.get(`http://127.0.0.1:3000/${version}`)
-    return res.data
-  } catch (err) {
-    console.error(err)
-    return null
-  }
-}
-
-//使用onMounted生命周期钩子 在组件挂载后执行内部代码
-onMounted(async () => {
-  downloadPageData.value = await fetchData(route.params.version)
-})
-
-
-//使用watch监听route.params.version的变化 如果该值发生变化 重新发起请求并更新downloadPageData的值
-watch(
-  () => route.params.version,
-  async (newValue, oldValue) => {
-    if (newValue !== oldValue && route.params.version !== undefined) {
-      downloadPageData.value = await fetchData(route.params.version)
-    }
-  },
-  //启用深度监听
-  { immediate: false, deep: true }
-)
+// import { RouterView } from 'vue-router';
+import { ref } from 'vue'
+const downloadsMCPageData = ref([
+  { subversion: '1.7.10' },
+])
 </script>
 
 <template>
   <div class="top-box"></div>
-  <MCMods :data="downloadPageData"></MCMods>
+  <main>
+    <div class="container">
+      <h2 class="title">下载由StarM Team制作的MineCraft客户端</h2>
+      <div class="card-container">
+        <div class="card" v-for="item in downloadsMCPageData" :key="item.id">
+          {{ item.subversion }}
+        </div>
+      </div>
+    </div>
+  </main>
 </template>
 
 <style lang="less" scoped>
 .top-box {
   height: 50px;
+}
+
+main {
+  margin-top: 5rem;
+
+  .container {
+
+    .title {
+      text-align: center;
+      font-weight: normal;
+      margin-bottom: 3.75rem;
+    }
+
+    .card-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .card {
+        min-width: 14.375rem;
+        height: 20.625rem;
+        background-color: #fff;
+        margin: 1.25rem;
+        border-radius: .625rem;
+        box-shadow: 0 2px 8px rgba(57, 76, 96, .15), 0 0 0 1px rgba(68, 92, 116, .02);
+      }
+
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    .card-container {
+      flex-direction: column;
+    }
+  }
 }
 </style>

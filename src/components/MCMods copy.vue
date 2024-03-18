@@ -2,6 +2,7 @@
 import { ref, computed, defineProps, onMounted, watch } from 'vue'
 
 const items = ref([])
+
 const props = defineProps({
   data: {
     type: Object,
@@ -13,32 +14,31 @@ onMounted(async () => {
   items.value = props.data
 })
 
-//-----筛选功能-----
-
-//存储用户选择的标签
-const selectedTags = ref([])
-
 const allTags = computed(() => {
-  const tagSet = new Set() //用于存储所有唯一标签
-  items.value.forEach(item => {  //遍历所有数据
-    item.tags.split(' ').forEach(tag => {  //遍历所有的标签 并按空格分隔
-      tagSet.add(tag) //把唯一标签添加进Set *使用了Set自动去重的特性
+  const tags = []
+  items.value.forEach((item) => {
+    const itemTags = item.tags.split(' ') //将每个对象的tags按空格分割成数组
+    itemTags.forEach((tag) => {
+      if (!tags.includes(tag)) { //如果当前tags没有被添加到数组中
+        tags.push(tag) //则将它添加到数组
+      }
     })
   })
-  return Array.from(tagSet) //返回储存所有唯一标签的数组
+  return tags //返回包含所有唯一tags的数组
 })
 
 const filteredItems = computed(() => {
-  if (selectedTags.value.length === 0) { //如果selectedTags长度为0 即用户没有选择标签
-    return items.value //返回全部数据
+  if (selectedTags.value.length === 0) { //如果没有选择任何tags
+    return items.value //返回全部对象
   }
 
-  //如果用户选择了标签
-  return items.value.filter(item => { //根据用户选择的标签过滤数据
-    const itemTags = new Set(item.tags.split(' ')) //将所有数据的标签按空格分割成数组并转换为Set
-    return selectedTags.value.every(selectedTag => itemTags.has(selectedTag)) //检查用户选择的标签是否都在数据的标签Set中
+  return items.value.filter((item) => { //否则 筛选出包含所有已选tags的对象
+    const itemTags = item.tags.split(' ') //将对象中的tags字符串按空格分割成数组  
+    return selectedTags.value.every((selectedTag) => itemTags.includes(selectedTag)) //检查每个已选tags是否都在tags数组中
   })
 })
+
+const selectedTags = ref([]) //存储用户选择的tags
 
 watch(() => props.data, (newData, oldData) => {
   if (newData !== oldData) {
@@ -49,11 +49,13 @@ watch(() => props.data, (newData, oldData) => {
 const imgUrl = url => {
   return new URL(`/src/assets/icon/mods/${url}.webp`, import.meta.url)
 }
+
+
 </script>
 
 <template>
   <div class="container" v-loading.fullscreen.lock="items.length === 0" element-loading-background="#fff">
-    <el-row v-show="items">
+    <el-row>
       <el-col :xs="0" :sm="0" :md="5" :lg="5" :xl="5" class="hidden-sm-and-down">
         <div class="tag-list">
           <p>筛选</p>

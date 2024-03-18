@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router'
 
 const imgUrl = url => {
   return new URL(`/src/assets/icon/minecraft/${url}`, import.meta.url)
@@ -49,7 +49,7 @@ const downloadsList = ref([
     <div class="downloads">
       <el-row :gutter="20">
         <el-col v-for="item in downloadsList" :key="item.id" :xs="12" :sm="12" :md="8" :lg="4" :xl="4">
-          <router-link :to="`downloads/mc/${item.version}`">
+          <router-link :to="`/downloads/mc/${item.version}`">
             <div>
               <img :src="imgUrl(item.url)" alt="">
               <p class="version">{{ item.version }}</p>

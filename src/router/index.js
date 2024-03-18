@@ -35,7 +35,7 @@ const router = createRouter({
           component: () => import("@/views/Downloads/index.vue"),
         },
         {
-          path: "downloads/mc/:version",
+          path: "/downloads/mc/:version",
           component: () => import("@/views/MC/index.vue"),
         },
         {

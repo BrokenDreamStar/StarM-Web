@@ -1,5 +1,4 @@
 import "@/style/initialize.css";
-import "@/style/layout.css";
 import "element-plus/theme-chalk/display.css";
 
 import { createApp } from "vue";

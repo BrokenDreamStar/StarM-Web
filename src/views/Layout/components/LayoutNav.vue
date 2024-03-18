@@ -18,7 +18,7 @@ const mobileMenuSwitch = () => {
     mobileMenuSwitchButton.value.disabled = true
     setTimeout(() => {
       drawer.value = true
-    }, 100)
+    }, 10)
   } else {
     mobileMenuIconAni.value.play()
     mobileMenuSwitchButton.value.disabled = true
@@ -28,7 +28,7 @@ const mobileMenuSwitch = () => {
   }
 }
 
-const mobileMenuSwitchOnOrOff = () => {
+const toggleMenu = () => {
   if (mobileMenuSwitchState) {
     mobileMenuIconAni.value.setDirection('reverse')
     mobileMenuSwitchButton.value.disabled = false
@@ -82,8 +82,8 @@ const mobileMenuSwitchOnOrOff = () => {
       </div>
       <div class="mobile-nav hidden-sm-and-up">
         <el-button @click="mobileMenuSwitch" ref="mobileMenuSwitchButton" type="primary">
-          <Vue3Lottie @onComplete="mobileMenuSwitchOnOrOff" ref="mobileMenuIconAni" :animationData="AstronautJSON"
-            :height="45" :width="45" :speed="2.05" :autoPlay="false" :loop="false" />
+          <Vue3Lottie @onComplete="toggleMenu" ref="mobileMenuIconAni" :animationData="AstronautJSON" :height="45"
+            :width="45" :speed="2.1" :autoPlay="false" :loop="false" />
         </el-button>
       </div>
     </div>
