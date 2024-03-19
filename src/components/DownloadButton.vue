@@ -1,11 +1,25 @@
-<script></script>
+<script setup>
+import { defineProps } from 'vue'
+
+defineProps({
+  msg: {
+    type: String,
+    required: true,
+  },
+  link: {
+    type: String,
+    required: true
+  }
+})
+</script>
 
 <template>
-  <div></div>
-  <a href="" class="btn">Download</a>
+  <a :href="link" class="btn">{{ msg }}</a>
 </template>
 
 <style lang="less" scoped>
+@import url("https://fonts.font.im/css?family=Noto+Sans");
+
 .btn {
   padding: 10px 20px 10px 20px;
   color: #fff;
@@ -25,6 +39,7 @@
     4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   outline: none;
   text-align: center;
+  font-family: "Noto Sans", "微软雅黑", "MicroSoft YaHei";
 
   &:after {
     position: absolute;

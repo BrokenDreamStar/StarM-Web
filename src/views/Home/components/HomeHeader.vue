@@ -55,17 +55,17 @@
   .title {
 
     //字体
-    @font-face {
-      font-family: "LuckiestGuy";
-      src: url(/src/assets/font/LuckiestGuy-Regular.ttf);
-    }
+    // @font-face {
+    //   font-family: "LuckiestGuy";
+    //   src: url(/src/assets/font/LuckiestGuy-Regular.ttf);
+    // }
 
     //引入谷歌字体库
-    // @import url('https://fonts.font.im/css?family=Luckiest+Guy');
+    @import url('https://fonts.font.im/css?family=Luckiest+Guy');
 
     h1 {
       font-size: 20vmin;
-      font-family: "LuckiestGuy";
+      font-family: "Luckiest Guy";
       color: #e6e6e6;
       text-align: center;
       font-weight: 300;

@@ -15,11 +15,13 @@ const downloadsMCPageData = ref([
   {
     id: 2,
     subversion: "1.8.9",
-    isUpdating: true,
+    isUpdating: false,
     lastUpdated: "2022/8/3",
     introduce: "适用于红色创意竞技场和小游戏服",
   },
 ])
+
+const downloadButtonData = ref({ text: "下载 | Download", link: "https://starm.top" })
 </script>
 
 <template>
@@ -32,14 +34,17 @@ const downloadsMCPageData = ref([
           <div class="card" v-for="item in downloadsMCPageData" :key="item.id">
             <h3>{{ item.subversion }}</h3>
             <div class="text">
-              <p v-if="!item.isUpdating" class="prompt">该客户端已停止更新</p>
-              <p class="prompt">上次更新时间:{{ item.lastUpdated }}</p>
+              <div class="prompt">
+                <p v-if="!item.isUpdating">该客户端已停止更新</p>
+                <p>上次更新时间:{{ item.lastUpdated }}</p>
+              </div>
+
               <p>{{ item.introduce }}</p>
             </div>
             <div class="downloads-btn">
               <ul>
                 <li>
-                  <DownloadButton></DownloadButton>
+                  <DownloadButton :msg="downloadButtonData.text" :link="downloadButtonData.link"></DownloadButton>
                 </li>
               </ul>
             </div>
@@ -58,8 +63,8 @@ const downloadsMCPageData = ref([
 
 main {
   margin-top: 5rem;
-  // display: flex;
-  // justify-content: center;
+  display: flex;
+  justify-content: center;
 
   .container {
     margin: 0 auto;
@@ -82,12 +87,14 @@ main {
         min-width: 14.375rem;
         max-width: 14.375rem;
         height: 20.625rem;
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.6);
+        -webkit-backdrop-filter: blur(.3125rem);
+        backdrop-filter: blur(.3125rem);
         margin: 1.25rem;
         border-radius: 0.625rem;
         box-shadow:
-          0 2px 8px rgba(57, 76, 96, 0.15),
-          0 0 0 1px rgba(68, 92, 116, 0.02);
+          0 .125rem .5rem rgba(57, 76, 96, 0.15),
+          0 0 0 .0625rem rgba(68, 92, 116, 0.02);
 
         h3 {
           text-align: center;
@@ -96,13 +103,30 @@ main {
         }
 
         .text {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
           text-align: center;
           font-size: 0.875rem;
           flex: 1;
 
           .prompt {
-            color: #fb4040;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            height: fit-content;
+            padding: .5rem;
+            background: #fb4040;
+            border-radius: .3125rem;
+
+            p {
+              display: block;
+              color: #fff;
+            }
           }
+
         }
 
         .downloads-btn {

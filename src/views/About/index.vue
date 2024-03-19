@@ -14,7 +14,7 @@ onMounted(async () => {
     if (storedData) {
       aboutCard.value = JSON.parse(storedData)
     } else {
-      const res = await axios("http://127.0.0.1:3000/about")
+      const res = await axios("https://starm.team:3000/about")
       aboutCard.value = res.data
       sessionStorage.setItem("aboutCardData", JSON.stringify(res.data))
     }
