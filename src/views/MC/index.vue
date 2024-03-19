@@ -1,10 +1,24 @@
 <script setup>
 // import { RouterLink } from 'vue-router';
-import { ref } from 'vue'
-import { Vue3Lottie } from 'vue3-lottie'
-import AstronautJSON from '@/assets/animations/loadingV2.json'
+import { ref } from "vue"
+import Loading from "@/components/Loading.vue"
+import DownloadButton from "@/components/DownloadButton.vue"
+
 const downloadsMCPageData = ref([
-  // { subversion: '1.8.9' },
+  {
+    id: 1,
+    subversion: "1.8 - 1.8.8",
+    isUpdating: true,
+    lastUpdated: "undefined",
+    introduce: "undefined",
+  },
+  {
+    id: 2,
+    subversion: "1.8.9",
+    isUpdating: true,
+    lastUpdated: "2022/8/3",
+    introduce: "适用于红色创意竞技场和小游戏服",
+  },
 ])
 </script>
 
@@ -14,43 +28,24 @@ const downloadsMCPageData = ref([
     <div class="container">
       <h2 class="title">下载由StarM Team制作的MineCraft客户端</h2>
       <div class="card-container">
-        <div class="card" v-for="item in downloadsMCPageData" :key="item.id">
-          <h3>{{ item.subversion }}</h3>
-          <div class="text">
-            适用于红色创意竞技场和小游戏服
+        <template v-if="downloadsMCPageData.length !== 0">
+          <div class="card" v-for="item in downloadsMCPageData" :key="item.id">
+            <h3>{{ item.subversion }}</h3>
+            <div class="text">
+              <p v-if="!item.isUpdating" class="prompt">该客户端已停止更新</p>
+              <p class="prompt">上次更新时间:{{ item.lastUpdated }}</p>
+              <p>{{ item.introduce }}</p>
+            </div>
+            <div class="downloads-btn">
+              <ul>
+                <li>
+                  <DownloadButton></DownloadButton>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="downloads-btn">
-            <ul>
-              <li>
-                <a href="">
-                  <img src="/src/assets/icon/minecraft/grass.png" alt="">
-                  安装包下载
-                </a>
-                <!-- <router-link></router-link> -->
-              </li>
-              <li>
-                <a href="">
-                  <img src="/src/assets/icon/minecraft/furnace.png" alt="">
-                  完整包下载
-                </a>
-                <!-- <router-link></router-link> -->
-              </li>
-              <li>
-                <a href="">
-                  <img src="/src/assets/icon/minecraft/craft_table.png" alt="">
-                </a>
-                <!-- <router-link></router-link> -->
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card pie" v-show="downloadsMCPageData.length === 0">
-          <div>
-            <Vue3Lottie :animationData="AstronautJSON" :height="60" :width="60" :speed="1" :autoPlay="true"
-              :loop="true" />
-            <h3>画饼中...</h3>
-          </div>
-        </div>
+        </template>
+        <Loading class="card" v-else></Loading>
       </div>
     </div>
   </main>
@@ -63,8 +58,11 @@ const downloadsMCPageData = ref([
 
 main {
   margin-top: 5rem;
+  // display: flex;
+  // justify-content: center;
 
   .container {
+    margin: 0 auto;
 
     .title {
       text-align: center;
@@ -82,11 +80,14 @@ main {
         display: flex;
         flex-direction: column;
         min-width: 14.375rem;
+        max-width: 14.375rem;
         height: 20.625rem;
         background-color: #fff;
         margin: 1.25rem;
-        border-radius: .625rem;
-        box-shadow: 0 2px 8px rgba(57, 76, 96, .15), 0 0 0 1px rgba(68, 92, 116, .02);
+        border-radius: 0.625rem;
+        box-shadow:
+          0 2px 8px rgba(57, 76, 96, 0.15),
+          0 0 0 1px rgba(68, 92, 116, 0.02);
 
         h3 {
           text-align: center;
@@ -95,38 +96,24 @@ main {
         }
 
         .text {
+          text-align: center;
+          font-size: 0.875rem;
           flex: 1;
+
+          .prompt {
+            color: #fb4040;
+          }
         }
 
         .downloads-btn {
           ul {
             li {
-              display: block;
-              width: 80%;
-              height: 1.875rem;
-              margin: 0 auto;
-              margin-bottom: .4375rem;
-              background-color: #999;
-
-              a:nth-child(1) {
-                display: block;
-
-                img {
-                  width: 1.875rem;
-                  vertical-align: middle;
-                }
-              }
+              display: flex;
+              justify-content: center;
+              margin-bottom: 1.25rem;
             }
           }
-
         }
-      }
-
-      .pie {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
       }
     }
   }

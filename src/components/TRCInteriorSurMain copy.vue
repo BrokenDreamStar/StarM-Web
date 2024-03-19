@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue"
 
 const imgUrl = (url) => {
   return new URL(`../assets/images/${url}`, import.meta.url)
@@ -18,9 +18,15 @@ const carouselImgList = ref([
 <template>
   <main>
     <div class="carousel">
-      <el-carousel :interval="4000" type="card" height="400px" trigger="click" arrow="never">
+      <el-carousel
+        :interval="4000"
+        type="card"
+        height="400px"
+        trigger="click"
+        arrow="never"
+      >
         <el-carousel-item v-for="item in carouselImgList" :key="item.id">
-          <img :src="item.url" alt="">
+          <img :src="item.url" alt="" />
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -47,7 +53,6 @@ main {
         }
       }
     }
-
   }
 }
 </style>

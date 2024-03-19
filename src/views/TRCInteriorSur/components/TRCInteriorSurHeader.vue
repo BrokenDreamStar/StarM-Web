@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import { RouterLink } from "vue-router"
 </script>
 
 <template>
@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router'
   <header>
     <div class="bg">
       <div class="container">
-        <img src="/src/assets/logo/TRCStudio_logo.jpg" alt="">
+        <img src="/src/assets/logo/TRCStudio_logo.jpg" alt="" />
         <div class="text">
           <h2>红色创意内服</h2>
           <p>生电玩法向服务器</p>
@@ -51,18 +51,18 @@ import { RouterLink } from 'vue-router'
       margin: 0 auto;
       width: 8.125rem;
       border-radius: 50%;
-      text-shadow: .3125rem .3125rem .375rem rgba(0, 0, 0, 0.5);
+      text-shadow: 0.3125rem 0.3125rem 0.375rem rgba(0, 0, 0, 0.5);
     }
 
     .text {
-      margin: .9375rem 0 1.25rem 0;
+      margin: 0.9375rem 0 1.25rem 0;
       color: #ffffff;
       text-align: center;
-      text-shadow: .3125rem .3125rem .375rem rgba(0, 0, 0, 0.5);
+      text-shadow: 0.3125rem 0.3125rem 0.375rem rgba(0, 0, 0, 0.5);
 
       h2 {
         font-size: 4.0625rem;
-        margin-bottom: .9375rem;
+        margin-bottom: 0.9375rem;
         font-family: "MCFont";
       }
 
@@ -82,16 +82,15 @@ import { RouterLink } from 'vue-router'
         font-weight: 600;
         color: #fff;
         border: 3px solid #fff;
-        border-radius: .75rem;
+        border-radius: 0.75rem;
         text-align: center;
       }
 
       .btn:nth-child(1) {
-        margin-right: .9375rem;
+        margin-right: 0.9375rem;
       }
     }
   }
-
 }
 
 .bg::before {
@@ -101,12 +100,12 @@ import { RouterLink } from 'vue-router'
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .1);
-  backdrop-filter: blur(.125rem);
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.125rem);
 }
 
 // 响应式布局设置
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .bg {
     .container {
       .text {

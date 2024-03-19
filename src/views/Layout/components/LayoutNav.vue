@@ -1,9 +1,8 @@
 <script setup>
-import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
-import { Vue3Lottie } from 'vue3-lottie'
-import AstronautJSON from '@/assets/animations/menuV2.json'
-
+import { ref } from "vue"
+import { RouterLink } from "vue-router"
+import { Vue3Lottie } from "vue3-lottie"
+import AstronautJSON from "@/assets/animations/menuV2.json"
 
 //移动端导航栏及侧边栏组件
 
@@ -30,16 +29,15 @@ const mobileMenuSwitch = () => {
 
 const toggleMenu = () => {
   if (mobileMenuSwitchState) {
-    mobileMenuIconAni.value.setDirection('reverse')
+    mobileMenuIconAni.value.setDirection("reverse")
     mobileMenuSwitchButton.value.disabled = false
     mobileMenuSwitchState = false
   } else {
-    mobileMenuIconAni.value.setDirection('forward')
+    mobileMenuIconAni.value.setDirection("forward")
     mobileMenuSwitchButton.value.disabled = false
     mobileMenuSwitchState = true
   }
 }
-
 </script>
 
 <template>
@@ -170,9 +168,8 @@ nav {
           width: 20px;
           height: 1.25ex;
           background: url(/src/assets/icon/chevron-down.svg) no-repeat center;
-          transition: transform .2s;
+          transition: transform 0.2s;
         }
-
       }
 
       li:nth-child(3) {
@@ -199,7 +196,7 @@ nav {
         }
 
         li:nth-child(1) {
-          margin-top: .75rem;
+          margin-top: 0.75rem;
         }
 
         li:last-child {
@@ -207,7 +204,7 @@ nav {
           cursor: not-allowed;
 
           a {
-            color: #C0C4CC;
+            color: #c0c4cc;
           }
         }
       }
@@ -256,14 +253,13 @@ nav {
   height: 50px;
 }
 
-
 //响应式布局样式
 @media (max-width: 992px) {
   @padMargin: 3rem;
 
   nav .nav {
     .logo {
-      margin-left: @padMargin
+      margin-left: @padMargin;
     }
 
     .menu {
@@ -275,7 +271,7 @@ nav {
 @media (max-width: 768px) {
   nav .nav {
     .logo {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
   }
 }

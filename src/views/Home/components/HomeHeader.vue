@@ -1,6 +1,4 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <header>
@@ -20,7 +18,13 @@
   justify-content: center;
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(125deg, #008DFF, #00B3FF, #00D0ED, #00E5BA, #8FF388, #F9F871);
+  background-image: linear-gradient(125deg,
+      #008dff,
+      #00b3ff,
+      #00d0ed,
+      #00e5ba,
+      #8ff388,
+      #f9f871);
   background-size: 400%;
   //背景渐变动画
   animation: bgmove 15s infinite;
@@ -52,7 +56,7 @@
 
     //字体
     @font-face {
-      font-family: 'LuckiestGuy';
+      font-family: "LuckiestGuy";
       src: url(/src/assets/font/LuckiestGuy-Regular.ttf);
     }
 
@@ -61,14 +65,16 @@
 
     h1 {
       font-size: 20vmin;
-      font-family: 'LuckiestGuy';
+      font-family: "LuckiestGuy";
       color: #e6e6e6;
       text-align: center;
       font-weight: 300;
-      text-shadow: 1px -1px #fff, -1px 1px #999999, -10px 10px 5px #80808080;
+      text-shadow:
+        1px -1px #fff,
+        -1px 1px #999999,
+        -10px 10px 5px #80808080;
     }
   }
-
 }
 
 //响应式布局样式

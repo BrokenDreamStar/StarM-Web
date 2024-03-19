@@ -1,8 +1,8 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import axios from 'axios'
-import MCMods from '@/views/MC/components/MCMods.vue'
+import { ref, onMounted, watch } from "vue"
+import { useRoute } from "vue-router"
+import axios from "axios"
+import MCMods from "@/views/MC/components/MCMods.vue"
 
 //获取当前路由对象
 const route = useRoute()
@@ -10,7 +10,7 @@ const route = useRoute()
 const downloadPageData = ref([])
 
 //该函数用于发起ajax请求
-const fetchData = async version => {
+const fetchData = async (version) => {
   try {
     const res = await axios.get(`http://127.0.0.1:3000/${version}`)
     return res.data
@@ -25,7 +25,6 @@ onMounted(async () => {
   downloadPageData.value = await fetchData(route.params.version)
 })
 
-
 //使用watch监听route.params.version的变化 如果该值发生变化 重新发起请求并更新downloadPageData的值
 watch(
   () => route.params.version,
@@ -33,7 +32,7 @@ watch(
     if (newValue !== oldValue && route.params.version !== undefined) {
       downloadPageData.value = await fetchData(route.params.version)
     }
-  }
+  },
 )
 </script>
 

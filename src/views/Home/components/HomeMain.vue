@@ -1,16 +1,32 @@
 <script setup>
-import { ref } from 'vue';
-import { RouterLink } from 'vue-router'
-import { Vue3Lottie } from 'vue3-lottie'
-import AstronautJSON from '@/assets/animations/loadingV2.json'
+import { ref } from "vue"
+import { RouterLink } from "vue-router"
+import { Vue3Lottie } from "vue3-lottie"
+import AstronautJSON from "@/assets/animations/loadingV2.json"
 
 const imgUrl = (url) => {
   return new URL(`/src/assets/images/${url}`, import.meta.url)
 }
 
 const card = ref([
-  { pageUrl: "/trcinteriorsur", url: "TRCStudioInterior.jpg", title: "红色创意内服", xs: 24, sm: 24, md: 24, lg: 16 },
-  { pageUrl: "/jumplink", url: "TRCStudioLobby.jpg", title: "红色创意服务器", xs: 24, sm: 24, md: 24, lg: 8 },
+  {
+    pageUrl: "/trcinteriorsur",
+    url: "TRCStudioInterior.jpg",
+    title: "红色创意内服",
+    xs: 24,
+    sm: 24,
+    md: 24,
+    lg: 16,
+  },
+  {
+    pageUrl: "/jumplink",
+    url: "TRCStudioLobby.jpg",
+    title: "红色创意服务器",
+    xs: 24,
+    sm: 24,
+    md: 24,
+    lg: 8,
+  },
   { pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
   { pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
   { pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
@@ -56,7 +72,7 @@ main {
         display: block;
         position: relative;
         height: 23.75rem;
-        border-radius: .9375rem;
+        border-radius: 0.9375rem;
         overflow: hidden;
         margin-bottom: 20px;
         background: #fff no-repeat center/cover;
@@ -72,10 +88,10 @@ main {
         bottom: -6.25rem;
         width: 100%;
         height: 6.25rem;
-        background-color: rgba(255, 255, 255, .6);
-        backdrop-filter: blur(.625rem);
+        background-color: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(0.625rem);
         text-align: center;
-        transition: all .3s;
+        transition: all 0.3s;
       }
 
       .pie {
@@ -96,7 +112,7 @@ main {
   }
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .home-main {
     .el-row {
       .el-col a {

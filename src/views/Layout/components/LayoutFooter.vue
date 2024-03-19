@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { ref } from "vue"
+import { RouterLink } from "vue-router"
 
 const data = new Date()
 const year = ref(data.getFullYear())
@@ -31,9 +31,9 @@ footer {
     @footerFontColor: #dedfe0;
 
     .links {
-      padding: @footerPadding 0 .8125rem 0;
+      padding: @footerPadding 0 0.8125rem 0;
       text-align: center;
-      font-size: .9375rem;
+      font-size: 0.9375rem;
 
       a {
         color: @footerFontColor;

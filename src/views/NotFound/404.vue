@@ -1,9 +1,7 @@
 <script setup>
-
 const goBack = () => {
   window.history.back()
 }
-
 </script>
 
 <template>
@@ -24,12 +22,12 @@ div {
   }
 
   p {
-    color: #F56C6C;
+    color: #f56c6c;
     font-size: 4.375rem;
   }
 
   button {
-    margin-top: .625rem;
+    margin-top: 0.625rem;
     background: none;
     font-size: 2.5rem;
     color: #73767a;

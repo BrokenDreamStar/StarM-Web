@@ -1,12 +1,12 @@
 <script setup>
-import { ref, computed, defineProps, onMounted, watch } from 'vue'
+import { ref, computed, defineProps, onMounted, watch } from "vue"
 
 const items = ref([])
 const props = defineProps({
   data: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 })
 
 onMounted(async () => {
@@ -20,8 +20,10 @@ const selectedTags = ref([])
 
 const allTags = computed(() => {
   const tagSet = new Set() //用于存储所有唯一标签
-  items.value.forEach(item => {  //遍历所有数据
-    item.tags.split(' ').forEach(tag => {  //遍历所有的标签 并按空格分隔
+  items.value.forEach((item) => {
+    //遍历所有数据
+    item.tags.split(" ").forEach((tag) => {
+      //遍历所有的标签 并按空格分隔
       tagSet.add(tag) //把唯一标签添加进Set *使用了Set自动去重的特性
     })
   })
@@ -29,24 +31,29 @@ const allTags = computed(() => {
 })
 
 const filteredItems = computed(() => {
-  if (selectedTags.value.length === 0) { //如果selectedTags长度为0 即用户没有选择标签
+  if (selectedTags.value.length === 0) {
+    //如果selectedTags长度为0 即用户没有选择标签
     return items.value //返回全部数据
   }
 
   //如果用户选择了标签
-  return items.value.filter(item => { //根据用户选择的标签过滤数据
-    const itemTags = new Set(item.tags.split(' ')) //将所有数据的标签按空格分割成数组并转换为Set
-    return selectedTags.value.every(selectedTag => itemTags.has(selectedTag)) //检查用户选择的标签是否都在数据的标签Set中
+  return items.value.filter((item) => {
+    //根据用户选择的标签过滤数据
+    const itemTags = new Set(item.tags.split(" ")) //将所有数据的标签按空格分割成数组并转换为Set
+    return selectedTags.value.every((selectedTag) => itemTags.has(selectedTag)) //检查用户选择的标签是否都在数据的标签Set中
   })
 })
 
-watch(() => props.data, (newData, oldData) => {
-  if (newData !== oldData) {
-    items.value = props.data
-  }
-})
+watch(
+  () => props.data,
+  (newData, oldData) => {
+    if (newData !== oldData) {
+      items.value = props.data
+    }
+  },
+)
 
-const imgUrl = url => {
+const imgUrl = (url) => {
   return new URL(`/src/assets/icon/mods/${url}.webp`, import.meta.url)
 }
 </script>
@@ -68,26 +75,27 @@ const imgUrl = url => {
           <ul>
             <li v-for="item in filteredItems" :key="item.id">
               <div class="logo">
-                <img :src="imgUrl(item.imgName)" alt="">
+                <img :src="imgUrl(item.imgName)" alt="" />
               </div>
               <div class="content">
                 <div class="title">
-                  <h3> {{ item.modName }} <p v-show="item.chineseName">{{ item.chineseName }}</p>
+                  <h3>
+                    {{ item.modName }}
+                    <p v-show="item.chineseName">{{ item.chineseName }}</p>
                   </h3>
                 </div>
-                <div class="description"> {{ item.description }}
-                </div>
+                <div class="description">{{ item.description }}</div>
                 <div class="tags">
                   <span>{{ item.tags }}</span>
                 </div>
               </div>
               <div class="icon">
                 <a :href="`https://modrinth.com/mod/${item.modrinthName}`" target="_blank" v-show="item.modrinthName">
-                  <img src="/src/assets/icon/logo/modrinth.svg" alt="modrinth" class="modrinth-icon">
+                  <img src="/src/assets/icon/logo/modrinth.svg" alt="modrinth" class="modrinth-icon" />
                 </a>
                 <a :href="`https://www.curseforge.com/minecraft/mc-mods/${item.curseforgeName}`" target="_blank"
                   v-show="item.curseforgeName">
-                  <img src="/src/assets/icon/logo/curseforge.svg" alt="curseforge" class="curseforge-icon">
+                  <img src="/src/assets/icon/logo/curseforge.svg" alt="curseforge" class="curseforge-icon" />
                 </a>
               </div>
             </li>
@@ -110,7 +118,7 @@ const imgUrl = url => {
     min-width: 7.5rem;
     height: fit-content;
     background-color: #fff;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
 
     p {
       margin-left: 1.875rem;
@@ -146,8 +154,8 @@ const imgUrl = url => {
       align-items: flex-start;
       height: 5.625rem;
       background-color: #fff;
-      margin-bottom: .9375rem;
-      border-radius: .5rem;
+      margin-bottom: 0.9375rem;
+      border-radius: 0.5rem;
 
       .logo {
         display: flex;
@@ -174,7 +182,7 @@ const imgUrl = url => {
 
         .title {
           flex: 0 0 auto;
-          margin-top: .1875rem;
+          margin-top: 0.1875rem;
 
           p {
             display: inline-block;
@@ -187,22 +195,22 @@ const imgUrl = url => {
         .description {
           flex: 1 1 auto;
           overflow: hidden;
-          font-size: .9375rem;
-          margin-top: .125rem;
+          font-size: 0.9375rem;
+          margin-top: 0.125rem;
         }
 
         .tags {
           flex: 0 0 auto;
-          margin-bottom: .5rem;
+          margin-bottom: 0.5rem;
 
           span {
             width: fit-content;
             height: fit-content;
-            padding: .1875rem;
-            border-radius: .1875rem;
+            padding: 0.1875rem;
+            border-radius: 0.1875rem;
             background-color: #ecf5ff;
             color: #606266;
-            font-size: .8125rem;
+            font-size: 0.8125rem;
           }
         }
       }
@@ -212,13 +220,13 @@ const imgUrl = url => {
         align-items: center;
         justify-content: center;
         margin-top: auto;
-        margin-bottom: .125rem;
+        margin-bottom: 0.125rem;
 
         a {
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-right: .3125rem;
+          margin-right: 0.3125rem;
         }
 
         .modrinth-icon {
@@ -264,10 +272,9 @@ const imgUrl = url => {
 
         .content {
           .description {
-            margin-top: .0625rem;
+            margin-top: 0.0625rem;
             font-size: 14.5px;
           }
-
         }
 
         .icon {
@@ -275,18 +282,17 @@ const imgUrl = url => {
           align-items: center;
           justify-content: space-between;
           margin-top: auto;
-          margin-bottom: .125rem;
+          margin-bottom: 0.125rem;
 
           a {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-bottom: .3125rem;
+            margin-bottom: 0.3125rem;
           }
         }
       }
-
     }
   }
 }

@@ -1,13 +1,13 @@
 <script setup>
-import { ref, computed, defineProps, onMounted, watch } from 'vue'
+import { ref, computed, defineProps, onMounted, watch } from "vue"
 
 const items = ref([])
 
 const props = defineProps({
   data: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 })
 
 onMounted(async () => {
@@ -17,9 +17,10 @@ onMounted(async () => {
 const allTags = computed(() => {
   const tags = []
   items.value.forEach((item) => {
-    const itemTags = item.tags.split(' ') //将每个对象的tags按空格分割成数组
+    const itemTags = item.tags.split(" ") //将每个对象的tags按空格分割成数组
     itemTags.forEach((tag) => {
-      if (!tags.includes(tag)) { //如果当前tags没有被添加到数组中
+      if (!tags.includes(tag)) {
+        //如果当前tags没有被添加到数组中
         tags.push(tag) //则将它添加到数组
       }
     })
@@ -28,40 +29,61 @@ const allTags = computed(() => {
 })
 
 const filteredItems = computed(() => {
-  if (selectedTags.value.length === 0) { //如果没有选择任何tags
+  if (selectedTags.value.length === 0) {
+    //如果没有选择任何tags
     return items.value //返回全部对象
   }
 
-  return items.value.filter((item) => { //否则 筛选出包含所有已选tags的对象
-    const itemTags = item.tags.split(' ') //将对象中的tags字符串按空格分割成数组  
-    return selectedTags.value.every((selectedTag) => itemTags.includes(selectedTag)) //检查每个已选tags是否都在tags数组中
+  return items.value.filter((item) => {
+    //否则 筛选出包含所有已选tags的对象
+    const itemTags = item.tags.split(" ") //将对象中的tags字符串按空格分割成数组
+    return selectedTags.value.every((selectedTag) =>
+      itemTags.includes(selectedTag),
+    ) //检查每个已选tags是否都在tags数组中
   })
 })
 
 const selectedTags = ref([]) //存储用户选择的tags
 
-watch(() => props.data, (newData, oldData) => {
-  if (newData !== oldData) {
-    items.value = props.data
-  }
-})
+watch(
+  () => props.data,
+  (newData, oldData) => {
+    if (newData !== oldData) {
+      items.value = props.data
+    }
+  },
+)
 
-const imgUrl = url => {
+const imgUrl = (url) => {
   return new URL(`/src/assets/icon/mods/${url}.webp`, import.meta.url)
 }
-
-
 </script>
 
 <template>
-  <div class="container" v-loading.fullscreen.lock="items.length === 0" element-loading-background="#fff">
+  <div
+    class="container"
+    v-loading.fullscreen.lock="items.length === 0"
+    element-loading-background="#fff"
+  >
     <el-row>
-      <el-col :xs="0" :sm="0" :md="5" :lg="5" :xl="5" class="hidden-sm-and-down">
+      <el-col
+        :xs="0"
+        :sm="0"
+        :md="5"
+        :lg="5"
+        :xl="5"
+        class="hidden-sm-and-down"
+      >
         <div class="tag-list">
           <p>筛选</p>
           <el-checkbox-group v-model="selectedTags">
-            <el-checkbox v-for="tag in allTags" :key="tag.id" :label="tag" size="large"
-              :validate-event="false"></el-checkbox>
+            <el-checkbox
+              v-for="tag in allTags"
+              :key="tag.id"
+              :label="tag"
+              size="large"
+              :validate-event="false"
+            ></el-checkbox>
           </el-checkbox-group>
         </div>
       </el-col>
@@ -70,26 +92,42 @@ const imgUrl = url => {
           <ul>
             <li v-for="item in filteredItems" :key="item.id">
               <div class="logo">
-                <img :src="imgUrl(item.imgName)" alt="">
+                <img :src="imgUrl(item.imgName)" alt="" />
               </div>
               <div class="content">
                 <div class="title">
-                  <h3> {{ item.modName }} <p v-show="item.chineseName">{{ item.chineseName }}</p>
+                  <h3>
+                    {{ item.modName }}
+                    <p v-show="item.chineseName">{{ item.chineseName }}</p>
                   </h3>
                 </div>
-                <div class="description"> {{ item.description }}
-                </div>
+                <div class="description">{{ item.description }}</div>
                 <div class="tags">
                   <span>{{ item.tags }}</span>
                 </div>
               </div>
               <div class="icon">
-                <a :href="`https://modrinth.com/mod/${item.modrinthName}`" target="_blank" v-show="item.modrinthName">
-                  <img src="/src/assets/icon/logo/modrinth.svg" alt="modrinth" class="modrinth-icon">
+                <a
+                  :href="`https://modrinth.com/mod/${item.modrinthName}`"
+                  target="_blank"
+                  v-show="item.modrinthName"
+                >
+                  <img
+                    src="/src/assets/icon/logo/modrinth.svg"
+                    alt="modrinth"
+                    class="modrinth-icon"
+                  />
                 </a>
-                <a :href="`https://www.curseforge.com/minecraft/mc-mods/${item.curseforgeName}`" target="_blank"
-                  v-show="item.curseforgeName">
-                  <img src="/src/assets/icon/logo/curseforge.svg" alt="curseforge" class="curseforge-icon">
+                <a
+                  :href="`https://www.curseforge.com/minecraft/mc-mods/${item.curseforgeName}`"
+                  target="_blank"
+                  v-show="item.curseforgeName"
+                >
+                  <img
+                    src="/src/assets/icon/logo/curseforge.svg"
+                    alt="curseforge"
+                    class="curseforge-icon"
+                  />
                 </a>
               </div>
             </li>
@@ -112,7 +150,7 @@ const imgUrl = url => {
     min-width: 7.5rem;
     height: fit-content;
     background-color: #fff;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
 
     p {
       margin-left: 1.875rem;
@@ -148,8 +186,8 @@ const imgUrl = url => {
       align-items: flex-start;
       height: 5.625rem;
       background-color: #fff;
-      margin-bottom: .9375rem;
-      border-radius: .5rem;
+      margin-bottom: 0.9375rem;
+      border-radius: 0.5rem;
 
       .logo {
         display: flex;
@@ -176,7 +214,7 @@ const imgUrl = url => {
 
         .title {
           flex: 0 0 auto;
-          margin-top: .1875rem;
+          margin-top: 0.1875rem;
 
           p {
             display: inline-block;
@@ -189,22 +227,22 @@ const imgUrl = url => {
         .description {
           flex: 1 1 auto;
           overflow: hidden;
-          font-size: .9375rem;
-          margin-top: .125rem;
+          font-size: 0.9375rem;
+          margin-top: 0.125rem;
         }
 
         .tags {
           flex: 0 0 auto;
-          margin-bottom: .5rem;
+          margin-bottom: 0.5rem;
 
           span {
             width: fit-content;
             height: fit-content;
-            padding: .1875rem;
-            border-radius: .1875rem;
+            padding: 0.1875rem;
+            border-radius: 0.1875rem;
             background-color: #ecf5ff;
             color: #606266;
-            font-size: .8125rem;
+            font-size: 0.8125rem;
           }
         }
       }
@@ -214,13 +252,13 @@ const imgUrl = url => {
         align-items: center;
         justify-content: center;
         margin-top: auto;
-        margin-bottom: .125rem;
+        margin-bottom: 0.125rem;
 
         a {
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-right: .3125rem;
+          margin-right: 0.3125rem;
         }
 
         .modrinth-icon {
@@ -266,10 +304,9 @@ const imgUrl = url => {
 
         .content {
           .description {
-            margin-top: .0625rem;
+            margin-top: 0.0625rem;
             font-size: 14.5px;
           }
-
         }
 
         .icon {
@@ -277,18 +314,17 @@ const imgUrl = url => {
           align-items: center;
           justify-content: space-between;
           margin-top: auto;
-          margin-bottom: .125rem;
+          margin-bottom: 0.125rem;
 
           a {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-bottom: .3125rem;
+            margin-bottom: 0.3125rem;
           }
         }
       }
-
     }
   }
 }
