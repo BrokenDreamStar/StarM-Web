@@ -1,48 +1,48 @@
 /* -----初始化浏览器样式----- */
 * {
-  /* 清除浏览器默认外边距 */
-  margin: 0;
-  /* 清除浏览器默认内边距 */
-  padding: 0;
-  /* 使用CSS3盒子模型 */
-  box-sizing: border-box;
+	/* 清除浏览器默认外边距 */
+	margin: 0;
+	/* 清除浏览器默认内边距 */
+	padding: 0;
+	/* 使用CSS3盒子模型 */
+	box-sizing: border-box;
 }
 
 /* 设置全局字体大小 */
 :root {
-  font-size: 1rem;
+	font-size: 1rem;
 }
 
 body {
-  /* CSS3 文字抗锯齿 */
-  -webkit-font-smoothing: antialiased;
-  /* 声明字体 */
-  font-family: Inter, "Helvetica Neue", Helvetica, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  /* 修改默认背景色 */
-  background-color: #edf2f7;
+	/* CSS3 文字抗锯齿 */
+	-webkit-font-smoothing: antialiased;
+	/* 声明字体 */
+	font-family: Inter, "Helvetica Neue", Helvetica, "PingFang SC",
+		"Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	/* 修改默认背景色 */
+	background-color: #edf2f7;
 }
 
 /* em 和 i 的文字不使用斜体样式 */
 em,
 i {
-  font-style: normal;
+	font-style: normal;
 }
 
 /* 去掉 li 的小圆点 */
 li {
-  list-style: none;
+	list-style: none;
 }
 
 /* 修改按钮鼠标样式 */
 button {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 /* 修改链接默认样式 */
 a {
-  text-decoration: none;
-  color: black;
+	text-decoration: none;
+	color: black;
 }
 
 /* -----初始化移动端样式----- */
@@ -50,14 +50,14 @@ a {
 /* 禁止元素被选中 */
 a,
 h1 {
-  -webkit-user-select: none;
-  user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 /* 清除默认点击背景色 */
 button,
 a {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 /* 清除链接交互相关默认样式 */
@@ -65,5 +65,5 @@ a:link,
 a:hover,
 a:active,
 a:visited {
-  text-decoration: none;
+	text-decoration: none;
 }

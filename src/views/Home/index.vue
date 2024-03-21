@@ -4,9 +4,9 @@ import HomeMain from "@/views/Home/components/HomeMain.vue"
 </script>
 
 <template>
-  <HomeHeader></HomeHeader>
-  <RouterView></RouterView>
-  <HomeMain></HomeMain>
+	<HomeHeader></HomeHeader>
+	<RouterView></RouterView>
+	<HomeMain></HomeMain>
 </template>
 
 <style></style>

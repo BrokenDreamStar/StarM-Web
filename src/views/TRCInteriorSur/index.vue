@@ -4,8 +4,8 @@ import TRCInteriorSurMain from "@/views/TRCInteriorSur/components/TRCInteriorSur
 </script>
 
 <template>
-  <TRCInteriorSurHeader></TRCInteriorSurHeader>
-  <TRCInteriorSurMain></TRCInteriorSurMain>
+	<TRCInteriorSurHeader></TRCInteriorSurHeader>
+	<TRCInteriorSurMain></TRCInteriorSurMain>
 </template>
 
 <style></style>
