@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, defineProps, onMounted, watch } from "vue"
+import { ref, computed, onMounted, watch } from "vue"
 
 const items = ref([])
 const props = defineProps({
@@ -56,11 +56,12 @@ watch(
 const imgUrl = (url) => {
   return new URL(`/src/assets/icon/mods/${url}.webp`, import.meta.url)
 }
+
 </script>
 
 <template>
-  <div class="container" v-loading.fullscreen.lock="items.length === 0" element-loading-background="#fff">
-    <el-row v-show="items">
+  <div class="container">
+    <el-row v-if="items">
       <el-col :xs="0" :sm="0" :md="5" :lg="5" :xl="5" class="hidden-sm-and-down">
         <div class="tag-list">
           <p>筛选</p>
@@ -81,7 +82,7 @@ const imgUrl = (url) => {
                 <div class="title">
                   <h3>
                     {{ item.modName }}
-                    <p v-show="item.chineseName">{{ item.chineseName }}</p>
+                    <p v-if="item.chineseName">{{ item.chineseName }}</p>
                   </h3>
                 </div>
                 <div class="description">{{ item.description }}</div>
@@ -90,11 +91,12 @@ const imgUrl = (url) => {
                 </div>
               </div>
               <div class="icon">
-                <a :href="`https://modrinth.com/mod/${item.modrinthName}`" target="_blank" v-show="item.modrinthName">
+                <a :href="`https://modrinth.com/mod/${item.modrinthName}`" target="_blank" title="前往modrinth查看详情"
+                  v-if="item.modrinthName">
                   <img src="/src/assets/icon/logo/modrinth.svg" alt="modrinth" class="modrinth-icon" />
                 </a>
                 <a :href="`https://www.curseforge.com/minecraft/mc-mods/${item.curseforgeName}`" target="_blank"
-                  v-show="item.curseforgeName">
+                  title="前往curseforge查看详情" v-if="item.curseforgeName">
                   <img src="/src/assets/icon/logo/curseforge.svg" alt="curseforge" class="curseforge-icon" />
                 </a>
               </div>

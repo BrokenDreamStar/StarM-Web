@@ -1,33 +1,53 @@
 <script setup>
 import { onMounted, ref } from "vue"
+import { useRouter } from 'vue-router'
 import axios from "axios"
 
 const imgUrl = (url) => {
   return new URL(`/src/assets/icon/logo/${url}`, import.meta.url)
 }
 
-const aboutCard = ref([])
+const aboutPageData = ref([])
+
+const router = useRouter()
+
+const isLoading = ref(false)
+
+const loadingTimer = () => {
+  const loading = setTimeout(() => {
+    if (aboutPageData.value.length !== 0) {
+      isLoading.value = false
+      clearTimeout(loading)
+    }
+  }, 800)
+}
 
 onMounted(async () => {
   try {
-    const storedData = sessionStorage.getItem("aboutCardData")
+    const storedData = sessionStorage.getItem("aboutPageData")
     if (storedData) {
-      aboutCard.value = JSON.parse(storedData)
+      aboutPageData.value = JSON.parse(storedData)
     } else {
-      const res = await axios("https://starm.team:3000/about")
-      aboutCard.value = res.data
-      sessionStorage.setItem("aboutCardData", JSON.stringify(res.data))
+      isLoading.value = true
+      const res = await axios("http://127.0.0.1:3000/about")
+      aboutPageData.value = res.data
+      sessionStorage.setItem("aboutPageData", JSON.stringify(res.data))
+      loadingTimer()
     }
   } catch (err) {
-    console.error(err)
+    if (axios.isAxiosError(err) && err.response.status === 404) {
+      router.push({ name: "NotFound" })
+    }
   }
 })
+
+
 </script>
 
 <template>
   <div class="top-box"></div>
-  <main>
-    <div class="about">
+  <main v-loading.fullscreen.lock="isLoading" element-loading-background="#fff">
+    <div class="about" v-if="!isLoading">
       <!-- 关于StarM Team -->
       <div class="about-container">
         <div class="about-container-title">
@@ -60,7 +80,7 @@ onMounted(async () => {
           </div>
         </div>
         <el-row :gutter="20" class="about-card-container">
-          <el-col v-for="item in aboutCard" :key="item.id" :xs="12" :sm="12" :md="8" :lg="6" :xl="4"
+          <el-col v-for="item in aboutPageData" :key="item.id" :xs="12" :sm="12" :md="8" :lg="6" :xl="4"
             class="about-card-col">
             <a :href="item.hrefUrl" target="_blank" class="about-card">
               <div class="about-card-img">

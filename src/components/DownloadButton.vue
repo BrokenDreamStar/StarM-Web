@@ -1,8 +1,6 @@
 <script setup>
-import { defineProps } from 'vue'
-
 defineProps({
-  msg: {
+  text: {
     type: String,
     required: true,
   },
@@ -14,14 +12,14 @@ defineProps({
 </script>
 
 <template>
-  <a :href="link" class="btn">{{ msg }}</a>
+  <a :href="link" class="btn">{{ text }}</a>
 </template>
 
 <style lang="less" scoped>
 @import url("https://fonts.font.im/css?family=Noto+Sans");
 
 .btn {
-  padding: 10px 20px 10px 20px;
+  padding: 10px 35px 10px 35px;
   color: #fff;
   border-radius: 5px;
   background: transparent;
@@ -71,6 +69,12 @@ defineProps({
 
   &:active {
     top: 2px;
+  }
+}
+
+@media (max-width: 992px) {
+  .btn {
+    pointer-events: none;
   }
 }
 </style>

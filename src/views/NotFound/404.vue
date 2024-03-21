@@ -1,14 +1,12 @@
 <script setup>
-const goBack = () => {
-  window.history.back()
-}
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
   <div>
     <h2>404</h2>
     <p>螃蟹熟了</p>
-    <button @click="goBack">点击返回上一页</button>
+    <router-link to="/">点击返回首页</router-link>
   </div>
 </template>
 
@@ -26,7 +24,8 @@ div {
     font-size: 4.375rem;
   }
 
-  button {
+  a {
+    display: block;
     margin-top: 0.625rem;
     background: none;
     font-size: 2.5rem;

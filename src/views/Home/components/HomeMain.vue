@@ -1,8 +1,7 @@
 <script setup>
 import { ref } from "vue"
 import { RouterLink } from "vue-router"
-import { Vue3Lottie } from "vue3-lottie"
-import AstronautJSON from "@/assets/animations/loadingV2.json"
+import Loading from "@/components/Loading.vue"
 
 const imgUrl = (url) => {
   return new URL(`/src/assets/images/${url}`, import.meta.url)
@@ -45,11 +44,7 @@ const card = ref([
             </div>
           </router-link>
           <router-link to="/" v-else class="pie">
-            <div>
-              <Vue3Lottie :animationData="AstronautJSON" :height="60" :width="60" :speed="1" :autoPlay="true"
-                :loop="true" />
-              <h3>{{ item.title }}</h3>
-            </div>
+            <Loading></Loading>
           </router-link>
         </el-col>
       </el-row>
@@ -77,10 +72,10 @@ main {
         margin-bottom: 20px;
         background: #fff no-repeat center/cover;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      }
 
-      .el-col a:hover .introduce {
-        bottom: 0;
+        &:hover .introduce {
+          bottom: 0;
+        }
       }
 
       .introduce {
@@ -100,12 +95,8 @@ main {
         div {
           position: absolute;
           left: 50%;
-          top: 48%;
+          top: 50%;
           transform: translate(-50%, -50%);
-
-          h3 {
-            margin-top: 100px;
-          }
         }
       }
     }
@@ -117,6 +108,7 @@ main {
     .el-row {
       .el-col a {
         min-height: 13.75rem;
+        pointer-events: none;
       }
     }
   }
