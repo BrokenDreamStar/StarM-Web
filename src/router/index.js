@@ -11,7 +11,7 @@ const router = createRouter({
 			return { top: 0 }
 		}
 	},
-	//路由配置 使用动态路由
+	//路由配置 使用动态路由导入
 	routes: [
 		{
 			path: "/:pathMatch(.*)*",

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, watch } from "vue"
 
-const items = ref([])
+const modsData = ref([])
 const props = defineProps({
 	data: {
 		type: Object,
@@ -10,7 +10,7 @@ const props = defineProps({
 })
 
 onMounted(async () => {
-	items.value = props.data
+	modsData.value = props.data
 })
 
 //-----筛选功能-----
@@ -20,7 +20,7 @@ const selectedTags = ref([])
 
 const allTags = computed(() => {
 	const tagSet = new Set() //用于存储所有唯一标签
-	items.value.forEach((item) => {
+	modsData.value.forEach((item) => {
 		//遍历所有数据
 		item.tags.split(" ").forEach((tag) => {
 			//遍历所有的标签 并按空格分隔
@@ -33,11 +33,11 @@ const allTags = computed(() => {
 const filteredItems = computed(() => {
 	if (selectedTags.value.length === 0) {
 		//如果selectedTags长度为0 即用户没有选择标签
-		return items.value //返回全部数据
+		return modsData.value //返回全部数据
 	}
 
 	//如果用户选择了标签
-	return items.value.filter((item) => {
+	return modsData.value.filter((item) => {
 		//根据用户选择的标签过滤数据
 		const itemTags = new Set(item.tags.split(" ")) //将所有数据的标签按空格分割成数组并转换为Set
 		return selectedTags.value.every((selectedTag) => itemTags.has(selectedTag)) //检查用户选择的标签是否都在数据的标签Set中
@@ -48,7 +48,7 @@ watch(
 	() => props.data,
 	(newData, oldData) => {
 		if (newData !== oldData) {
-			items.value = props.data
+			modsData.value = props.data
 		}
 	}
 )
@@ -59,26 +59,14 @@ const imgUrl = (url) => {
 </script>
 
 <template>
-	<div class="container">
-		<el-row v-if="items">
-			<el-col
-				:xs="0"
-				:sm="0"
-				:md="5"
-				:lg="5"
-				:xl="5"
-				class="hidden-sm-and-down"
-			>
+	<div class="container" id="container">
+		<el-row v-if="modsData">
+			<el-col :xs="0" :sm="0" :md="5" :lg="5" :xl="5" class="hidden-sm-and-down">
 				<div class="tag-list">
 					<p>筛选</p>
 					<el-checkbox-group v-model="selectedTags">
-						<el-checkbox
-							v-for="tag in allTags"
-							:key="tag.id"
-							:label="tag"
-							size="large"
-							:validate-event="false"
-						></el-checkbox>
+						<el-checkbox v-for="tag in allTags" :key="tag.id" :label="tag" size="large"
+							:validate-event="false"></el-checkbox>
 					</el-checkbox-group>
 				</div>
 			</el-col>
@@ -102,29 +90,13 @@ const imgUrl = (url) => {
 								</div>
 							</div>
 							<div class="icon">
-								<a
-									:href="`https://modrinth.com/mod/${item.modrinthName}`"
-									target="_blank"
-									title="前往modrinth查看详情"
-									v-if="item.modrinthName"
-								>
-									<img
-										src="/src/assets/icon/logo/modrinth.svg"
-										alt="modrinth"
-										class="modrinth-icon"
-									/>
+								<a :href="`https://modrinth.com/mod/${item.modrinthName}`" target="_blank" title="前往modrinth查看详情"
+									v-if="item.modrinthName">
+									<img src="/src/assets/icon/logo/modrinth.svg" alt="modrinth" class="modrinth-icon" />
 								</a>
-								<a
-									:href="`https://www.curseforge.com/minecraft/mc-mods/${item.curseforgeName}`"
-									target="_blank"
-									title="前往curseforge查看详情"
-									v-if="item.curseforgeName"
-								>
-									<img
-										src="/src/assets/icon/logo/curseforge.svg"
-										alt="curseforge"
-										class="curseforge-icon"
-									/>
+								<a :href="`https://www.curseforge.com/minecraft/mc-mods/${item.curseforgeName}`" target="_blank"
+									title="前往curseforge查看详情" v-if="item.curseforgeName">
+									<img src="/src/assets/icon/logo/curseforge.svg" alt="curseforge" class="curseforge-icon" />
 								</a>
 							</div>
 						</li>
@@ -137,133 +109,135 @@ const imgUrl = (url) => {
 
 <style lang="less" scoped>
 .container {
-	width: 60vw;
-	margin: 0 auto;
-	margin-top: 1.875rem;
 	overflow: hidden;
+	width: 100%;
 
-	.tag-list {
-		width: 90%;
-		min-width: 7.5rem;
-		height: fit-content;
-		background-color: #fff;
-		border-radius: 0.25rem;
+	.el-row {
+		width: 100%;
 
-		p {
-			margin-left: 1.875rem;
-			height: 2rem;
-			line-height: 2rem;
-			font-weight: 600;
-			color: #999;
-		}
-
-		.el-checkbox-group {
-			width: fit-content;
-			display: flex;
-			flex-direction: column;
-			align-items: stretch;
-
-			.el-checkbox {
-				margin-left: 1.875rem;
-
-				:deep(.el-checkbox__inner) {
-					border: 1px solid #000;
-				}
-
-				:deep(.is-checked .el-checkbox__inner) {
-					border: none;
-				}
-			}
-		}
-	}
-
-	.list {
-		li {
-			display: flex;
-			align-items: flex-start;
-			height: 5.625rem;
+		.tag-list {
+			width: 90%;
+			min-width: 7.5rem;
+			height: fit-content;
 			background-color: #fff;
-			margin-bottom: 0.9375rem;
-			border-radius: 0.5rem;
+			border-radius: 0.25rem;
 
-			.logo {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				height: 5.625rem;
-				margin-right: 1.25rem;
-				margin-left: 1rem;
-
-				img {
-					display: block;
-					width: 4rem;
-					height: 4rem;
-					background-color: #f4f4f5;
-				}
+			p {
+				margin-left: 1.875rem;
+				height: 2rem;
+				line-height: 2rem;
+				font-weight: 600;
+				color: #999;
 			}
 
-			.content {
+			.el-checkbox-group {
+				width: fit-content;
 				display: flex;
 				flex-direction: column;
-				justify-content: space-between;
-				width: 100%;
-				height: 100%;
+				align-items: stretch;
 
-				.title {
-					flex: 0 0 auto;
-					margin-top: 0.1875rem;
+				.el-checkbox {
+					margin-left: 1.875rem;
 
-					p {
-						display: inline-block;
-						transform: translateY(-0.0625rem);
-						font-size: 14px;
-						color: #999;
+					:deep(.el-checkbox__inner) {
+						border: 1px solid #000;
 					}
-				}
 
-				.description {
-					flex: 1 1 auto;
-					overflow: hidden;
-					font-size: 0.9375rem;
-					margin-top: 0.125rem;
-				}
-
-				.tags {
-					flex: 0 0 auto;
-					margin-bottom: 0.5rem;
-
-					span {
-						width: fit-content;
-						height: fit-content;
-						padding: 0.1875rem;
-						border-radius: 0.1875rem;
-						background-color: #ecf5ff;
-						color: #606266;
-						font-size: 0.8125rem;
+					:deep(.is-checked .el-checkbox__inner) {
+						border: none;
 					}
 				}
 			}
+		}
 
-			.icon {
+		.list {
+			li {
 				display: flex;
-				align-items: center;
-				justify-content: center;
-				margin-top: auto;
-				margin-bottom: 0.125rem;
+				align-items: flex-start;
+				height: 5.625rem;
+				background-color: #fff;
+				margin-bottom: 0.9375rem;
+				border-radius: 0.5rem;
 
-				a {
+				.logo {
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					margin-right: 0.3125rem;
+					height: 5.625rem;
+					margin-right: 1.25rem;
+					margin-left: 1rem;
+
+					img {
+						display: block;
+						width: 4rem;
+						height: 4rem;
+						background-color: #f4f4f5;
+					}
 				}
 
-				.modrinth-icon {
-					width: 1.5rem;
+				.content {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					width: 100%;
+					height: 100%;
+
+					.title {
+						flex: 0 0 auto;
+						margin-top: 0.1875rem;
+
+						p {
+							display: inline-block;
+							transform: translateY(-0.0625rem);
+							font-size: 14px;
+							color: #999;
+						}
+					}
+
+					.description {
+						flex: 1 1 auto;
+						overflow: hidden;
+						font-size: 0.9375rem;
+						margin-top: 0.125rem;
+					}
+
+					.tags {
+						flex: 0 0 auto;
+						margin-bottom: 0.5rem;
+
+						span {
+							width: fit-content;
+							height: fit-content;
+							padding: 0.1875rem;
+							border-radius: 0.1875rem;
+							background-color: #ecf5ff;
+							color: #606266;
+							font-size: 0.8125rem;
+						}
+					}
 				}
 
-				.curseforge-icon {
-					width: 1.875rem;
+				.icon {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					margin-top: auto;
+					margin-bottom: 0.125rem;
+
+					a {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin-right: 0.3125rem;
+					}
+
+					.modrinth-icon {
+						width: 1.5rem;
+					}
+
+					.curseforge-icon {
+						width: 1.875rem;
+					}
 				}
 			}
 		}
@@ -288,9 +262,9 @@ const imgUrl = (url) => {
 }
 
 @media (max-width: 992px) {
-	.container {
-		width: 90vw;
 
+	//未知原因导致该代码块优先级不足 使用id选择器提权
+	#container {
 		.list {
 			li {
 				height: 6.875rem;

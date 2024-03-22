@@ -79,34 +79,14 @@ const toggleMenu = () => {
 				</ul>
 			</div>
 			<div class="mobile-nav hidden-sm-and-up">
-				<el-button
-					@click="mobileMenuSwitch"
-					ref="mobileMenuSwitchButton"
-					type="primary"
-				>
-					<Vue3Lottie
-						@onComplete="toggleMenu"
-						ref="mobileMenuIconAni"
-						:animationData="AstronautJSON"
-						:height="45"
-						:width="45"
-						:speed="2.1"
-						:autoPlay="false"
-						:loop="false"
-					/>
+				<el-button @click="mobileMenuSwitch" ref="mobileMenuSwitchButton" type="primary">
+					<Vue3Lottie @onComplete="toggleMenu" ref="mobileMenuIconAni" :animationData="AstronautJSON" :height="45"
+						:width="45" :speed="2.1" :autoPlay="false" :loop="false" />
 				</el-button>
 			</div>
 		</div>
-		<el-drawer
-			class="hidden-sm-and-up"
-			v-model="drawer"
-			:with-header="false"
-			:close-on-press-escape="false"
-			:close-on-click-modal="false"
-			:modal="false"
-			:z-index="2"
-			:show-close="false"
-		>
+		<el-drawer class="hidden-sm-and-up" v-model="drawer" :with-header="false" :close-on-press-escape="false"
+			:close-on-click-modal="false" :modal="false" :z-index="2" :show-close="false">
 			<div class="mobile-menu">
 				<ul>
 					<li>
@@ -139,7 +119,9 @@ const toggleMenu = () => {
 <style lang="less" scoped>
 //导航栏
 nav {
+	//导航栏外边距
 	@navMargin: 10rem;
+	//导航栏高度
 	@navHeight: 3.125rem;
 
 	.nav {
@@ -150,7 +132,7 @@ nav {
 		width: 100vw;
 		height: @navHeight;
 		background-color: #fff;
-		z-index: 3;
+		z-index: 5;
 
 		//logo样式
 		.logo {

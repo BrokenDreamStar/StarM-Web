@@ -13,6 +13,13 @@
 	font-size: 1rem;
 }
 
+/* 当页面过长超出屏幕出现滚动条时 使滚动条不占用页面宽度 */
+html{
+	overflow-y: auto;
+  overflow-x: hidden;
+	margin-right: calc(100% - 100vw);
+}
+
 body {
 	/* CSS3 文字抗锯齿 */
 	-webkit-font-smoothing: antialiased;

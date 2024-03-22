@@ -14,7 +14,8 @@ import { RouterLink } from "vue-router"
 					<p>版本:1.18.2-MCDR-Fabric</p>
 				</div>
 				<div class="btn-container">
-					<router-link to="/join" class="btn">加入我们</router-link>
+					<!-- <router-link to="/join" class="btn">加入我们</router-link> -->
+					<a href="https://starm.top/" class="btn" target="_blank">加入我们</a>
 					<router-link to="/downloads" class="btn">客户端下载</router-link>
 				</div>
 			</div>
