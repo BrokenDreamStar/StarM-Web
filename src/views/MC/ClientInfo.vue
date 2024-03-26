@@ -10,7 +10,7 @@ const isLoading = ref(true)
 
 //获取当前路由对象
 const route = useRoute()
-//创建响应式数据 存储数据
+//创建响应式数据
 const modsData = ref([])
 const resourcePacksData = ref([])
 const shaderPacksData = ref([])
@@ -18,11 +18,19 @@ const shaderPacksData = ref([])
 //该函数用于发起ajax请求
 const fetchData = async (subversion) => {
 	try {
-		const [modsDataRes, resourcePacksDataRes, shaderPacksDataRes] = await Promise.all([
-			axios.get(`http://127.0.0.1:3000/downloads/mc/clientinfo/mods/${subversion}`),
-			axios.get(`http://127.0.0.1:3000/downloads/mc/clientinfo/resourcepacks/${subversion}`),
-			axios.get(`http://127.0.0.1:3000/downloads/mc/clientinfo/shaderpacks/${subversion}`)
-		])
+		const [modsDataRes, resourcePacksDataRes, shaderPacksDataRes] =
+			await Promise.all([
+				axios.get(
+					`http://127.0.0.1:3000/downloads/mc/clientinfo/mods/${subversion}`
+				),
+				axios.get(
+					`http://127.0.0.1:3000/downloads/mc/clientinfo/resourcepacks/${subversion}`
+				),
+				axios.get(
+					`http://127.0.0.1:3000/downloads/mc/clientinfo/shaderpacks/${subversion}`
+				)
+			])
+		//将数据存储到响应式数据中
 		modsData.value = modsDataRes.data
 		resourcePacksData.value = resourcePacksDataRes.data
 		shaderPacksData.value = shaderPacksDataRes.data
@@ -49,29 +57,56 @@ watch(
 	}
 )
 
+//给子组件ClientInfoListItem传参
+const resourcePacks = ref({
+	imgUrlName: "resourcepacks",
+	modrinthLinkName: "resourcepack",
+	curseforgeLinkName: "texture-packs"
+})
 
-const resourcePacks = ref({ imgUrlName: "resourcepacks", modrinthLinkName: "resourcepack", curseforgeLinkName: "texture-packs" })
-const shaderPacks = ref({ imgUrlName: "shaderpacks", modrinthLinkName: "shader", curseforgeLinkName: "shaders" })
+const shaderPacks = ref({
+	imgUrlName: "shaderpacks",
+	modrinthLinkName: "shader",
+	curseforgeLinkName: "shaders"
+})
 </script>
 
-<template v-loading.fullscreen.lock="isLoading" element-loading-background="#fff" lazy>
-	<div class="top-box"></div>
+<template>
+	<!-- 顶部占位盒子 使用v-loading指令实现全屏加载效果 -->
+	<div
+		class="top-box"
+		v-loading.fullscreen.lock="isLoading"
+		element-loading-background="#fff"
+		lazy
+	></div>
+	<!-- 当加载完成时 显示主内容区域 -->
 	<main v-if="!isLoading">
+		<!-- 使用element-ui的tabs组件实现功能选项卡 -->
 		<el-tabs type="card">
-			<el-tab-pane label="简介" class="demo">
-				暂无
-			</el-tab-pane>
+			<!-- 简介选项卡 -->
+			<el-tab-pane label="简介"> 暂无 </el-tab-pane>
+			<!-- 模组列表选项卡 使用MCMods组件展示模组数据 -->
 			<el-tab-pane label="模组列表">
 				<MCMods :data="modsData"></MCMods>
 			</el-tab-pane>
+			<!-- 材质列表选项卡 使用ClientInfoListItem组件展示材质包信息 -->
 			<el-tab-pane label="材质列表">
-				<ClientInfoListItem :data="resourcePacksData" :imgUrlName="resourcePacks.imgUrlName"
-					:modrinthLinkName="resourcePacks.modrinthLinkName" :curseforgeLinkName="resourcePacks.curseforgeLinkName">
+				<ClientInfoListItem
+					:data="resourcePacksData"
+					:imgUrlName="resourcePacks.imgUrlName"
+					:modrinthLinkName="resourcePacks.modrinthLinkName"
+					:curseforgeLinkName="resourcePacks.curseforgeLinkName"
+				>
 				</ClientInfoListItem>
 			</el-tab-pane>
+			<!-- 光影列表选项卡 使用ClientInfoListItem组件展示光影包信息 -->
 			<el-tab-pane label="光影列表">
-				<ClientInfoListItem :data="shaderPacksData" :imgUrlName="shaderPacks.imgUrlName"
-					:modrinthLinkName="shaderPacks.modrinthLinkName" :curseforgeLinkName="shaderPacks.curseforgeLinkName">
+				<ClientInfoListItem
+					:data="shaderPacksData"
+					:imgUrlName="shaderPacks.imgUrlName"
+					:modrinthLinkName="shaderPacks.modrinthLinkName"
+					:curseforgeLinkName="shaderPacks.curseforgeLinkName"
+				>
 				</ClientInfoListItem>
 			</el-tab-pane>
 		</el-tabs>
@@ -79,21 +114,19 @@ const shaderPacks = ref({ imgUrlName: "shaderpacks", modrinthLinkName: "shader",
 </template>
 
 <style lang="less" scoped>
+/* 顶部占位盒子 抵消导航栏的高度 */
 .top-box {
 	height: 50px;
 }
 
+/* 主内容区域样式 居中显示 根据屏幕宽度调整宽度 */
 main {
 	width: 60vw;
 	margin: 0 auto;
 
-	.demo {
-		background: none;
-	}
-
+	/* tabs组件样式 */
 	.el-tabs {
 		margin-top: 1.25rem;
-
 		:deep(.el-tabs__header) {
 			background-color: #fff;
 			margin-bottom: 1.25rem;
@@ -111,6 +144,9 @@ main {
 	}
 }
 
+/* 响应式布局 */
+
+/* 屏幕宽度小于992px时 修改主要内容区域的宽度 */
 @media (max-width: 992px) {
 	main {
 		width: 90vw;

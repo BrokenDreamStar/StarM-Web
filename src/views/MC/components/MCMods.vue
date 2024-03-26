@@ -1,14 +1,16 @@
 <script setup>
 import { ref, computed, onMounted, watch } from "vue"
 
+//创建响应式数据
 const modsData = ref([])
+//获取父组件传递过来的数据
 const props = defineProps({
 	data: {
 		type: Object,
 		required: true
 	}
 })
-
+//当组件挂载完成时 把父组件传递过来的数据赋值给modsData
 onMounted(async () => {
 	modsData.value = props.data
 })
@@ -44,6 +46,7 @@ const filteredItems = computed(() => {
 	})
 })
 
+//当props.data变化时更新modsData
 watch(
 	() => props.data,
 	(newData, oldData) => {
@@ -52,7 +55,7 @@ watch(
 		}
 	}
 )
-
+//获取图片路径
 const imgUrl = (url) => {
 	return new URL(`/src/assets/icon/mods/${url}.webp`, import.meta.url)
 }
@@ -61,12 +64,24 @@ const imgUrl = (url) => {
 <template>
 	<div class="container" id="container">
 		<el-row v-if="modsData">
-			<el-col :xs="0" :sm="0" :md="5" :lg="5" :xl="5" class="hidden-sm-and-down">
+			<el-col
+				:xs="0"
+				:sm="0"
+				:md="5"
+				:lg="5"
+				:xl="5"
+				class="hidden-sm-and-down"
+			>
 				<div class="tag-list">
 					<p>筛选</p>
 					<el-checkbox-group v-model="selectedTags">
-						<el-checkbox v-for="tag in allTags" :key="tag.id" :label="tag" size="large"
-							:validate-event="false"></el-checkbox>
+						<el-checkbox
+							v-for="tag in allTags"
+							:key="tag.id"
+							:label="tag"
+							size="large"
+							:validate-event="false"
+						></el-checkbox>
 					</el-checkbox-group>
 				</div>
 			</el-col>
@@ -90,13 +105,29 @@ const imgUrl = (url) => {
 								</div>
 							</div>
 							<div class="icon">
-								<a :href="`https://modrinth.com/mod/${item.modrinthName}`" target="_blank" title="前往modrinth查看详情"
-									v-if="item.modrinthName">
-									<img src="/src/assets/icon/logo/modrinth.svg" alt="modrinth" class="modrinth-icon" />
+								<a
+									:href="`https://modrinth.com/mod/${item.modrinthName}`"
+									target="_blank"
+									title="前往modrinth查看详情"
+									v-if="item.modrinthName"
+								>
+									<img
+										src="/src/assets/icon/logo/modrinth.svg"
+										alt="modrinth"
+										class="modrinth-icon"
+									/>
 								</a>
-								<a :href="`https://www.curseforge.com/minecraft/mc-mods/${item.curseforgeName}`" target="_blank"
-									title="前往curseforge查看详情" v-if="item.curseforgeName">
-									<img src="/src/assets/icon/logo/curseforge.svg" alt="curseforge" class="curseforge-icon" />
+								<a
+									:href="`https://www.curseforge.com/minecraft/mc-mods/${item.curseforgeName}`"
+									target="_blank"
+									title="前往curseforge查看详情"
+									v-if="item.curseforgeName"
+								>
+									<img
+										src="/src/assets/icon/logo/curseforge.svg"
+										alt="curseforge"
+										class="curseforge-icon"
+									/>
 								</a>
 							</div>
 						</li>
@@ -262,7 +293,6 @@ const imgUrl = (url) => {
 }
 
 @media (max-width: 992px) {
-
 	//未知原因导致该代码块优先级不足 使用id选择器提权
 	#container {
 		.list {
