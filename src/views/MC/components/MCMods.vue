@@ -90,13 +90,13 @@ const imgUrl = (url) => {
 					<ul>
 						<li v-for="item in filteredItems" :key="item.id">
 							<div class="logo">
-								<img :src="imgUrl(item.imgName)" alt="" />
+								<img :src="imgUrl(item.img_name)" alt="" />
 							</div>
 							<div class="content">
 								<div class="title">
 									<h3>
-										{{ item.modName }}
-										<p v-if="item.chineseName">{{ item.chineseName }}</p>
+										{{ item.mod_name }}
+										<p v-if="item.chinese_name">{{ item.chinese_name }}</p>
 									</h3>
 								</div>
 								<div class="description">{{ item.description }}</div>
@@ -106,10 +106,10 @@ const imgUrl = (url) => {
 							</div>
 							<div class="icon">
 								<a
-									:href="`https://modrinth.com/mod/${item.modrinthName}`"
+									:href="`https://modrinth.com/mod/${item.modrinth_name}`"
 									target="_blank"
 									title="前往modrinth查看详情"
-									v-if="item.modrinthName"
+									v-if="item.modrinth_name"
 								>
 									<img
 										src="/src/assets/icon/logo/modrinth.svg"
@@ -118,10 +118,10 @@ const imgUrl = (url) => {
 									/>
 								</a>
 								<a
-									:href="`https://www.curseforge.com/minecraft/mc-mods/${item.curseforgeName}`"
+									:href="`https://www.curseforge.com/minecraft/mc-mods/${item.curseforge_name}`"
 									target="_blank"
 									title="前往curseforge查看详情"
-									v-if="item.curseforgeName"
+									v-if="item.curseforge_name"
 								>
 									<img
 										src="/src/assets/icon/logo/curseforge.svg"

@@ -18,7 +18,7 @@ const loadingTimer = () => {
 			isLoading.value = false
 			clearTimeout(loading)
 		}
-	}, 800)
+	}, 500)
 }
 
 onMounted(async () => {
@@ -28,7 +28,7 @@ onMounted(async () => {
 			downloadPageData.value = JSON.parse(storedData)
 		} else {
 			isLoading.value = true
-			const res = await axios("http://127.0.0.1:3000/downloads")
+			const res = await axios("https://starm.team:3000/downloads")
 			downloadPageData.value = res.data
 			sessionStorage.setItem("downloadPageData", JSON.stringify(res.data))
 			loadingTimer()
@@ -57,7 +57,7 @@ onMounted(async () => {
 				>
 					<router-link :to="`/downloads/mc/${item.version}`">
 						<div>
-							<img :src="imgUrl(item.imgName)" alt="" />
+							<img :src="imgUrl(item.img_name)" alt="" />
 							<p class="version">{{ item.version }}</p>
 							<p class="title">{{ item.title }}</p>
 						</div>

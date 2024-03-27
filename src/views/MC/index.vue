@@ -10,11 +10,17 @@ const router = useRouter()
 const downloadMCPageData = ref([])
 const fetchData = async (version) => {
 	try {
-		const res = await axios.get(`http://127.0.0.1:3000/downloads/mc/${version}`)
+		const res = await axios.get(
+			`https://starm.team:3000/downloads/mc/${version}`
+		)
 		return res.data
 	} catch (err) {
-		if (axios.isAxiosError(err) && err.response.status === 404) {
+		if (err.code === "ERR_NETWORK") {
 			router.push({ name: "NotFound" })
+		} else if (axios.isAxiosError(err) && err.response.status === 404) {
+			router.push({ name: "NotFound" })
+		} else {
+			console.log(err.code)
 		}
 		return null
 	}
@@ -42,7 +48,7 @@ const downloadButtonData = ref({ text: "下载 | Download" })
 			<h2 class="title">下载由StarM Team制作的MineCraft客户端</h2>
 			<div class="card-container">
 				<template v-for="item in downloadMCPageData" :key="item.id">
-					<div class="card" v-if="item.link !== undefined">
+					<div class="card" v-if="item.link !== null">
 						<h3>{{ item.subversion }}</h3>
 						<div class="text">
 							<div class="prompt warn">

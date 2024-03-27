@@ -44,12 +44,12 @@ const imgUrl = (imgUrlName, imgName) => {
 			<!-- 使用v-for遍历ClientInfoListItemData 并渲染到页面上 -->
 			<li v-for="item in ClientInfoListItemData" :key="item.id">
 				<div class="logo">
-					<img :src="imgUrl(imgUrlName, item.imgName)" alt="" />
+					<img :src="imgUrl(imgUrlName, item.img_name)" alt="" />
 				</div>
 				<div class="content">
 					<div class="title">
 						<h3>
-							{{ item.name }}
+							{{ item.resourcepack_name || item.shaderpack_name }}
 						</h3>
 					</div>
 					<div class="description">
@@ -59,22 +59,22 @@ const imgUrl = (imgUrlName, imgName) => {
 				<div class="icon">
 					<!-- 根据不同的平台名称 生成对应的平台链接和图标 -->
 					<a
-						:href="item.otherLink"
+						:href="item.other_link"
 						target="_blank"
-						:title="`前往${item.otherName}查看详情`"
-						v-if="item.otherName"
+						:title="`前往${item.other_name}查看详情`"
+						v-if="item.other_name"
 					>
 						<img
-							:src="`/src/assets/icon/logo/${item.otherName}.svg`"
-							:alt="item.otherName"
+							:src="`/src/assets/icon/logo/${item.other_name}.svg`"
+							:alt="item.other_name"
 							class="other-icon"
 						/>
 					</a>
 					<a
-						:href="`https://modrinth.com/${modrinthLinkName}/${item.modrinthName}`"
+						:href="`https://modrinth.com/${modrinthLinkName}/${item.modrinth_name}`"
 						target="_blank"
 						title="前往modrinth查看详情"
-						v-if="item.modrinthName"
+						v-if="item.modrinth_name"
 					>
 						<img
 							src="/src/assets/icon/logo/modrinth.svg"
@@ -83,10 +83,10 @@ const imgUrl = (imgUrlName, imgName) => {
 						/>
 					</a>
 					<a
-						:href="`https://www.curseforge.com/minecraft/${curseforgeLinkName}/${item.curseforgeName}`"
+						:href="`https://www.curseforge.com/minecraft/${curseforgeLinkName}/${item.curseforge_name}`"
 						target="_blank"
 						title="前往curseforge查看详情"
-						v-if="item.curseforgeName"
+						v-if="item.curseforge_name"
 					>
 						<img
 							src="/src/assets/icon/logo/curseforge.svg"

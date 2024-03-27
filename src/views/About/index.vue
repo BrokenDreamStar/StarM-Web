@@ -19,7 +19,7 @@ const loadingTimer = () => {
 			isLoading.value = false
 			clearTimeout(loading)
 		}
-	}, 800)
+	}, 500)
 }
 
 onMounted(async () => {
@@ -29,7 +29,7 @@ onMounted(async () => {
 			aboutPageData.value = JSON.parse(storedData)
 		} else {
 			isLoading.value = true
-			const res = await axios("http://127.0.0.1:3000/about")
+			const res = await axios("https://starm.team:3000/about")
 			aboutPageData.value = res.data
 			sessionStorage.setItem("aboutPageData", JSON.stringify(res.data))
 			loadingTimer()
@@ -88,9 +88,9 @@ onMounted(async () => {
 						:xl="4"
 						class="about-card-col"
 					>
-						<a :href="item.hrefUrl" target="_blank" class="about-card">
+						<a :href="item.link" target="_blank" class="about-card">
 							<div class="about-card-img">
-								<img :src="imgUrl(item.imgName)" alt="" />
+								<img :src="imgUrl(item.img_name)" alt="" />
 							</div>
 							<div class="about-card-text">
 								<span class="about-card-title">{{ item.title }}</span>

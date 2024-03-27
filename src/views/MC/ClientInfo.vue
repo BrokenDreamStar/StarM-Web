@@ -21,13 +21,13 @@ const fetchData = async (subversion) => {
 		const [modsDataRes, resourcePacksDataRes, shaderPacksDataRes] =
 			await Promise.all([
 				axios.get(
-					`http://127.0.0.1:3000/downloads/mc/clientinfo/mods/${subversion}`
+					`https://starm.team:3000/downloads/mc/clientinfo/mods/${subversion}`
 				),
 				axios.get(
-					`http://127.0.0.1:3000/downloads/mc/clientinfo/resourcepacks/${subversion}`
+					`https://starm.team:3000/downloads/mc/clientinfo/resourcepacks/${subversion}`
 				),
 				axios.get(
-					`http://127.0.0.1:3000/downloads/mc/clientinfo/shaderpacks/${subversion}`
+					`https://starm.team:3000/downloads/mc/clientinfo/shaderpacks/${subversion}`
 				)
 			])
 		//将数据存储到响应式数据中
@@ -84,7 +84,7 @@ const shaderPacks = ref({
 		<!-- 使用element-ui的tabs组件实现功能选项卡 -->
 		<el-tabs type="card">
 			<!-- 简介选项卡 -->
-			<el-tab-pane label="简介"> 暂无 </el-tab-pane>
+			<!-- <el-tab-pane label="简介"> 暂无 </el-tab-pane> -->
 			<!-- 模组列表选项卡 使用MCMods组件展示模组数据 -->
 			<el-tab-pane label="模组列表">
 				<MCMods :data="modsData"></MCMods>
