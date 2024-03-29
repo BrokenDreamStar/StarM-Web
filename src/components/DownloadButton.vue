@@ -16,8 +16,6 @@ defineProps({
 </template>
 
 <style lang="less" scoped>
-@import url("https://fonts.font.im/css?family=Noto+Sans");
-
 .btn {
 	padding: 10px 35px 10px 35px;
 	color: #fff;
@@ -37,7 +35,6 @@ defineProps({
 		4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 	outline: none;
 	text-align: center;
-	font-family: "Noto Sans", "微软雅黑", "MicroSoft YaHei";
 
 	&:after {
 		position: absolute;
@@ -74,7 +71,14 @@ defineProps({
 
 @media (max-width: 992px) {
 	.btn {
-		pointer-events: none;
+		&:hover:after {
+			top: unset;
+			height: unset;
+		}
+
+		&:hover {
+			color: unset;
+		}
 	}
 }
 </style>

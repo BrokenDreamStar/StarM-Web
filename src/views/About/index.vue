@@ -29,7 +29,7 @@ onMounted(async () => {
 			aboutPageData.value = JSON.parse(storedData)
 		} else {
 			isLoading.value = true
-			const res = await axios("https://starm.team:3000/about")
+			const res = await axios.get("/about")
 			aboutPageData.value = res.data
 			sessionStorage.setItem("aboutPageData", JSON.stringify(res.data))
 			loadingTimer()
@@ -236,6 +236,21 @@ main {
 }
 
 // 响应式布局设置
+
+@media (max-width: 992px) {
+	main {
+		.about {
+			.about-container {
+				.about-starm {
+					.text {
+						font-size: 0.875rem;
+					}
+				}
+			}
+		}
+	}
+}
+
 @media (max-width: 768px) {
 	main {
 		.about {
@@ -245,20 +260,6 @@ main {
 				.about-starm {
 					.text {
 						font-size: 0.75rem;
-					}
-				}
-			}
-		}
-	}
-}
-
-@media (max-width: 992px) {
-	main {
-		.about {
-			.about-container {
-				.about-starm {
-					.text {
-						font-size: 0.875rem;
 					}
 				}
 			}

@@ -14,18 +14,20 @@
 }
 
 /* 当页面过长超出屏幕出现滚动条时 使滚动条不占用页面宽度 */
-html{
+html {
 	overflow-y: auto;
-  overflow-x: hidden;
+	overflow-x: hidden;
 	margin-right: calc(100% - 100vw);
 }
+
+/* 引入谷歌Noto字体 */
+@import url("https://fonts.font.im/css?family=Noto+Sans");
 
 body {
 	/* CSS3 文字抗锯齿 */
 	-webkit-font-smoothing: antialiased;
 	/* 声明字体 */
-	font-family: Inter, "Helvetica Neue", Helvetica, "PingFang SC",
-		"Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	font-family: "Noto Sans", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 	/* 修改默认背景色 */
 	background-color: #edf2f7;
 }

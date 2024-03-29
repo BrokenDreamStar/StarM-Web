@@ -72,6 +72,7 @@ const imgUrl = (url) => {
 				:xl="5"
 				class="hidden-sm-and-down"
 			>
+				<!-- 筛选框 -->
 				<div class="tag-list">
 					<p>筛选</p>
 					<el-checkbox-group v-model="selectedTags">
@@ -85,25 +86,31 @@ const imgUrl = (url) => {
 					</el-checkbox-group>
 				</div>
 			</el-col>
+			<!-- 列表 -->
 			<el-col :xs="24" :sm="24" :md="19" :lg="19" :xl="19">
 				<div class="list">
 					<ul>
 						<li v-for="item in filteredItems" :key="item.id">
+							<!-- logo -->
 							<div class="logo">
 								<img :src="imgUrl(item.img_name)" alt="" />
 							</div>
 							<div class="content">
+								<!-- 标题 -->
 								<div class="title">
 									<h3>
 										{{ item.mod_name }}
 										<p v-if="item.chinese_name">{{ item.chinese_name }}</p>
 									</h3>
 								</div>
+								<!-- 简介 -->
 								<div class="description">{{ item.description }}</div>
+								<!-- 标签 -->
 								<div class="tags">
 									<span>{{ item.tags }}</span>
 								</div>
 							</div>
+							<!-- 图标 -->
 							<div class="icon">
 								<a
 									:href="`https://modrinth.com/mod/${item.modrinth_name}`"
@@ -146,6 +153,7 @@ const imgUrl = (url) => {
 	.el-row {
 		width: 100%;
 
+		/* 筛选框样式 */
 		.tag-list {
 			width: 90%;
 			min-width: 7.5rem;
@@ -161,6 +169,7 @@ const imgUrl = (url) => {
 				color: #999;
 			}
 
+			/* 多选框样式 */
 			.el-checkbox-group {
 				width: fit-content;
 				display: flex;
@@ -181,6 +190,7 @@ const imgUrl = (url) => {
 			}
 		}
 
+		/* 列表样式 */
 		.list {
 			li {
 				display: flex;
@@ -190,6 +200,7 @@ const imgUrl = (url) => {
 				margin-bottom: 0.9375rem;
 				border-radius: 0.5rem;
 
+				/* logo样式 */
 				.logo {
 					display: flex;
 					align-items: center;
@@ -198,6 +209,7 @@ const imgUrl = (url) => {
 					margin-right: 1.25rem;
 					margin-left: 1rem;
 
+					/* logo图片样式 */
 					img {
 						display: block;
 						width: 4rem;
@@ -206,6 +218,7 @@ const imgUrl = (url) => {
 					}
 				}
 
+				/* 内容区域样式 */
 				.content {
 					display: flex;
 					flex-direction: column;
@@ -213,6 +226,7 @@ const imgUrl = (url) => {
 					width: 100%;
 					height: 100%;
 
+					/* 标题样式 */
 					.title {
 						flex: 0 0 auto;
 						margin-top: 0.1875rem;
@@ -225,13 +239,14 @@ const imgUrl = (url) => {
 						}
 					}
 
+					/* 简介样式 */
 					.description {
 						flex: 1 1 auto;
 						overflow: hidden;
 						font-size: 0.9375rem;
 						margin-top: 0.125rem;
 					}
-
+					/* 标签样式 */
 					.tags {
 						flex: 0 0 auto;
 						margin-bottom: 0.5rem;
@@ -247,7 +262,7 @@ const imgUrl = (url) => {
 						}
 					}
 				}
-
+				/* 图标样式 */
 				.icon {
 					display: flex;
 					align-items: center;
@@ -255,6 +270,7 @@ const imgUrl = (url) => {
 					margin-top: auto;
 					margin-bottom: 0.125rem;
 
+					/* 图标样式 */
 					a {
 						display: flex;
 						align-items: center;
@@ -262,10 +278,12 @@ const imgUrl = (url) => {
 						margin-right: 0.3125rem;
 					}
 
+					/* modrinth图标样式 */
 					.modrinth-icon {
 						width: 1.5rem;
 					}
 
+					/* curseforge图标样式 */
 					.curseforge-icon {
 						width: 1.875rem;
 					}
@@ -275,15 +293,20 @@ const imgUrl = (url) => {
 	}
 }
 
-//响应式布局设置
+/* 响应式布局设置 */
+
+/* 当宽度小于1200px时 */
 @media (max-width: 1200px) {
 	.container {
+		/* 筛选框样式 */
 		.tag-list {
+			/* 缩小左边距 */
 			p {
 				margin-left: 1.25rem;
 			}
 
 			.el-checkbox-group {
+				/* 缩小左边距 */
 				.el-checkbox {
 					margin-left: 1.25rem;
 				}
@@ -292,38 +315,32 @@ const imgUrl = (url) => {
 	}
 }
 
+/* 当宽度小于992px时 */
 @media (max-width: 992px) {
-	//未知原因导致该代码块优先级不足 使用id选择器提权
+	/* 未知原因导致该代码块优先级不足 使用id选择器提权 */
 	#container {
+		/* 列表样式 */
 		.list {
+			/* 增加列表高度 */
 			li {
 				height: 6.875rem;
-
+				/* 增加logo高度 */
 				.logo {
 					height: 6.875rem;
 				}
 
 				.content {
+					/* 增加简介上边距并字体大小 */
 					.description {
 						margin-top: 0.0625rem;
 						font-size: 14.5px;
 					}
 				}
 
+				/* 图标样式 */
 				.icon {
+					/* 使图标竖向排列 */
 					flex-direction: column;
-					align-items: center;
-					justify-content: space-between;
-					margin-top: auto;
-					margin-bottom: 0.125rem;
-
-					a {
-						display: flex;
-						flex-direction: column;
-						align-items: center;
-						justify-content: center;
-						margin-bottom: 0.3125rem;
-					}
 				}
 			}
 		}

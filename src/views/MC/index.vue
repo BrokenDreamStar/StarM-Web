@@ -10,9 +10,7 @@ const router = useRouter()
 const downloadMCPageData = ref([])
 const fetchData = async (version) => {
 	try {
-		const res = await axios.get(
-			`https://starm.team:3000/downloads/mc/${version}`
-		)
+		const res = await axios.get(`/downloads/mc/${version}`)
 		return res.data
 	} catch (err) {
 		if (err.code === "ERR_NETWORK") {

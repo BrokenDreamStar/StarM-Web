@@ -28,7 +28,7 @@ onMounted(async () => {
 			downloadPageData.value = JSON.parse(storedData)
 		} else {
 			isLoading.value = true
-			const res = await axios("https://starm.team:3000/downloads")
+			const res = await axios("/downloads")
 			downloadPageData.value = res.data
 			sessionStorage.setItem("downloadPageData", JSON.stringify(res.data))
 			loadingTimer()
@@ -112,10 +112,10 @@ main {
 							font-size: 0.875rem;
 						}
 					}
-				}
 
-				a:hover {
-					box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+					&:hover {
+						box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+					}
 				}
 			}
 		}
@@ -126,6 +126,7 @@ main {
 @media (max-width: 992px) {
 	main {
 		.downloads {
+			width: 80vw;
 			.el-row {
 				.el-col {
 					a:hover {

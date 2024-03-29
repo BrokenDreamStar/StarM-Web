@@ -20,15 +20,9 @@ const fetchData = async (subversion) => {
 	try {
 		const [modsDataRes, resourcePacksDataRes, shaderPacksDataRes] =
 			await Promise.all([
-				axios.get(
-					`https://starm.team:3000/downloads/mc/clientinfo/mods/${subversion}`
-				),
-				axios.get(
-					`https://starm.team:3000/downloads/mc/clientinfo/resourcepacks/${subversion}`
-				),
-				axios.get(
-					`https://starm.team:3000/downloads/mc/clientinfo/shaderpacks/${subversion}`
-				)
+				axios.get(`/downloads/mc/clientinfo/mods/${subversion}`),
+				axios.get(`/downloads/mc/clientinfo/resourcepacks/${subversion}`),
+				axios.get(`/downloads/mc/clientinfo/shaderpacks/${subversion}`)
 			])
 		//将数据存储到响应式数据中
 		modsData.value = modsDataRes.data

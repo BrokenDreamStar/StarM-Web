@@ -114,23 +114,30 @@ main {
 }
 
 @media (max-width: 992px) {
-	.home-main {
-		.el-row {
-			.el-col a {
-				min-height: 13.75rem;
-				pointer-events: none;
+	main {
+		.home-main {
+			.el-row {
+				.el-col a {
+					min-height: 13.75rem;
+				}
+				.introduce {
+					height: 5rem;
+					bottom: 0;
+				}
 			}
 		}
 	}
 }
 
-// @media (max-width:1200px) {
-//   .home-main {
-//     .el-row {
-//       .el-col a {
-//         max-height: 10rem ;
-//       }
-//     }
-//   }
-// }
+@media (max-width: 768px) {
+	main {
+		.home-main {
+			.el-row {
+				.el-col a {
+					max-height: 20.3125rem;
+				}
+			}
+		}
+	}
+}
 </style>
