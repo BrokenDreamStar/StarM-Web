@@ -14,11 +14,11 @@ const isLoading = ref(false)
 
 const loadingTimer = () => {
 	const loading = setTimeout(() => {
-		if (downloadPageData.value.length !== 0) {
+		if (downloadPageData.value.length > 0) {
 			isLoading.value = false
 			clearTimeout(loading)
 		}
-	}, 500)
+	}, 300)
 }
 
 onMounted(async () => {

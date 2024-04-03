@@ -43,6 +43,10 @@ const router = createRouter({
 					component: () => import("@/views/MC/ClientInfo.vue")
 				},
 				{
+					path: "/downloads/mc/clientmore/:subversion",
+					component: () => import("@/views/MC/ClientMore.vue")
+				},
+				{
 					path: "/trcinteriorsur",
 					component: () => import("@/views/TRCInteriorSur/index.vue")
 				},

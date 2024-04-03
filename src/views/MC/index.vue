@@ -8,6 +8,7 @@ import DownloadButton from "@/components/DownloadButton.vue"
 const route = useRoute()
 const router = useRouter()
 const downloadMCPageData = ref([])
+
 const fetchData = async (version) => {
 	try {
 		const res = await axios.get(`/downloads/mc/${version}`)
@@ -60,16 +61,23 @@ const downloadButtonData = ref({ text: "下载 | Download" })
 						<div class="download">
 							<ul>
 								<li class="download-menu">
-									<router-link to="/" title="帮助">
+									<a
+										href="https://docs.starm.team/mcclient/install.html"
+										target="_blank"
+										title="帮助"
+									>
 										<img src="/src/assets/icon/help.svg" alt="" />
-									</router-link>
+									</a>
 									<router-link
 										:to="`/downloads/mc/clientinfo/${item.subversion}`"
 										title="详情"
 									>
 										<img src="/src/assets/icon/info.svg" alt="" />
 									</router-link>
-									<router-link to="/" title="更多">
+									<router-link
+										:to="`/downloads/mc/clientmore/${item.subversion}`"
+										title="更多"
+									>
 										<img src="/src/assets/icon/more.svg" alt="" />
 									</router-link>
 								</li>

@@ -1,4 +1,8 @@
 /* -----初始化浏览器样式----- */
+
+/* 引入谷歌Noto字体 */
+@import url("https://fonts.font.im/css?family=Noto+Sans");
+
 * {
 	/* 清除浏览器默认外边距 */
 	margin: 0;
@@ -19,9 +23,6 @@ html {
 	overflow-x: hidden;
 	margin-right: calc(100% - 100vw);
 }
-
-/* 引入谷歌Noto字体 */
-@import url("https://fonts.font.im/css?family=Noto+Sans");
 
 body {
 	/* CSS3 文字抗锯齿 */

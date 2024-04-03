@@ -12,6 +12,7 @@ const card = ref([
 		pageUrl: "/trcinteriorsur",
 		url: "TRCStudioInterior.jpg",
 		title: "红色创意内服",
+		description: "生电玩法向服务器",
 		xs: 24,
 		sm: 24,
 		md: 24,
@@ -21,6 +22,7 @@ const card = ref([
 		pageUrl: "/jumplink",
 		url: "TRCStudioLobby.jpg",
 		title: "红色创意服务器",
+		description: "",
 		xs: 24,
 		sm: 24,
 		md: 24,
@@ -50,7 +52,10 @@ const card = ref([
 						:style="{ backgroundImage: `url(${imgUrl(item.url)})` }"
 					>
 						<div class="introduce">
-							{{ item.title }}
+							<div class="text">
+								<h3>{{ item.title }}</h3>
+								<p>{{ item.description }}</p>
+							</div>
 						</div>
 					</router-link>
 					<router-link to="/" v-else class="pie">
@@ -97,6 +102,12 @@ main {
 				backdrop-filter: blur(0.625rem);
 				text-align: center;
 				transition: all 0.3s;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				.text {
+				}
 			}
 
 			.pie {

@@ -38,7 +38,7 @@ import { RouterLink } from "vue-router"
 	width: 100%;
 	height: 70vh;
 	min-height: 37.5rem;
-	background: url(/src/assets/images/TRCInteriorSur.jpg) no-repeat center/cover;
+	background: url(/src/assets/images/TRCInteriorSur.webp) no-repeat center/cover;
 	white-space: nowrap;
 
 	.container {
