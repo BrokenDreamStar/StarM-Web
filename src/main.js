@@ -6,7 +6,12 @@ import App from "./App.vue"
 import router from "./router"
 import axios from "axios"
 
-axios.defaults.baseURL = "https://starm.team:3000"
+//根据不同环境改变请求地址
+if (import.meta.env.DEV) {
+	axios.defaults.baseURL = "http://127.0.0.1:3000"
+} else {
+	axios.defaults.baseURL = "https://starm.team:3000"
+}
 
 const app = createApp(App)
 
