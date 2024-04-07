@@ -22,7 +22,7 @@ const card = ref([
 		pageUrl: "/jumplink",
 		url: "TRCStudioLobby.jpg",
 		title: "红色创意服务器",
-		description: "",
+		description: "生存向群组服务器",
 		xs: 24,
 		sm: 24,
 		md: 24,
@@ -100,14 +100,13 @@ main {
 				height: 6.25rem;
 				background-color: rgba(255, 255, 255, 0.6);
 				backdrop-filter: blur(0.625rem);
+				color: #373737;
 				text-align: center;
 				transition: all 0.3s;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				flex-direction: column;
-				.text {
-				}
 			}
 
 			.pie {
