@@ -15,8 +15,6 @@ onMounted(async () => {
 	modsData.value = props.data
 })
 
-//-----筛选功能-----
-
 //存储用户选择的标签
 const selectedTags = ref([])
 
@@ -205,9 +203,8 @@ const imgUrl = (url) => {
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					height: 5.625rem;
-					margin-right: 1.25rem;
-					margin-left: 1rem;
+					height: 100%;
+					min-width: 6rem;
 
 					/* logo图片样式 */
 					img {
@@ -321,19 +318,36 @@ const imgUrl = (url) => {
 	#container {
 		/* 列表样式 */
 		.list {
-			/* 增加列表高度 */
+			/* 修改列表高度为自适应 */
 			li {
-				height: 6.875rem;
-				/* 增加logo高度 */
-				.logo {
-					height: 6.875rem;
-				}
+				position: relative;
+				height: fit-content;
 
+				/* 修改logo部位为子绝父相定位方案的水平垂直居中 */
+				.logo {
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+				}
 				.content {
-					/* 增加简介上边距并字体大小 */
+					/* 增加左边距让出图片的位置 */
+					margin-left: 6rem;
+					/* 缩小字体大小 */
+					.title {
+						font-size: 0.9375rem;
+						line-height: 1.0625rem;
+						p {
+							font-size: 0.8125rem;
+						}
+					}
+					/* 增加简介上边距并缩小字体大小 */
 					.description {
 						margin-top: 0.0625rem;
-						font-size: 14.5px;
+						font-size: 0.8125rem;
+					}
+					/* 增加增加标签的上边距 */
+					.tags {
+						margin-top: 0.1875rem;
 					}
 				}
 
