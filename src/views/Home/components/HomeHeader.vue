@@ -56,13 +56,10 @@
 	//标题
 	.title {
 		//字体
-		// @font-face {
-		//   font-family: "LuckiestGuy";
-		//   src: url(/src/assets/font/LuckiestGuy-Regular.ttf);
-		// }
-
-		//引入谷歌字体库
-		@import url("https://fonts.font.im/css?family=Luckiest+Guy");
+		@font-face {
+			font-family: "Luckiest Guy";
+			src: url(/src/assets/font/LuckiestGuy-Regular.ttf);
+		}
 
 		h1 {
 			font-size: 20vmin;
