@@ -198,20 +198,12 @@ const imgUrl = (imgUrlName, imgName) => {
 	#container {
 		/* 列表样式 */
 		li {
-			/* 增加列表高度 */
-			height: 6.875rem;
-
-			/* 增加logo高度 */
-			.logo {
-				height: 6.875rem;
-			}
 			/* 内容样式 */
 			.content {
-				/* 增加标题上边距 */
+				/* 缩小标题行高 */
 				.title {
-					margin-top: 1.25rem;
+					line-height: 1.0625rem;
 				}
-
 				/* 缩小简介字体大小 */
 				.description {
 					font-size: 14.5px;
