@@ -4,38 +4,31 @@ import { RouterLink } from "vue-router"
 import { Vue3Lottie } from "vue3-lottie"
 import AstronautJSON from "@/assets/animations/menuV2.json"
 
-//移动端导航栏及侧边栏组件
+const mobileMenuIconAni = ref(false)
+const drawer = ref(false)
+const mobileMenuSwitchState = ref(true)
 
-const mobileMenuIconAni = ref(null)
-const mobileMenuSwitchButton = ref(null)
-const drawer = ref(null)
-let mobileMenuSwitchState = true
-
-const mobileMenuSwitch = () => {
-	if (mobileMenuSwitchState) {
-		mobileMenuIconAni.value.play()
-		mobileMenuSwitchButton.value.disabled = true
-		setTimeout(() => {
-			drawer.value = true
-		}, 10)
+const toggleMenu = () => {
+	if (mobileMenuSwitchState.value) {
+		mobileMenuIconAni.value.setDirection("reverse")
+		mobileMenuSwitchState.value = false
 	} else {
-		mobileMenuIconAni.value.play()
-		mobileMenuSwitchButton.value.disabled = true
-		setTimeout(() => {
-			drawer.value = false
-		}, 300)
+		mobileMenuIconAni.value.setDirection("forward")
+		mobileMenuSwitchState.value = true
 	}
 }
 
-const toggleMenu = () => {
-	if (mobileMenuSwitchState) {
-		mobileMenuIconAni.value.setDirection("reverse")
-		mobileMenuSwitchButton.value.disabled = false
-		mobileMenuSwitchState = false
+const mobileMenuSwitch = () => {
+	if (mobileMenuSwitchState.value) {
+		mobileMenuIconAni.value.play()
+		setTimeout(() => {
+			drawer.value = true
+		}, 100)
 	} else {
-		mobileMenuIconAni.value.setDirection("forward")
-		mobileMenuSwitchButton.value.disabled = false
-		mobileMenuSwitchState = true
+		mobileMenuIconAni.value.play()
+		setTimeout(() => {
+			drawer.value = false
+		}, 300)
 	}
 }
 </script>
@@ -79,14 +72,30 @@ const toggleMenu = () => {
 				</ul>
 			</div>
 			<div class="mobile-nav hidden-sm-and-up">
-				<el-button @click="mobileMenuSwitch" ref="mobileMenuSwitchButton" type="primary">
-					<Vue3Lottie @onComplete="toggleMenu" ref="mobileMenuIconAni" :animationData="AstronautJSON" :height="45"
-						:width="45" :speed="2.1" :autoPlay="false" :loop="false" />
+				<el-button @click="mobileMenuSwitch" type="primary">
+					<Vue3Lottie
+						@onComplete="toggleMenu"
+						ref="mobileMenuIconAni"
+						:animationData="AstronautJSON"
+						:height="45"
+						:width="45"
+						:speed="2.1"
+						:autoPlay="false"
+						:loop="false"
+					/>
 				</el-button>
 			</div>
 		</div>
-		<el-drawer class="hidden-sm-and-up" v-model="drawer" :with-header="false" :close-on-press-escape="false"
-			:close-on-click-modal="false" :modal="false" :z-index="2" :show-close="false">
+		<el-drawer
+			class="hidden-sm-and-up"
+			v-model="drawer"
+			:with-header="false"
+			:close-on-press-escape="false"
+			:close-on-click-modal="false"
+			:modal="false"
+			:z-index="2"
+			:show-close="false"
+		>
 			<div class="mobile-menu">
 				<ul>
 					<li>
