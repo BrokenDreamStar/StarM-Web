@@ -91,6 +91,14 @@ main {
 				&:hover .introduce {
 					bottom: 0;
 				}
+
+				@media (max-width: 992px) {
+					min-height: 13.75rem;
+				}
+
+				@media (max-width: 768px) {
+					max-height: 20.3125rem;
+				}
 			}
 
 			.introduce {
@@ -107,6 +115,11 @@ main {
 				align-items: center;
 				justify-content: center;
 				flex-direction: column;
+
+				@media (max-width: 992px) {
+					height: 5rem;
+					bottom: 0;
+				}
 			}
 
 			.pie {
@@ -117,34 +130,6 @@ main {
 					left: 50%;
 					top: 50%;
 					transform: translate(-50%, -50%);
-				}
-			}
-		}
-	}
-}
-
-@media (max-width: 992px) {
-	main {
-		.home-main {
-			.el-row {
-				.el-col a {
-					min-height: 13.75rem;
-				}
-				.introduce {
-					height: 5rem;
-					bottom: 0;
-				}
-			}
-		}
-	}
-}
-
-@media (max-width: 768px) {
-	main {
-		.home-main {
-			.el-row {
-				.el-col a {
-					max-height: 20.3125rem;
 				}
 			}
 		}

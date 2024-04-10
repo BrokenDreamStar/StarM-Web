@@ -17,6 +17,9 @@
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	@media (max-width: 768px) {
+		height: 60vh;
+	}
 	height: 100vh;
 	background-image: linear-gradient(
 		125deg,
@@ -72,13 +75,6 @@
 				-1px 1px #999999,
 				-10px 10px 5px #80808080;
 		}
-	}
-}
-
-//响应式布局样式
-@media (max-width: 768px) {
-	.home-bg {
-		height: 60vh;
 	}
 }
 </style>
