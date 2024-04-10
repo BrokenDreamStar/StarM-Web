@@ -1,36 +1,45 @@
 <script setup>
-import { ref } from "vue"
-import { RouterLink } from "vue-router"
+import { ref, watch } from "vue"
+import { RouterLink, useRoute } from "vue-router"
 import { Vue3Lottie } from "vue3-lottie"
 import AstronautJSON from "@/assets/animations/menuV2.json"
 
-const mobileMenuIconAni = ref(false)
-const drawer = ref(false)
-const mobileMenuSwitchState = ref(true)
+const routeList = ref([
+	{ name: "首页", path: "/" },
+	{ name: "关于", path: "/about" },
+	{ name: "资源下载", path: "/downloads" },
+	{ name: "原神工具", path: "/genshin" },
+	{ name: "来点弔图", path: "/dt" }
+])
 
-const toggleMenu = () => {
-	if (mobileMenuSwitchState.value) {
-		mobileMenuIconAni.value.setDirection("reverse")
-		mobileMenuSwitchState.value = false
-	} else {
-		mobileMenuIconAni.value.setDirection("forward")
-		mobileMenuSwitchState.value = true
-	}
-}
+const mobileMenuIconAni = ref(null)
+const drawer = ref(false)
+const mobileMenuSwitchState = ref(false)
 
 const mobileMenuSwitch = () => {
 	if (mobileMenuSwitchState.value) {
-		mobileMenuIconAni.value.play()
-		setTimeout(() => {
-			drawer.value = true
-		}, 100)
+		mobileMenuIconAni.value.setDirection("reverse")
 	} else {
-		mobileMenuIconAni.value.play()
-		setTimeout(() => {
-			drawer.value = false
-		}, 300)
+		mobileMenuIconAni.value.setDirection("forward")
 	}
+	mobileMenuIconAni.value.play()
+
+	setTimeout(() => {
+		drawer.value = !drawer.value
+	}, 200)
+
+	mobileMenuSwitchState.value = !mobileMenuSwitchState.value
 }
+
+const route = useRoute()
+watch(
+	() => route.path,
+	(newValue, oldValue) => {
+		if (newValue !== oldValue) {
+			mobileMenuSwitch()
+		}
+	}
+)
 </script>
 
 <template>
@@ -50,7 +59,7 @@ const mobileMenuSwitch = () => {
 						<router-link to="/about">关于 | About</router-link>
 					</li>
 					<li>
-						<a @click.prevent>更多 | More <i class="menu-more-icon"></i></a>
+						<a @click.prevent class="menu-more-icon">更多 | More</a>
 						<ul class="menu-more">
 							<li>
 								<a href="https://trc.studio/" target="_blank">红色创意官网</a>
@@ -73,8 +82,8 @@ const mobileMenuSwitch = () => {
 			</div>
 			<div class="mobile-nav hidden-sm-and-up">
 				<el-button @click="mobileMenuSwitch" type="primary">
+					<!-- @onComplete="toggleMenu" -->
 					<Vue3Lottie
-						@onComplete="toggleMenu"
 						ref="mobileMenuIconAni"
 						:animationData="AstronautJSON"
 						:height="45"
@@ -99,22 +108,10 @@ const mobileMenuSwitch = () => {
 			<div class="mobile-menu">
 				<ul>
 					<li>
-						<router-link to="/">首页</router-link>
-					</li>
-					<li>
-						<router-link to="/about">关于</router-link>
-					</li>
-					<li>
 						<a href="https://trc.studio/" target="_blank">红色创意官网</a>
 					</li>
-					<li>
-						<router-link to="/downloads">资源下载</router-link>
-					</li>
-					<li>
-						<router-link to="/genshin">原神工具</router-link>
-					</li>
-					<li>
-						<router-link to="/dt">来点弔图</router-link>
+					<li v-for="item in routeList" :key="item.id">
+						<router-link :to="item.path">{{ item.name }}</router-link>
 					</li>
 					<li>
 						<a @click.prevent>敬请期待</a>
@@ -132,6 +129,8 @@ nav {
 	@navMargin: 10rem;
 	//导航栏高度
 	@navHeight: 3.125rem;
+	//页面宽度小于992px时的导航栏外边距
+	@padMargin: 3rem;
 
 	.nav {
 		position: fixed;
@@ -146,6 +145,13 @@ nav {
 		//logo样式
 		.logo {
 			margin-left: @navMargin;
+
+			@media (max-width: 992px) {
+				margin-left: @padMargin;
+			}
+			@media (max-width: 768px) {
+				margin-left: 0.5rem;
+			}
 
 			a {
 				display: block;
@@ -163,6 +169,9 @@ nav {
 		.menu {
 			display: flex;
 			margin-right: @navMargin;
+			@media (max-width: 992px) {
+				margin-right: @padMargin;
+			}
 
 			ul {
 				display: flex;
@@ -174,62 +183,76 @@ nav {
 				margin-left: 3rem;
 				cursor: pointer;
 
-				.menu-more-icon {
-					display: inline-block;
-					width: 20px;
-					height: 1.25ex;
-					background: url(/src/assets/icon/chevron-down.svg) no-repeat center;
-					transition: transform 0.2s;
-				}
-			}
-
-			li:nth-child(3) {
-				position: relative;
-			}
-
-			li:nth-child(3):hover .menu-more {
-				display: block;
-			}
-
-			.menu-more {
-				display: none;
-				position: absolute;
-				justify-content: center;
-				left: 0;
-				width: 100%;
-				background-color: #fff;
-
-				li {
-					height: 2.5rem;
-					margin: 0;
-					line-height: 2.5rem;
-					text-align: center;
+				a {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					height: @navHeight;
 				}
 
-				li:nth-child(1) {
-					margin-top: 0.75rem;
+				a.router-link-exact-active {
+					color: #409eff;
 				}
 
-				li:last-child {
-					border: none;
-					cursor: not-allowed;
+				.menu-more {
+					display: none;
+					position: absolute;
+					justify-content: center;
+					left: 0;
+					width: fit-content;
+					background-color: #fff;
 
-					a {
-						color: #c0c4cc;
+					li {
+						height: @navHeight / 2;
+						margin: 0;
+						line-height: 2.5rem;
+						text-align: center;
+
+						a {
+							height: 80%;
+							color: #333;
+							white-space: nowrap;
+						}
+
+						a.router-link-exact-active {
+							color: #409eff;
+						}
+
+						&:last-child {
+							border: none;
+							cursor: not-allowed;
+
+							a {
+								color: #c0c4cc;
+							}
+						}
 					}
 				}
-			}
 
-			li:nth-child(3):hover .menu-more-icon {
-				transform: rotate(180deg);
-			}
+				.menu-more-icon {
+					&::after {
+						transform: translateY(0.0625rem);
+						display: inline-block;
+						content: "";
+						width: 1.5625rem;
+						height: 1.5625rem;
+						background: url(/src/assets/icon/chevron-down.svg);
+						background-size: cover;
+						transition: transform 0.3s;
+					}
 
-			a {
-				color: #333;
-			}
+					&:hover::after {
+						transform: rotate(180deg);
+					}
+				}
 
-			a.router-link-exact-active {
-				color: #ff1212;
+				&:nth-child(3) {
+					position: relative;
+				}
+
+				&:nth-child(3):hover .menu-more {
+					display: block;
+				}
 			}
 		}
 	}
@@ -255,35 +278,19 @@ nav {
 
 		li {
 			margin-bottom: 1.25rem;
+
+			&:last-child {
+				cursor: not-allowed;
+				a {
+					color: #c0c4cc;
+				}
+			}
 		}
 	}
 }
 
 //导航栏占位
 .top-box {
-	height: 50px;
-}
-
-//响应式布局样式
-@media (max-width: 992px) {
-	@padMargin: 3rem;
-
-	nav .nav {
-		.logo {
-			margin-left: @padMargin;
-		}
-
-		.menu {
-			margin-right: @padMargin;
-		}
-	}
-}
-
-@media (max-width: 768px) {
-	nav .nav {
-		.logo {
-			margin-left: 0.5rem;
-		}
-	}
+	height: 3.125rem;
 }
 </style>
