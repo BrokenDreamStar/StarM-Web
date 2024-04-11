@@ -52,13 +52,23 @@ const imgUrl = (url) => {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			margin-right: 0.1875rem;
 			width: 3.125rem;
 			height: 3.125rem;
-			margin-right: 0.1875rem;
+
+			@media (max-width: 768px) {
+				width: 2.5rem;
+				height: 2.5rem;
+			}
 
 			img {
-				width: 45px;
-				height: 45px;
+				width: 2.8125rem;
+				height: 2.8125rem;
+
+				@media (max-width: 768px) {
+					width: 2.1875rem;
+					height: 2.1875rem;
+				}
 			}
 		}
 
@@ -70,12 +80,20 @@ const imgUrl = (url) => {
 
 			.title {
 				font-size: 1.0625rem;
+				@media (max-width: 768px) {
+					font-size: 1rem;
+				}
+
 				font-weight: 600;
 			}
 
 			.description {
 				font-size: 0.9375rem;
-				color: rgb(127, 129, 132);
+				@media (max-width: 768px) {
+					font-size: 0.875rem;
+				}
+
+				color: #7f8184;
 			}
 		}
 	}
