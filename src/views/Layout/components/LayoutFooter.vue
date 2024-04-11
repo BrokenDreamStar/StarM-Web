@@ -33,7 +33,7 @@ footer {
 
 		/* 链接样式 */
 		.links {
-			padding: @footerPadding 0 0.8125rem 0;
+			padding: @footerPadding 0 0.8125rem;
 			text-align: center;
 			font-size: 0.9375rem;
 
