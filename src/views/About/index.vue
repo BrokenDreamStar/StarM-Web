@@ -79,6 +79,7 @@ main {
 	.about {
 		width: 65vw;
 		margin: 0 auto;
+		overflow: hidden;
 
 		@media (max-width: 768px) {
 			width: 95vw;

@@ -9,13 +9,17 @@ defineProps({
 		required: true
 	}
 })
+
+const imgUrl = (url) => {
+	return new URL(`/src/assets/icon/${url}`, import.meta.url)
+}
 </script>
 
 <template>
 	<div class="container">
 		<div class="title">
 			<div>
-				<img :src="`/src/assets/icon/${imgName}`" alt="" />
+				<img :src="imgUrl(imgName)" alt="" />
 				<span>{{ title }}</span>
 			</div>
 		</div>
