@@ -118,6 +118,11 @@ main {
 	width: 60vw;
 	margin: 0 auto;
 
+	/* 屏幕宽度小于992px时 修改主要内容区域的宽度 */
+	@media (max-width: 992px) {
+		width: 90vw;
+	}
+
 	/* tabs组件样式 */
 	.el-tabs {
 		margin-top: 1.25rem;
@@ -135,15 +140,6 @@ main {
 		:deep(.el-tabs__item) {
 			border: none;
 		}
-	}
-}
-
-/* 响应式布局 */
-
-/* 屏幕宽度小于992px时 修改主要内容区域的宽度 */
-@media (max-width: 992px) {
-	main {
-		width: 90vw;
 	}
 }
 </style>
