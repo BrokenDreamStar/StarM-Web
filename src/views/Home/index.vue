@@ -8,5 +8,3 @@ import HomeMain from "@/views/Home/components/HomeMain.vue"
 	<RouterView></RouterView>
 	<HomeMain></HomeMain>
 </template>
-
-<style></style>
