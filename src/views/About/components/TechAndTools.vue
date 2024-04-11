@@ -39,11 +39,14 @@ const imgUrl = (url) => {
 	justify-content: center;
 	align-items: center;
 	margin: 0.9375rem 0;
+	min-width: 11.25rem;
+	@media (max-width: 768px) {
+		margin-left: 0;
+	}
 
 	a {
 		display: flex;
 		align-items: center;
-		min-width: 11.25rem;
 		width: 11.25rem;
 		height: 3.125rem;
 		cursor: pointer;
