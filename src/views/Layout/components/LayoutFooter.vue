@@ -1,21 +1,19 @@
 <script setup>
-import { ref } from "vue"
 import { RouterLink } from "vue-router"
-
-const data = new Date()
-const year = ref(data.getFullYear())
 </script>
 
 <template>
 	<footer>
 		<div class="footer-container">
+			<!-- 链接 -->
 			<div class="links">
 				<a href="https://www.trc.studio/" target="_blank">红色创意官网</a>
 				<router-link to="/about">关于我们</router-link>
 				<router-link to="/404">友情链接</router-link>
 			</div>
+			<!-- 版权信息 -->
 			<div class="copyright">
-				<p>Copyright ©2021-{{ year }} StarM Team</p>
+				<p>Copyright ©2021-{{ new Date().getFullYear() }} StarM Team</p>
 			</div>
 		</div>
 	</footer>
@@ -23,13 +21,17 @@ const year = ref(data.getFullYear())
 
 <style lang="less" scoped>
 footer {
+	/* 页脚内边距 */
+	@footerPadding: 2rem;
+	/* 页脚字体颜色 */
+	@footerFontColor: #dedfe0;
+	/* 页脚样式 */
 	.footer-container {
 		width: 100%;
 		height: fit-content;
 		background-color: #303133;
-		@footerPadding: 2rem;
-		@footerFontColor: #dedfe0;
 
+		/* 链接样式 */
 		.links {
 			padding: @footerPadding 0 0.8125rem 0;
 			text-align: center;
@@ -47,6 +49,7 @@ footer {
 			}
 		}
 
+		/* 版权信息样式 */
 		.copyright {
 			color: @footerFontColor;
 			text-align: center;
