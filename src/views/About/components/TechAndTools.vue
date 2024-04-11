@@ -42,9 +42,9 @@ const imgUrl = (url) => {
 
 	a {
 		display: flex;
-		justify-content: flex-start;
 		align-items: center;
 		min-width: 11.25rem;
+		width: 11.25rem;
 		height: 3.125rem;
 		cursor: pointer;
 
