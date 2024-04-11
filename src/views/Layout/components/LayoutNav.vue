@@ -4,7 +4,8 @@ import { RouterLink, useRoute } from "vue-router"
 import { Vue3Lottie } from "vue3-lottie"
 import AstronautJSON from "@/assets/animations/menuV2.json"
 
-const routeList = ref([
+// 导航栏列表数据
+const navList = ref([
 	{ name: "首页", path: "/" },
 	{ name: "关于", path: "/about" },
 	{ name: "资源下载", path: "/downloads" },
@@ -12,10 +13,14 @@ const routeList = ref([
 	{ name: "来点弔图", path: "/dt" }
 ])
 
+// 移动端菜单图标动画
 const mobileMenuIconAni = ref(null)
+// 抽屉菜单状态
 const drawer = ref(false)
+// 移动端菜单开关状态
 const mobileMenuSwitchState = ref(false)
 
+// 控制移动端菜单图标动画和抽屉菜单状态
 const mobileMenuSwitch = () => {
 	if (mobileMenuSwitchState.value) {
 		mobileMenuIconAni.value.setDirection("reverse")
@@ -31,11 +36,12 @@ const mobileMenuSwitch = () => {
 	mobileMenuSwitchState.value = !mobileMenuSwitchState.value
 }
 
+// 监听路由变化 如果抽屉菜单处于打开状态 则关闭抽屉菜单
 const route = useRoute()
 watch(
 	() => route.path,
-	(newValue, oldValue) => {
-		if (newValue !== oldValue) {
+	() => {
+		if (drawer.value) {
 			mobileMenuSwitch()
 		}
 	}
@@ -43,13 +49,16 @@ watch(
 </script>
 
 <template>
+	<!-- 导航栏 -->
 	<nav>
 		<div class="nav">
+			<!-- logo部分 -->
 			<div class="logo">
 				<router-link to="/">
 					<img src="/src/assets/logo/logo.svg" />
 				</router-link>
 			</div>
+			<!-- 菜单 -->
 			<div class="menu hidden-xs-only">
 				<ul>
 					<li>
@@ -58,6 +67,7 @@ watch(
 					<li>
 						<router-link to="/about">关于 | About</router-link>
 					</li>
+					<!-- 更多 -->
 					<li>
 						<a @click.prevent class="menu-more-icon">更多 | More</a>
 						<ul class="menu-more">
@@ -80,9 +90,9 @@ watch(
 					</li>
 				</ul>
 			</div>
+			<!-- 移动端菜单 -->
 			<div class="mobile-nav hidden-sm-and-up">
 				<el-button @click="mobileMenuSwitch" type="primary">
-					<!-- @onComplete="toggleMenu" -->
 					<Vue3Lottie
 						ref="mobileMenuIconAni"
 						:animationData="AstronautJSON"
@@ -95,6 +105,7 @@ watch(
 				</el-button>
 			</div>
 		</div>
+		<!-- 抽屉菜单 -->
 		<el-drawer
 			class="hidden-sm-and-up"
 			v-model="drawer"
@@ -110,7 +121,7 @@ watch(
 					<li>
 						<a href="https://trc.studio/" target="_blank">红色创意官网</a>
 					</li>
-					<li v-for="item in routeList" :key="item.id">
+					<li v-for="item in navList" :key="item.id">
 						<router-link :to="item.path">{{ item.name }}</router-link>
 					</li>
 					<li>
@@ -123,15 +134,16 @@ watch(
 </template>
 
 <style lang="less" scoped>
-//导航栏
+/* 导航栏 */
 nav {
-	//导航栏外边距
+	/* 导航栏外边距 */
 	@navMargin: 10rem;
-	//导航栏高度
+	/* 导航栏高度 */
 	@navHeight: 3.125rem;
-	//页面宽度小于992px时的导航栏外边距
+	/* 页面宽度小于992px时的导航栏外边距 */
 	@padMargin: 3rem;
-
+	/* 激活时颜色 */
+	@activeColor: #409eff;
 	.nav {
 		position: fixed;
 		display: flex;
@@ -142,10 +154,11 @@ nav {
 		background-color: #fff;
 		z-index: 5;
 
-		//logo样式
+		/* logo样式 */
 		.logo {
 			margin-left: @navMargin;
 
+			/* 响应式布局 */
 			@media (max-width: 992px) {
 				margin-left: @padMargin;
 			}
@@ -165,10 +178,11 @@ nav {
 			}
 		}
 
-		//菜单样式
+		/* 菜单样式 */
 		.menu {
 			display: flex;
 			margin-right: @navMargin;
+			/* 响应式布局 */
 			@media (max-width: 992px) {
 				margin-right: @padMargin;
 			}
@@ -191,15 +205,15 @@ nav {
 				}
 
 				a.router-link-exact-active {
-					color: #409eff;
+					color: @activeColor;
 				}
-
+				/* 更多菜单样式 */
 				.menu-more {
 					display: none;
 					position: absolute;
 					justify-content: center;
 					left: 0;
-					width: fit-content;
+					width: 100%;
 					background-color: #fff;
 
 					li {
@@ -215,7 +229,7 @@ nav {
 						}
 
 						a.router-link-exact-active {
-							color: #409eff;
+							color: @activeColor;
 						}
 
 						&:last-child {
@@ -228,7 +242,7 @@ nav {
 						}
 					}
 				}
-
+				/* 更多菜单图标 */
 				.menu-more-icon {
 					&::after {
 						transform: translateY(0.0625rem);
@@ -257,7 +271,7 @@ nav {
 		}
 	}
 
-	//移动端导航栏样式
+	/* 移动端导航栏样式 */
 	.mobile-nav {
 		display: flex;
 		justify-content: space-around;
@@ -287,10 +301,5 @@ nav {
 			}
 		}
 	}
-}
-
-//导航栏占位
-.top-box {
-	height: 3.125rem;
 }
 </style>
