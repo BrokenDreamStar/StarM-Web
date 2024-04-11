@@ -11,7 +11,7 @@
 </template>
 
 <style lang="less" scoped>
-//头部背景
+/* 头部背景 */
 .home-bg {
 	display: flex;
 	align-items: center;
@@ -31,7 +31,7 @@
 		#f9f871
 	);
 	background-size: 400%;
-	//背景渐变动画
+	/* 背景渐变动画 */
 	animation: bgmove 15s infinite;
 
 	@keyframes bgmove {
@@ -56,9 +56,9 @@
 		}
 	}
 
-	//标题
+	/* 标题 */
 	.title {
-		//字体
+		/* 字体样式 */
 		@font-face {
 			font-family: "Luckiest Guy";
 			src: url(/src/assets/font/LuckiestGuy-Regular.ttf);
