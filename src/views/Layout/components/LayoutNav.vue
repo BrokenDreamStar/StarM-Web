@@ -142,6 +142,8 @@ nav {
 	@navHeight: 3.125rem;
 	/* 页面宽度小于992px时的导航栏外边距 */
 	@padMargin: 3rem;
+	/* 选中时颜色 */
+	@hoverColor: #66ccff;
 	/* 激活时颜色 */
 	@activeColor: #409eff;
 	.nav {
@@ -202,6 +204,10 @@ nav {
 					align-items: center;
 					justify-content: center;
 					height: @navHeight;
+
+					&:hover {
+						color: @hoverColor;
+					}
 				}
 
 				a.router-link-exact-active {
@@ -226,6 +232,10 @@ nav {
 							height: 80%;
 							color: #333;
 							white-space: nowrap;
+
+							&:hover {
+								color: @hoverColor;
+							}
 						}
 
 						a.router-link-exact-active {
@@ -262,6 +272,10 @@ nav {
 
 				&:nth-child(3) {
 					position: relative;
+
+					a:hover {
+						color: unset;
+					}
 				}
 
 				&:nth-child(3):hover .menu-more {
