@@ -7,10 +7,11 @@ const imgUrl = (url) => {
 	return new URL(`/src/assets/images/${url}`, import.meta.url)
 }
 
-const card = ref([
+// 页面数据
+const homeMainData = ref([
 	{
 		pageUrl: "/trcinteriorsur",
-		url: "TRCStudioInterior.jpg",
+		imgName: "TRCStudioInterior.jpg",
 		title: "红色创意内服",
 		description: "生电玩法向服务器",
 		xs: 24,
@@ -20,7 +21,7 @@ const card = ref([
 	},
 	{
 		pageUrl: "/jumplink",
-		url: "TRCStudioLobby.jpg",
+		imgName: "TRCStudioLobby.jpg",
 		title: "红色创意服务器",
 		description: "生存向群组服务器",
 		xs: 24,
@@ -28,9 +29,9 @@ const card = ref([
 		md: 24,
 		lg: 8
 	},
-	{ pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
-	{ pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
-	{ pageUrl: "/", url: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 }
+	{ pageUrl: "/", imgName: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
+	{ pageUrl: "/", imgName: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 },
+	{ pageUrl: "/", imgName: "", title: "画饼中", xs: 24, sm: 12, md: 8, lg: 8 }
 ])
 </script>
 
@@ -39,7 +40,7 @@ const card = ref([
 		<div class="home-main">
 			<el-row :gutter="20">
 				<el-col
-					v-for="item in card"
+					v-for="item in homeMainData"
 					:key="item.id"
 					:xs="item.xs"
 					:sm="item.sm"
@@ -48,8 +49,8 @@ const card = ref([
 				>
 					<router-link
 						:to="item.pageUrl"
-						v-if="item.title !== '画饼中'"
-						:style="{ backgroundImage: `url(${imgUrl(item.url)})` }"
+						v-if="item.imgName"
+						:style="{ backgroundImage: `url(${imgUrl(item.imgName)})` }"
 					>
 						<div class="introduce">
 							<div class="text">
@@ -58,9 +59,9 @@ const card = ref([
 							</div>
 						</div>
 					</router-link>
-					<router-link to="/" v-else class="pie">
+					<a v-else class="pie">
 						<Loading></Loading>
-					</router-link>
+					</a>
 				</el-col>
 			</el-row>
 		</div>
@@ -78,6 +79,7 @@ main {
 		.el-row {
 			margin-bottom: 1.25rem;
 
+			/* 卡片样式 */
 			.el-col a {
 				display: block;
 				position: relative;
@@ -92,6 +94,7 @@ main {
 					bottom: 0;
 				}
 
+				/* 响应式布局 */
 				@media (max-width: 992px) {
 					min-height: 13.75rem;
 				}
@@ -101,6 +104,7 @@ main {
 				}
 			}
 
+			/* 简介样式 */
 			.introduce {
 				position: absolute;
 				bottom: -6.25rem;
@@ -116,12 +120,14 @@ main {
 				justify-content: center;
 				flex-direction: column;
 
+				/* 响应式布局 */
 				@media (max-width: 992px) {
 					height: 5rem;
 					bottom: 0;
 				}
 			}
 
+			/* 画饼中的样式 */
 			.pie {
 				position: relative;
 
