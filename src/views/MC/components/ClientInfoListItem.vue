@@ -1,11 +1,6 @@
 <script setup>
-import { ref, onMounted } from "vue"
-
-//创建响应式数据
-const ClientInfoListItemData = ref([])
-
 //获取父组件传递过来的数据
-const props = defineProps({
+defineProps({
 	data: {
 		type: Object,
 		required: true
@@ -24,11 +19,6 @@ const props = defineProps({
 	}
 })
 
-//组件挂载时 把数据赋值给ClientInfoListItemData
-onMounted(async () => {
-	ClientInfoListItemData.value = props.data
-})
-
 //根据imgUrlName和imgName生成图片URL
 const imgUrl = (imgUrlName, imgName) => {
 	return new URL(
@@ -41,8 +31,8 @@ const imgUrl = (imgUrlName, imgName) => {
 <template>
 	<div class="container" id="container">
 		<ul>
-			<!-- 使用v-for遍历ClientInfoListItemData 并渲染到页面上 -->
-			<li v-for="item in ClientInfoListItemData" :key="item.id">
+			<!-- 使用v-for遍历data中的数据 并渲染到页面上 -->
+			<li v-for="item in data" :key="item.id">
 				<div class="logo">
 					<img :src="imgUrl(imgUrlName, item.img_name)" alt="" />
 				</div>
