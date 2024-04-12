@@ -62,16 +62,25 @@ const imgUrl = (url) => {
 <template>
 	<div class="container" id="container">
 		<el-row v-if="modsData">
-			<el-col
-				:xs="0"
-				:sm="0"
-				:md="5"
-				:lg="5"
-				:xl="5"
-				class="hidden-sm-and-down"
+			<!-- 移动端筛选框 -->
+			<el-select
+				v-model="selectedTags"
+				multiple
+				placeholder="筛选"
+				size="large"
+				class="hidden-sm-and-up mobile-select"
 			>
+				<el-option
+					v-for="tag in allTags"
+					:key="tag.id"
+					:label="tag"
+					:value="tag"
+				>
+				</el-option>
+			</el-select>
+			<el-col :xs="0" :sm="5" :md="5" :lg="5" :xl="5">
 				<!-- 筛选框 -->
-				<div class="tag-list">
+				<div class="select">
 					<p>筛选</p>
 					<el-checkbox-group v-model="selectedTags">
 						<el-checkbox
@@ -85,7 +94,7 @@ const imgUrl = (url) => {
 				</div>
 			</el-col>
 			<!-- 列表 -->
-			<el-col :xs="24" :sm="24" :md="19" :lg="19" :xl="19">
+			<el-col :xs="24" :sm="19" :md="19" :lg="19" :xl="19">
 				<div class="list">
 					<ul>
 						<li v-for="item in filteredItems" :key="item.id">
@@ -152,7 +161,7 @@ const imgUrl = (url) => {
 		width: 100%;
 
 		/* 筛选框样式 */
-		.tag-list {
+		.select {
 			width: 90%;
 			min-width: 7.5rem;
 			height: fit-content;
@@ -165,6 +174,12 @@ const imgUrl = (url) => {
 				line-height: 2rem;
 				font-weight: 600;
 				color: #999;
+
+				/* 当页面宽度小于1200px时 */
+				@media (max-width: 1200px) {
+					/* 缩小左边距 */
+					margin-left: 1.25rem;
+				}
 			}
 
 			/* 多选框样式 */
@@ -177,6 +192,13 @@ const imgUrl = (url) => {
 				.el-checkbox {
 					margin-left: 1.875rem;
 
+					/* 当页面宽度小于1200px时 */
+					@media (max-width: 1200px) {
+						/* 缩小左边距 */
+						margin-left: 1.25rem;
+					}
+
+					/* 修改el-checkbox默认样式 */
 					:deep(.el-checkbox__inner) {
 						border: 1px solid #000;
 					}
@@ -186,6 +208,23 @@ const imgUrl = (url) => {
 					}
 				}
 			}
+		}
+
+		/* 移动端筛选框 */
+		.mobile-select {
+			width: 100%;
+			margin-bottom: 1.25rem;
+			border-radius: 0.5rem;
+
+			/* 删除el-select默认样式 */
+			:deep(.el-input) {
+				--el-input-border-color: none;
+				--el-input-hover-border: none;
+				--el-input-hover-border-color: none;
+				--el-input-focus-border-color: none;
+			}
+			--el-select-border-color-hover: none;
+			--el-select-input-focus-border-color: none;
 		}
 
 		/* 列表样式 */
@@ -198,6 +237,13 @@ const imgUrl = (url) => {
 				margin-bottom: 0.9375rem;
 				border-radius: 0.5rem;
 
+				/* 当页面宽度小于992px时 */
+				@media (max-width: 992px) {
+					position: relative;
+					/* 修改列表高度为自适应 */
+					height: fit-content;
+				}
+
 				/* logo样式 */
 				.logo {
 					display: flex;
@@ -205,6 +251,14 @@ const imgUrl = (url) => {
 					justify-content: center;
 					height: 100%;
 					min-width: 6rem;
+
+					/* 当页面宽度小于992px时 */
+					@media (max-width: 992px) {
+						/* 修改logo部位为子绝父相定位方案的水平垂直居中 */
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+					}
 
 					/* logo图片样式 */
 					img {
@@ -223,16 +277,35 @@ const imgUrl = (url) => {
 					width: 100%;
 					height: 100%;
 
+					/* 当页面宽度小于992px时 */
+					@media (max-width: 992px) {
+						/* 增加左边距让出图片的位置 */
+						margin-left: 6rem;
+					}
+
 					/* 标题样式 */
 					.title {
 						flex: 0 0 auto;
 						margin-top: 0.1875rem;
+
+						/* 当页面宽度小于992px时 */
+						@media (max-width: 992px) {
+							/* 缩小字体大小 */
+							font-size: 0.9375rem;
+							line-height: 1.0625rem;
+						}
 
 						p {
 							display: inline-block;
 							transform: translateY(-0.0625rem);
 							font-size: 14px;
 							color: #999;
+
+							/* 当页面宽度小于992px时 */
+							@media (max-width: 992px) {
+								/* 缩小字体大小 */
+								font-size: 0.8125rem;
+							}
 						}
 					}
 
@@ -242,11 +315,24 @@ const imgUrl = (url) => {
 						overflow: hidden;
 						font-size: 0.9375rem;
 						margin-top: 0.125rem;
+
+						/* 当页面宽度小于992px时 */
+						@media (max-width: 992px) {
+							/* 增加简介上边距并缩小字体大小 */
+							margin-top: 0.0625rem;
+							font-size: 0.8125rem;
+						}
 					}
 					/* 标签样式 */
 					.tags {
 						flex: 0 0 auto;
 						margin-bottom: 0.5rem;
+
+						/* 当页面宽度小于992px时 */
+						@media (max-width: 992px) {
+							/* 增加增加标签的上边距 */
+							margin-top: 0.1875rem;
+						}
 
 						span {
 							width: fit-content;
@@ -267,6 +353,12 @@ const imgUrl = (url) => {
 					margin-top: auto;
 					margin-bottom: 0.125rem;
 
+					/* 当页面宽度小于992px时 */
+					@media (max-width: 992px) {
+						/* 使图标竖向排列 */
+						flex-direction: column;
+					}
+
 					/* 图标样式 */
 					a {
 						display: flex;
@@ -284,77 +376,6 @@ const imgUrl = (url) => {
 					.curseforge-icon {
 						width: 1.875rem;
 					}
-				}
-			}
-		}
-	}
-}
-
-/* 响应式布局设置 */
-
-/* 当宽度小于1200px时 */
-@media (max-width: 1200px) {
-	.container {
-		/* 筛选框样式 */
-		.tag-list {
-			/* 缩小左边距 */
-			p {
-				margin-left: 1.25rem;
-			}
-
-			.el-checkbox-group {
-				/* 缩小左边距 */
-				.el-checkbox {
-					margin-left: 1.25rem;
-				}
-			}
-		}
-	}
-}
-
-/* 当宽度小于992px时 */
-@media (max-width: 992px) {
-	/* 未知原因导致该代码块优先级不足 使用id选择器提权 */
-	#container {
-		/* 列表样式 */
-		.list {
-			/* 修改列表高度为自适应 */
-			li {
-				position: relative;
-				height: fit-content;
-
-				/* 修改logo部位为子绝父相定位方案的水平垂直居中 */
-				.logo {
-					position: absolute;
-					top: 50%;
-					transform: translateY(-50%);
-				}
-				.content {
-					/* 增加左边距让出图片的位置 */
-					margin-left: 6rem;
-					/* 缩小字体大小 */
-					.title {
-						font-size: 0.9375rem;
-						line-height: 1.0625rem;
-						p {
-							font-size: 0.8125rem;
-						}
-					}
-					/* 增加简介上边距并缩小字体大小 */
-					.description {
-						margin-top: 0.0625rem;
-						font-size: 0.8125rem;
-					}
-					/* 增加增加标签的上边距 */
-					.tags {
-						margin-top: 0.1875rem;
-					}
-				}
-
-				/* 图标样式 */
-				.icon {
-					/* 使图标竖向排列 */
-					flex-direction: column;
 				}
 			}
 		}
