@@ -20,9 +20,9 @@ defineProps({
 })
 
 //根据imgUrlName和imgName生成图片URL
-const imgUrl = (imgUrlName, imgName) => {
+const imgUrl = (imgUrlName, imgName, extensions) => {
 	return new URL(
-		`/src/assets/icon/${imgUrlName}/${imgName}.webp`,
+		`/src/assets/icon/${imgUrlName}/${imgName}.${extensions}`,
 		import.meta.url
 	)
 }
@@ -34,7 +34,7 @@ const imgUrl = (imgUrlName, imgName) => {
 			<!-- 使用v-for遍历data中的数据 并渲染到页面上 -->
 			<li v-for="item in data" :key="item.id">
 				<div class="logo">
-					<img :src="imgUrl(imgUrlName, item.img_name)" alt="" />
+					<img :src="imgUrl(imgUrlName, item.img_name, 'webp')" alt="" />
 				</div>
 				<div class="content">
 					<div class="title">
@@ -55,7 +55,7 @@ const imgUrl = (imgUrlName, imgName) => {
 						v-if="item.other_name"
 					>
 						<img
-							:src="`/src/assets/icon/logo/${item.other_name}.svg`"
+							:src="imgUrl('logo', item.other_name, 'svg')"
 							:alt="item.other_name"
 							class="other-icon"
 						/>
