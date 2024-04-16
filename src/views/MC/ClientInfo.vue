@@ -12,20 +12,28 @@ const isLoading = ref(true)
 const route = useRoute()
 //创建响应式数据
 const modsData = ref([])
+const optionalModsData = ref([])
 const resourcePacksData = ref([])
 const shaderPacksData = ref([])
 
 //该函数用于发起ajax请求
-const fetchData = async (subversion) => {
+const getData = async (subversion) => {
 	try {
-		const [modsDataRes, resourcePacksDataRes, shaderPacksDataRes] =
-			await Promise.all([
-				axios.get(`/downloads/mc/clientinfo/mods/${subversion}`),
-				axios.get(`/downloads/mc/clientinfo/resourcepacks/${subversion}`),
-				axios.get(`/downloads/mc/clientinfo/shaderpacks/${subversion}`)
-			])
+		const url = "/downloads/mc/clientinfo"
+		const [
+			modsDataRes,
+			optionalModsDataRes,
+			resourcePacksDataRes,
+			shaderPacksDataRes
+		] = await Promise.all([
+			axios.get(`${url}/mods/${subversion}`),
+			axios.get(`${url}/optional_mods/${subversion}`),
+			axios.get(`${url}/resourcepacks/${subversion}`),
+			axios.get(`${url}/shaderpacks/${subversion}`)
+		])
 		//将数据存储到响应式数据中
 		modsData.value = modsDataRes.data
+		optionalModsData.value = optionalModsDataRes.data
 		resourcePacksData.value = resourcePacksDataRes.data
 		shaderPacksData.value = shaderPacksDataRes.data
 
@@ -38,7 +46,7 @@ const fetchData = async (subversion) => {
 
 //使用onMounted生命周期钩子 调用fetchData
 onMounted(async () => {
-	await fetchData(route.params.subversion)
+	await getData(route.params.subversion)
 })
 
 //使用watch监听route.params.subversion的变化 如果该值发生变化 重新发起请求
@@ -46,7 +54,7 @@ watch(
 	() => route.params.subversion,
 	async (newValue, oldValue) => {
 		if (newValue !== oldValue && newValue !== undefined) {
-			await fetchData(newValue)
+			await getData(newValue)
 		}
 	}
 )
@@ -77,11 +85,12 @@ const shaderPacks = ref({
 	<main v-if="!isLoading">
 		<!-- 使用element-ui的tabs组件实现功能选项卡 -->
 		<el-tabs type="card">
-			<!-- 简介选项卡 -->
-			<!-- <el-tab-pane label="简介"> 暂无 </el-tab-pane> -->
 			<!-- 模组列表选项卡 使用MCMods组件展示模组数据 -->
 			<el-tab-pane label="模组列表">
 				<MCMods :data="modsData"></MCMods>
+			</el-tab-pane>
+			<el-tab-pane label="可选模组">
+				<MCMods :data="optionalModsData"></MCMods>
 			</el-tab-pane>
 			<!-- 材质列表选项卡 使用ClientInfoListItem组件展示材质包信息 -->
 			<el-tab-pane label="材质列表">
@@ -105,6 +114,11 @@ const shaderPacks = ref({
 			</el-tab-pane>
 		</el-tabs>
 	</main>
+	<el-backtop
+		:right="100"
+		:bottom="100"
+		class="hidden-md-and-down"
+	></el-backtop>
 </template>
 
 <style lang="less" scoped>
@@ -113,10 +127,15 @@ const shaderPacks = ref({
 	height: 50px;
 }
 
-/* 主内容区域样式 居中显示 根据屏幕宽度调整宽度 */
+/* 主内容区域样式 */
 main {
 	width: 60vw;
 	margin: 0 auto;
+
+	/* 屏幕宽度小于1200px时 修改主要内容区域的宽度 */
+	@media (max-width: 1200px) {
+		width: 70vw;
+	}
 
 	/* 屏幕宽度小于992px时 修改主要内容区域的宽度 */
 	@media (max-width: 992px) {
