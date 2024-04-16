@@ -258,6 +258,7 @@ const imgUrl = (url) => {
 						position: absolute;
 						top: 50%;
 						transform: translateY(-50%);
+						min-width: 5.5rem;
 					}
 
 					/* logo图片样式 */
@@ -266,6 +267,12 @@ const imgUrl = (url) => {
 						width: 4rem;
 						height: 4rem;
 						background-color: #f4f4f5;
+
+						/* 当页面宽度小于992px时 */
+						@media (max-width: 992px) {
+							width: 3.5rem;
+							height: 3.5rem;
+						}
 					}
 				}
 
@@ -280,7 +287,8 @@ const imgUrl = (url) => {
 					/* 当页面宽度小于992px时 */
 					@media (max-width: 992px) {
 						/* 增加左边距让出图片的位置 */
-						margin-left: 6rem;
+						margin-left: 5.5rem;
+						min-height: 5.5rem;
 					}
 
 					/* 标题样式 */
@@ -301,7 +309,7 @@ const imgUrl = (url) => {
 							font-size: 14px;
 							color: #999;
 
-							/* 当页面宽度小于992px时 */
+							// /* 当页面宽度小于992px时 */
 							@media (max-width: 992px) {
 								/* 缩小字体大小 */
 								font-size: 0.8125rem;
@@ -316,7 +324,7 @@ const imgUrl = (url) => {
 						font-size: 0.9375rem;
 						margin-top: 0.125rem;
 
-						/* 当页面宽度小于992px时 */
+						// /* 当页面宽度小于992px时 */
 						@media (max-width: 992px) {
 							/* 增加简介上边距并缩小字体大小 */
 							margin-top: 0.0625rem;
