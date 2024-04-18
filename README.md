@@ -1,10 +1,10 @@
-# starm-web
+# StarM Team
 
 这是一个StarM Team的官网或是BrokenDream_Star的个人网站
 
 ## 推荐使用的IDE设置
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (并禁用Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (并禁用Vetur)
 
 ## 配置
 
