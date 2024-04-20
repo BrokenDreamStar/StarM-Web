@@ -67,7 +67,8 @@ h1 {
 /* 清除默认点击背景色 */
 button,
 a {
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
 }
 
 /* 清除链接交互相关默认样式 */
@@ -76,4 +77,12 @@ a:hover,
 a:active,
 a:visited {
 	text-decoration: none;
+}
+
+a:focus {
+	outline: none;
+}
+
+a::-moz-focus-inner {
+	border-style: none;
 }
