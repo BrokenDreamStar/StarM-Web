@@ -50,13 +50,28 @@ const downloadButtonData = ref({ text: "下载 | Download" })
 					<div class="card" v-if="item.link !== null">
 						<h3>{{ item.subversion }}</h3>
 						<div class="text">
-							<div class="prompt warn">
-								<p v-if="item.UpdateStopStatus">该客户端已停止更新</p>
-								<p>上次更新时间:{{ item.lastUpdated }}</p>
-							</div>
-							<div class="prompt introduce">
-								<p>{{ item.introduce }}</p>
-							</div>
+							<ul>
+								<li v-if="item.UpdateStopStatus">
+									<img src="/src/assets/icon/notice.svg" alt="" />
+									该客户端已停止更新
+								</li>
+								<li>
+									<img src="/src/assets/icon/date.svg" alt="" />
+									上次更新时间:{{ item.lastUpdated }}
+								</li>
+								<li v-if="item.UpdateStopStatus">
+									<img src="/src/assets/icon/good.svg" alt="" />
+									已经过稳定性测试<s>(大概)</s>
+								</li>
+								<li v-else>
+									<img src="/src/assets/icon/warning.svg" alt="" />
+									该客户端仍处于Beta测试阶段 可能存在崩溃等恶性bug
+								</li>
+								<li>
+									<img src="/src/assets/icon/attachment.svg" alt="" />
+									{{ item.introduce }}
+								</li>
+							</ul>
 						</div>
 						<div class="download">
 							<ul>
@@ -140,54 +155,26 @@ main {
 				h3 {
 					text-align: center;
 					font-size: 1.875rem;
-					margin-top: 1.25rem;
+					margin: 0.625rem 0 0.3125rem 0;
 				}
 
 				.text {
 					display: flex;
 					align-items: center;
 					flex-direction: column;
-					text-align: center;
 					font-size: 0.875rem;
 					flex: 1;
 
-					.prompt {
-						display: flex;
-						flex-direction: column;
-						justify-content: center;
-						align-items: center;
+					ul {
 						width: 80%;
 						height: fit-content;
-						padding: 0.5rem;
-						border-radius: 0.3125rem;
-						box-shadow:
-							inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-							7px 7px 20px 0px rgba(0, 0, 0, 0.1),
-							4px 4px 5px 0px rgba(0, 0, 0, 0.1);
-
-						p {
-							display: block;
-							color: #fff;
+						li {
+							margin-top: 0.3125rem;
+							img {
+								width: 1.25rem;
+								vertical-align: bottom;
+							}
 						}
-					}
-
-					.warn {
-						margin: 1rem 0 0.5rem 0;
-						background: rgb(255, 27, 0);
-						background: linear-gradient(
-							0deg,
-							rgba(255, 27, 0, 1) 0%,
-							rgba(251, 75, 2, 1) 100%
-						);
-					}
-
-					.introduce {
-						background: rgb(0, 172, 238);
-						background: linear-gradient(
-							0deg,
-							rgba(0, 172, 238, 1) 0%,
-							rgba(2, 126, 251, 1) 100%
-						);
 					}
 				}
 
@@ -203,7 +190,9 @@ main {
 							margin: 0 auto;
 
 							a {
-								display: block;
+								display: flex;
+								justify-content: center;
+								align-items: center;
 								margin: 0 1rem 0 1rem;
 
 								img {
