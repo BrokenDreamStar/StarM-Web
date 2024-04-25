@@ -89,7 +89,7 @@ const shaderPacks = ref({
 			<el-tab-pane label="模组列表">
 				<MCMods :data="modsData"></MCMods>
 			</el-tab-pane>
-			<el-tab-pane label="可选模组">
+			<el-tab-pane label="可选模组" v-if="optionalModsData.length">
 				<MCMods :data="optionalModsData"></MCMods>
 			</el-tab-pane>
 			<!-- 材质列表选项卡 使用ClientInfoListItem组件展示材质包信息 -->
