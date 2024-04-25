@@ -114,7 +114,9 @@ const imgUrl = (url) => {
 								<div class="description">{{ item.description }}</div>
 								<!-- 标签 -->
 								<div class="tags">
-									<span>{{ item.tags }}</span>
+									<span>
+										<i>{{ item.tags }}</i>
+									</span>
 								</div>
 							</div>
 							<!-- 图标 -->
@@ -343,6 +345,7 @@ const imgUrl = (url) => {
 						}
 
 						span {
+							display: block;
 							width: fit-content;
 							height: fit-content;
 							padding: 0.1875rem;
@@ -350,6 +353,11 @@ const imgUrl = (url) => {
 							background-color: #ecf5ff;
 							color: #606266;
 							font-size: 0.8125rem;
+
+							i {
+								display: block;
+								transform: translateY(-0.0625rem);
+							}
 						}
 					}
 				}
