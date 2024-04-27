@@ -105,7 +105,10 @@ const downloadButtonData = ref({ text: "下载 | Download" })
 							</ul>
 						</div>
 					</div>
-					<Loading class="card" v-else></Loading>
+					<div class="card" v-else>
+						<h3>{{ item.subversion }}</h3>
+						<Loading class="loading"></Loading>
+					</div>
 				</template>
 			</div>
 		</div>
@@ -205,6 +208,9 @@ main {
 							margin: 0.5rem 0 1.25rem 0;
 						}
 					}
+				}
+				.loading {
+					margin-top: 4.6875rem;
 				}
 			}
 		}
