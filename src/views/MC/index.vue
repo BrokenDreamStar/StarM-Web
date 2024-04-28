@@ -25,8 +25,20 @@ const fetchData = async (version) => {
 	}
 }
 
+const isLoading = ref(false)
+const loadingTimer = () => {
+	const loading = setTimeout(() => {
+		if (downloadMCPageData.value.length > 0) {
+			isLoading.value = false
+			clearTimeout(loading)
+		}
+	}, 300)
+}
+
 onMounted(async () => {
+	isLoading.value = true
 	downloadMCPageData.value = await fetchData(route.params.version)
+	loadingTimer()
 })
 
 watch(
@@ -41,33 +53,38 @@ const downloadButtonData = ref({ text: "下载 | Download" })
 </script>
 
 <template>
-	<div class="top-box"></div>
-	<main>
+	<div
+		class="top-box"
+		v-loading.fullscreen.lock="isLoading"
+		element-loading-background="#fff"
+		lazy
+	></div>
+	<main v-if="!isLoading">
 		<div class="container">
 			<h2 class="title">下载由StarM Team制作的MineCraft客户端</h2>
 			<div class="card-container">
 				<template v-for="item in downloadMCPageData" :key="item.id">
-					<div class="card" v-if="item.link !== null">
+					<div class="card" v-if="item.last_updated !== null">
 						<h3>{{ item.subversion }}</h3>
 						<div class="text">
 							<ul>
-								<li v-if="item.UpdateStopStatus">
+								<li v-if="item.update_stop_status">
 									<img src="/src/assets/icon/notice.svg" alt="" />
 									该客户端已停止更新
 								</li>
 								<li>
 									<img src="/src/assets/icon/date.svg" alt="" />
-									上次更新时间:{{ item.lastUpdated }}
+									上次更新时间:{{ item.last_updated }}
 								</li>
-								<li v-if="item.UpdateStopStatus">
+								<li v-if="item.test_status">
 									<img src="/src/assets/icon/good.svg" alt="" />
-									已经过稳定性测试<s>(大概)</s>
+									已经过稳定性测试
 								</li>
-								<li v-else>
+								<li v-if="item.warn_text">
 									<img src="/src/assets/icon/warning.svg" alt="" />
-									该客户端仍处于Beta测试阶段 可能存在崩溃等恶性bug
+									{{ item.warn_text }}
 								</li>
-								<li>
+								<li v-if="item.introduce">
 									<img src="/src/assets/icon/attachment.svg" alt="" />
 									{{ item.introduce }}
 								</li>
@@ -99,7 +116,7 @@ const downloadButtonData = ref({ text: "下载 | Download" })
 								<li class="download-btn">
 									<DownloadButton
 										:text="downloadButtonData.text"
-										:link="item.link"
+										:link="`https://oss.starm.team/downloads/StarM_Client-${item.subversion}.mrpack`"
 									></DownloadButton>
 								</li>
 							</ul>

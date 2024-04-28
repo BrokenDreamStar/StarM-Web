@@ -93,7 +93,7 @@ const shaderPacks = ref({
 				<MCMods :data="optionalModsData"></MCMods>
 			</el-tab-pane>
 			<!-- 材质列表选项卡 使用ClientInfoListItem组件展示材质包信息 -->
-			<el-tab-pane label="材质列表">
+			<el-tab-pane label="材质列表" v-if="resourcePacksData.length">
 				<ClientInfoListItem
 					:data="resourcePacksData"
 					:imgUrlName="resourcePacks.imgUrlName"
@@ -103,7 +103,7 @@ const shaderPacks = ref({
 				</ClientInfoListItem>
 			</el-tab-pane>
 			<!-- 光影列表选项卡 使用ClientInfoListItem组件展示光影包信息 -->
-			<el-tab-pane label="光影列表">
+			<el-tab-pane label="光影列表" v-if="shaderPacksData.length">
 				<ClientInfoListItem
 					:data="shaderPacksData"
 					:imgUrlName="shaderPacks.imgUrlName"
