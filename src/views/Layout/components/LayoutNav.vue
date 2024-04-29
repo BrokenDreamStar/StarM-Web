@@ -8,9 +8,7 @@ import AstronautJSON from "@/assets/animations/menuV2.json"
 const navList = ref([
 	{ name: "首页", path: "/" },
 	{ name: "关于", path: "/about" },
-	{ name: "资源下载", path: "/downloads" },
-	{ name: "原神工具", path: "/genshin" },
-	{ name: "来点弔图", path: "/dt" }
+	{ name: "资源下载", path: "/downloads" }
 ])
 
 // 移动端菜单图标动画
@@ -76,12 +74,6 @@ watch(
 							</li>
 							<li>
 								<router-link to="/downloads">资源下载</router-link>
-							</li>
-							<li>
-								<router-link to="/genshin">原神工具</router-link>
-							</li>
-							<li>
-								<router-link to="/dt">来点弔图</router-link>
 							</li>
 							<li>
 								<a @click.prevent>敬请期待</a>
