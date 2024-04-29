@@ -51,20 +51,8 @@ const router = createRouter({
 					component: () => import("@/views/TRCInteriorSur/index.vue")
 				},
 				{
-					path: "/genshin",
-					component: () => import("@/views/Genshin/index.vue")
-				},
-				{
-					path: "/dt",
-					component: () => import("@/views/DT/index.vue")
-				},
-				{
 					path: "/jumplink",
 					component: () => import("@/views/JumpTRC.vue")
-				},
-				{
-					path: "/test",
-					component: () => import("@/components/DownloadButton.vue")
 				}
 			]
 		}
