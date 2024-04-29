@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from "vue"
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 import axios from "axios"
 import MCMods from "@/views/MC/components/MCMods.vue"
 import ClientInfoListItem from "@/views/MC/components/ClientInfoListItem.vue"
@@ -10,6 +10,7 @@ const isLoading = ref(true)
 
 //获取当前路由对象
 const route = useRoute()
+const router = useRouter()
 //创建响应式数据
 const modsData = ref([])
 const optionalModsData = ref([])
@@ -39,8 +40,14 @@ const getData = async (subversion) => {
 
 		isLoading.value = false //关闭加载
 	} catch (err) {
-		console.error(err)
-		return null
+		//错误处理
+		if (err.code === "ERR_NETWORK") {
+			router.push({ name: "NotFound" })
+		} else if (axios.isAxiosError(err) && err.response.status === 404) {
+			router.push({ name: "NotFound" })
+		} else {
+			console.log(err.code)
+		}
 	}
 }
 
